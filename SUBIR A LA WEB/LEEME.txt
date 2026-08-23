@@ -1,0 +1,65 @@
+SUBIR A LA WEB — Forros Cuenca
+================================
+
+Todo lo que hay en esta carpeta va al servidor. Nada más.
+
+QUÉ SUBIR
+---------
+Sube el CONTENIDO de esta carpeta a la raíz del sitio, no la carpeta misma.
+Es decir, en el servidor debe quedar así:
+
+    /index.html
+    /logo-forros-cuenca.png
+    /og-forros-cuenca.jpg
+    /fotos/...          (36 archivos)
+    /disenos/...        (16 archivos)
+
+Si queda /SUBIR A LA WEB/index.html, está mal: la página se vería sin fotos.
+
+CÓMO COMPROBAR QUE QUEDÓ BIEN
+-----------------------------
+1. Abre https://forroscuenca.com  — debe cargar el diseñador.
+2. Baja hasta "Trabajos que ya entregamos" — deben verse 18 fotos.
+3. Entra a la pestaña DISEÑO — deben verse los 8 modelos.
+4. Si las fotos salen rotas: la carpeta fotos/ o disenos/ no subió,
+   o subiste la carpeta contenedora en vez de su contenido.
+
+OJO CON LAS MAYÚSCULAS
+----------------------
+En tu Mac da igual, en el servidor NO. Los nombres van todos en
+minúsculas tal como están. No los renombres.
+
+ANTES DE PUBLICAR, REVISA DENTRO DE index.html
+----------------------------------------------
+Busca la palabra COMPLETAR y el comentario que dice REVISA:
+
+  · streetAddress  — dice "COMPLETAR": pon la calle y número del taller.
+  · Horario        — puse 08:00 a 18:00 de lunes a sábado. Es una
+                     SUPOSICIÓN mía. Un horario equivocado en Google
+                     hace que la gente llegue con el taller cerrado.
+  · camioneta      — está en null a propósito. Mientras siga así, la web
+                     dice "Precio a medida" en vez de inventar una cifra.
+  · Descripciones de los materiales nuevos (cuero de tablero, felpa,
+    malla, tela de techo, cuero para piso) — las escribí yo mirando tus
+    muestrarios. Tú los vendes mejor.
+
+LO QUE NO DEBE SUBIRSE
+----------------------
+Estas carpetas y archivos son material de trabajo, no el sitio:
+
+  node_modules/     herramientas de desarrollo
+  _respaldo/        versiones anteriores por si algo sale mal
+  muestras/         muestrarios de cuero procesados
+  CATALOGO.../      tu catálogo original
+  Fotos para app.../ fotos sin procesar
+  *.MOV             los videos
+  package.json      configuración de herramientas
+  *.svg             trazados de referencia
+
+DESPUÉS DE PUBLICAR
+-------------------
+1. Pega https://forroscuenca.com en un chat de WhatsApp contigo mismo.
+   Debe salir la tarjeta con la foto de los asientos, no un cuadro gris.
+2. Analítica: la web ya registra los eventos, pero no los envía a nadie.
+   Cuando contrates Plausible o Umami, pegas su script en el <head>
+   de index.html y empieza a reportar solo.

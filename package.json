@@ -1,0 +1,14 @@
+{
+  "name": "forros-cuenca-web",
+  "private": true,
+  "description": "Herramientas de desarrollo del sitio. NO se suben al hosting: solo sirven para procesar fotos y revisar calidad.",
+  "devDependencies": {
+    "sharp": "*",
+    "potrace": "*",
+    "htmlparser2": "*",
+    "css-select": "*",
+    "css-tree": "*",
+    "domutils": "*",
+    "ffmpeg-static": "*"
+  }
+}

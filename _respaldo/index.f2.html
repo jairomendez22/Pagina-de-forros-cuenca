@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FORROS CUENCA - Disenador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0a0b0d;color:#fff;font-family:'Poppins','Segoe UI',Arial,sans-serif}
+button,input{font-family:inherit}
+header{padding:14px 26px;background:linear-gradient(180deg,#141519,#101114);border-bottom:1px solid #2c2d33;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brandwrap{display:flex;align-items:center;gap:14px}
+.logo{width:64px;height:auto;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.brand{font-size:25px;font-weight:800;font-style:italic;letter-spacing:.3px;font-family:'Poppins',sans-serif}
+.brand span{color:#e50914}
+.tag{color:#9a9ba3;font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-top:2px}
+.hcta{display:flex;align-items:center;gap:14px}
+.phone{color:#c9cad0;font-size:13px;font-weight:500}
+.cta{padding:12px 20px;background:linear-gradient(180deg,#f01824,#c8101c);color:#fff;border:0;border-radius:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;letter-spacing:.3px;box-shadow:0 6px 16px -6px rgba(229,9,20,.6);transition:filter .15s,transform .15s}
+.cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.layout{max-width:1320px;margin:auto;padding:18px;display:grid;grid-template-columns:1fr 400px;gap:14px}
+.card{background:#16171b;border:1px solid #2c2d33;border-radius:16px;overflow:hidden}
+.center{min-height:780px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at top,#2b2e37,#07080b 80%);position:relative;padding:16px}
+.matbadge{position:absolute;top:14px;left:14px;background:#0009;border:1px solid #333;border-radius:20px;padding:6px 12px;font-size:11px;color:#cfd0d5;backdrop-filter:blur(2px)}
+.hint{margin-top:14px;padding:10px 16px;border:1px solid #2c2d33;border-radius:10px;color:#9a9ba3;font-size:12px;text-align:center;background:#101115cc}
+.summary{margin:0;border-top:1px solid #26272d;background:#0e0f12;padding:12px 16px;color:#9a9ba3;font-size:11.5px;line-height:1.6;max-height:230px;overflow:auto}
+.summary .row{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px dashed #24252b}
+.summary .row:last-child{border-bottom:0}
+.summary b{color:#fff}
+.tabs{display:flex;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;padding:12px 3px;background:#101115;border:0;border-right:1px solid #26272d;border-bottom:1px solid #26272d;font-weight:800;font-size:11px;letter-spacing:.5px;color:#c7c8cd;cursor:pointer}
+.tab.active{background:#e50914;color:#fff}
+.tabscope{padding:8px 14px;font-size:10.5px;color:#6f7078;background:#101115;border-bottom:1px solid #26272d;letter-spacing:.5px}
+.content{padding:16px}
+.content b{font-size:12.5px;letter-spacing:.5px}
+.colors{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}
+.color{height:50px;border:2px solid #444;border-radius:9px;cursor:pointer;position:relative}
+.color.active{border-color:#fff;box-shadow:0 0 0 2px #e50914}
+.color span{position:absolute;bottom:-16px;left:0;right:0;text-align:center;font-size:9px;color:#9a9ba3}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.opt{background:#202126;border:1px solid #383940;border-radius:9px;padding:11px;font-weight:700;font-size:12px;cursor:pointer;color:#fff}
+.opt.active{border-color:#e50914;background:#321518}
+.patterns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.pat{height:76px;background:#202126;border:1px solid #3a3b42;border-radius:9px;cursor:pointer;color:#cfd0d5;font-size:11px;font-weight:700}
+.pat.active{border:2px solid #e50914;color:#fff}
+.sample{display:block;width:42px;height:26px;margin:0 auto 6px;background:#2a2b30;border-radius:3px}
+.diamond{background-image:linear-gradient(45deg,transparent 45%,#aaa 46%,#aaa 54%,transparent 55%),linear-gradient(-45deg,transparent 45%,#aaa 46%,#aaa 54%,transparent 55%);background-size:16px 16px}
+.hex{background-image:linear-gradient(30deg,transparent 45%,#aaa 46%,#aaa 52%,transparent 53%),linear-gradient(150deg,transparent 45%,#aaa 46%,#aaa 52%,transparent 53%);background-size:16px 16px}
+.chevronp{background-image:repeating-linear-gradient(135deg,transparent 0 5px,#aaa 5px 6px),repeating-linear-gradient(45deg,transparent 0 5px,#aaa 5px 6px);background-size:14px 14px}
+.dots{background-image:radial-gradient(#aaa 1.4px,transparent 1.4px);background-size:7px 7px}
+.matopt{grid-column:1/-1;display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px}
+.matopt small{color:#9a9ba3;font-weight:500;font-size:11px}
+.swatches{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stitch{width:60px;height:42px;background:#17181c;border:1px solid #3a3b42;border-radius:8px;cursor:pointer;position:relative}
+.stitch i{position:absolute;left:8px;right:8px;top:50%;display:block;border-top:3px dashed red}
+.stitch.active{border-color:#e50914;box-shadow:0 0 0 2px #e50914 inset}
+.txtbox{margin-top:10px}
+.txtbox input{width:100%;padding:10px;border-radius:8px;border:1px solid #3a3b42;background:#101115;color:#fff;font-size:12px}
+.zone{cursor:pointer;stroke:#111;stroke-width:3.5;stroke-dasharray:7 6;stroke-linecap:round;filter:drop-shadow(0px 1.2px 0.8px rgba(0,0,0,0.55));transition:stroke .2s,stroke-width .2s}
+.zone.sel{stroke:#fff !important;stroke-width:6;stroke-dasharray:none;filter:drop-shadow(0px 2px 4px rgba(0,0,0,0.4))}
+.seam{fill:none;stroke-width:2.2;stroke-dasharray:6 5;stroke-linecap:round;filter:drop-shadow(0px 1.2px 0.8px rgba(0,0,0,0.5));transition:stroke .2s}
+.label{fill:#fff;font-weight:bold;font-size:15px;paint-order:stroke;stroke:#111;stroke-width:4;pointer-events:none}
+.stage{width:min(600px,94%);height:auto;filter:drop-shadow(0 22px 25px rgba(0,0,0,.65))}
+@media(max-width:1150px){.layout{grid-template-columns:250px 1fr}.right{grid-column:1/-1}}
+@media(max-width:700px){.layout{grid-template-columns:1fr}.center{min-height:520px}}
+
+
+.opt[disabled],.pat[disabled],.color[disabled]{opacity:.3;cursor:not-allowed;filter:grayscale(.75)}
+.vetonote{grid-column:1/-1;color:#d3a0a0;font-size:11px;line-height:1.5;margin-top:10px;padding:9px 11px;border:1px solid #4a2b2b;border-radius:8px;background:#1d1315}
+.pricebar{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:13px 16px;background:#101115;border-top:1px solid #26272d}
+.pricebar .lbl{color:#a8a9b0;font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700}
+.pricebar .val{color:#fff;font-size:23px;font-weight:800;letter-spacing:-.5px}
+.pricebar .val small{font-size:12px;font-weight:600;color:#9a9ba3;letter-spacing:0}
+.pricenote{padding:0 16px 12px;color:#6f7078;font-size:10.5px;line-height:1.5;background:#101115;border-bottom:1px solid #26272d}
+.soon{font-size:9px;letter-spacing:.6px;opacity:.6;margin-left:5px}
+#fx{position:absolute;width:0;height:0;overflow:hidden}
+</style>
+</head>
+<body>
+
+<!-- Paint servers compartidos. NUNCA display:none: en Blink un gradiente o
+     patron dentro de display:none no resuelve y las zonas salen planas. -->
+<svg id="fx" aria-hidden="true"><defs>
+        <pattern id="pDiamond" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M0 10L10 0L20 10L10 20Z" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.3"/>
+        </pattern>
+        <pattern id="pHex" width="22" height="19" patternUnits="userSpaceOnUse">
+          <path d="M5.5 0L16.5 0L22 9.5L16.5 19L5.5 19L0 9.5Z" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.2"/>
+        </pattern>
+        <pattern id="pChevron" width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M0 8L8 0L16 8L8 16Z" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.3"/>
+        </pattern>
+        <pattern id="pDots" width="9" height="9" patternUnits="userSpaceOnUse">
+          <circle cx="4.5" cy="4.5" r="1.3" fill="#fff" fill-opacity=".28"/>
+        </pattern>
+        
+        <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/>
+          <feColorMatrix type="matrix" values="
+            0.5 0 0 0 0.2
+            0.5 0 0 0 0.2
+            0.5 0 0 0 0.2
+            0.4 0 0 0 0.14" result="grainNoise"/>
+        </filter>
+
+        <filter id="shadow-blur" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="10" />
+        </filter>
+
+        <!-- Chrome metallic gradient for headrest rods -->
+        <linearGradient id="chrome-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#3a3c42" />
+          <stop offset="25%" stop-color="#b0b3ba" />
+          <stop offset="45%" stop-color="#ffffff" />
+          <stop offset="60%" stop-color="#d0d3da" />
+          <stop offset="85%" stop-color="#70737a" />
+          <stop offset="100%" stop-color="#3a3c42" />
+        </linearGradient>
+
+        <!-- Glow filter for specular rim lighting -->
+        <filter id="glow-filter" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3.5" />
+        </filter>
+
+        <!-- Background studio spotlight glow -->
+        <radialGradient id="bg-spotlight" cx="50%" cy="0%" r="65%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
+          <stop offset="40%" stop-color="#ffffff" stop-opacity="0.05" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- Volumetric light beam overlay -->
+        <linearGradient id="volumetric-light" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.06" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Deep 3D joint crease shadow gradients -->
+        <linearGradient id="joint-shadow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#000000" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+        </linearGradient>
+
+        <linearGradient id="joint-shadow-up" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.85" />
+          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Shading gradients to give volume (intensified highlights) -->
+        <linearGradient id="head-shading" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="30%" stop-color="#ffffff" stop-opacity="0.18"/>
+          <stop offset="70%" stop-color="#000000" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
+        </linearGradient>
+
+        <linearGradient id="back-shading-vert" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.6"/>
+          <stop offset="15%" stop-color="#000000" stop-opacity="0.15"/>
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.26"/>
+          <stop offset="70%" stop-color="#000000" stop-opacity="0.05"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.65"/>
+        </linearGradient>
+
+        <linearGradient id="back-shading-horiz" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.5"/>
+          <stop offset="15%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="85%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
+        </linearGradient>
+
+        <linearGradient id="side-shading-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.35"/>
+          <stop offset="25%" stop-color="#ffffff" stop-opacity="0.38"/>
+          <stop offset="60%" stop-color="#ffffff" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.7"/>
+        </linearGradient>
+
+        <linearGradient id="sideR-shading-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.7"/>
+          <stop offset="40%" stop-color="#ffffff" stop-opacity="0.12"/>
+          <stop offset="75%" stop-color="#ffffff" stop-opacity="0.38"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
+        </linearGradient>
+
+        <linearGradient id="base-shading-vert" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.85"/>
+          <stop offset="25%" stop-color="#000000" stop-opacity="0.2"/>
+          <stop offset="65%" stop-color="#ffffff" stop-opacity="0.38"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.65"/>
+        </linearGradient>
+
+        <linearGradient id="base-shading-horiz" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.5"/>
+          <stop offset="15%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="85%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
+        </linearGradient>
+
+        <linearGradient id="edge-shading-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="25%" stop-color="#ffffff" stop-opacity="0.15"/>
+          <stop offset="70%" stop-color="#000000" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.75"/>
+        </linearGradient>
+      </defs></svg>
+
+<header>
+  <div class="brandwrap">
+    <img class="logo" src="logo-forros-cuenca.png" alt="Forros Cuenca">
+    <div>
+      <div class="brand">FORROS <span>CUENCA</span></div>
+      <div class="tag">Tapizado por profesionales</div>
+    </div>
+  </div>
+  <div class="hcta">
+    <div class="phone">&#128222; 0984353695</div>
+    <button class="cta" id="ctaWa">Cotizar por WhatsApp</button>
+  </div>
+</header>
+
+<div style="background:#141519;border-bottom:1px solid #2c2d33;padding:10px 26px;display:flex;gap:12px;align-items:center">
+  <span style="color:#9a9ba3;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px">Selecciona tu vehiculo:</span>
+  <span id="vehiclebar" style="display:flex;gap:12px"></span>
+</div>
+
+<div class="layout">
+  <section class="card center">
+    <div class="matbadge" id="matBadge"></div>
+
+    <svg id="svg-auto" class="stage" viewBox="0 0 620 760">
+      
+
+      <!-- Background spotlight glow -->
+      <rect x="0" y="0" width="620" height="760" fill="url(#bg-spotlight)" pointer-events="none" />
+
+      <!-- Floor soft shadow -->
+      <ellipse cx="310" cy="695" rx="215" ry="16" fill="#000" filter="url(#shadow-blur)" opacity="0.65"/>
+      <g id="auto__rods" pointer-events="none">
+        <rect x="282" y="150" width="8" height="50" rx="3" fill="url(#chrome-gradient)"/>
+        <rect x="330" y="150" width="8" height="50" rx="3" fill="url(#chrome-gradient)"/>
+      </g>
+      <path id="auto__edge" class="zone" fill="#151619" d="M205 430 C175 460 165 500 168 540 C170 580 182 630 200 665 Q310 685 420 665 C438 630 450 580 452 540 C455 500 445 460 415 430 H365 L348 655 Q310 668 272 655 L255 430 Z"/>
+      <path id="auto__edge-pat" fill="none" pointer-events="none" d="M205 430 C175 460 165 500 168 540 C170 580 182 630 200 665 Q310 685 420 665 C438 630 450 580 452 540 C455 500 445 460 415 430 H365 L348 655 Q310 668 272 655 L255 430 Z"/>
+      <path id="auto__base" class="zone" fill="#1b1c1f" d="M255 430 H365 L348 655 Q310 668 272 655 Z"/>
+      <path id="auto__base-pat" fill="none" pointer-events="none" d="M255 430 H365 L348 655 Q310 668 272 655 Z"/>
+      <path id="auto__back" class="zone" fill="#151619" d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="auto__back-pat" fill="none" pointer-events="none" d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="auto__side" class="zone" fill="#151619" d="M240 170 C220 168 210 173 195 180 C175 205 168 245 170 280 C172 325 186 385 205 430 L255 430 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="auto__side-pat" fill="none" pointer-events="none" d="M240 170 C220 168 210 173 195 180 C175 205 168 245 170 280 C172 325 186 385 205 430 L255 430 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="auto__sideR" class="zone" fill="#151619" d="M380 170 C400 168 410 173 425 180 C445 205 452 245 450 280 C448 325 434 385 415 430 H365 C 368 412, 370 395, 370 379 C 372 365, 372 352, 370 338 C 373 324, 373 311, 370 297 C 373 283, 373 270, 370 256 C 368 220, 378 195, 380 170 Z"/>
+      <path id="auto__sideR-pat" fill="none" pointer-events="none" d="M380 170 C400 168 410 173 425 180 C445 205 452 245 450 280 C448 325 434 385 415 430 H365 C 368 412, 370 395, 370 379 C 372 365, 372 352, 370 338 C 373 324, 373 311, 370 297 C 373 283, 373 270, 370 256 C 368 220, 378 195, 380 170 Z"/>
+      <path id="auto__head" class="zone" fill="#18191b" d="M255 70 C 280 67, 340 67, 365 70 C 378 72, 382 82, 380 95 L 368 165 C 366 175, 355 180, 340 180 C 320 177, 300 177, 280 180 C 265 180, 254 175, 252 165 L 240 95 C 238 82, 242 72, 255 70 Z"/>
+      <path id="auto__head-pat" fill="none" pointer-events="none" d="M255 70 C 280 67, 340 67, 365 70 C 378 72, 382 82, 380 95 L 368 165 C 366 175, 355 180, 340 180 C 320 177, 300 177, 280 180 C 265 180, 254 175, 252 165 L 240 95 C 238 82, 242 72, 255 70 Z"/>
+      <g id="auto__shading" pointer-events="none">
+        <path d="M205 430 C175 460 165 500 168 540 C170 580 182 630 200 665 Q310 685 420 665 C438 630 450 580 452 540 C455 500 445 460 415 430 H365 L348 655 Q310 668 272 655 L255 430 Z" fill="url(#edge-shading-grad)" />
+        <path d="M255 430 H365 L348 655 Q310 668 272 655 Z" fill="url(#base-shading-vert)" />
+        <path d="M255 430 H365 L348 655 Q310 668 272 655 Z" fill="url(#base-shading-horiz)" />
+        <path d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z" fill="url(#back-shading-vert)" />
+        <path d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z" fill="url(#back-shading-horiz)" />
+        <path d="M240 170 C220 168 210 173 195 180 C175 205 168 245 170 280 C172 325 186 385 205 430 L255 430 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z" fill="url(#side-shading-grad)" />
+        <path d="M380 170 C400 168 410 173 425 180 C445 205 452 245 450 280 C448 325 434 385 415 430 H365 C 368 412, 370 395, 370 379 C 372 365, 372 352, 370 338 C 373 324, 373 311, 370 297 C 373 283, 373 270, 370 256 C 368 220, 378 195, 380 170 Z" fill="url(#sideR-shading-grad)" />
+        <path d="M255 70 C 280 67, 340 67, 365 70 C 378 72, 382 82, 380 95 L 368 165 C 366 175, 355 180, 340 180 C 320 177, 300 177, 280 180 C 265 180, 254 175, 252 165 L 240 95 C 238 82, 242 72, 255 70 Z" fill="url(#head-shading)" />
+        <path d="M195 430 H425 Q310 460 195 430 Z" fill="url(#joint-shadow-grad)" />
+        <path d="M205 430 H415 Q310 405 205 430 Z" fill="url(#joint-shadow-up)" />
+      </g>
+      <g id="auto__creases" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" opacity="0.2" pointer-events="none">
+        <path d="M205 200 Q220 207 235 203" />
+        <path d="M415 200 Q400 207 385 203" />
+        <path d="M170 260 Q185 270 205 264" />
+        <path d="M450 260 Q435 270 415 264" />
+        <path d="M160 340 Q180 350 200 344" />
+        <path d="M460 340 Q440 350 420 344" />
+        <path d="M175 400 Q195 408 213 402" />
+        <path d="M445 400 Q425 408 407 402" />
+        <path d="M155 480 Q175 490 195 483" />
+        <path d="M465 480 Q445 490 425 483" />
+        <path d="M165 600 Q185 610 205 603" />
+        <path d="M455 600 Q435 610 415 603" />
+      </g>
+      <g fill="none" stroke="#000000" stroke-width="2.5" opacity="0.55" pointer-events="none">
+        <path d="M 252 148 Q 310 156 368 148" />
+        <path d="M 275 72 C 275 110, 272 145, 270 178 M 345 72 C 345 110, 349 145, 350 178" />
+        <path d="M240 170 H380" />
+        <path d="M250 256 L295 256 C302 256, 302 264, 310 264 C318 264, 318 256, 325 256 L370 256" />
+        <path d="M250 297 L295 297 C302 297, 302 305, 310 305 C318 305, 318 297, 325 297 L370 297" />
+        <path d="M250 338 L295 338 C302 338, 302 346, 310 346 C318 346, 318 338, 325 338 L370 338" />
+        <path d="M250 379 L295 379 C302 379, 302 387, 310 387 C318 387, 318 379, 325 379 L370 379" />
+        <path d="M218 175 C202 190 190 230 192 270 C194 315 204 380 220 425 M402 175 C418 190 430 230 428 270 C426 315 416 380 400 425" />
+        <path d="M230 435 C205 460 195 500 198 540 C200 575 210 615 225 640 Q242 648 260 653 M390 435 C415 460 425 500 422 540 C420 575 410 615 395 640 Q378 648 360 653" />
+        <path d="M205 430 H415" />
+        <path d="M250 466 H370" />
+        <path d="M250 501 H370" />
+        <path d="M250 537 H370" />
+        <path d="M260 573 H360" />
+        <path d="M265 609 H355" />
+        <path d="M310 580 V662" />
+      </g>
+      <path id="auto__seams-head" class="seam" d="M 275 72 C 275 110, 272 145, 270 178 M 345 72 C 345 110, 348 145, 350 178 M 275 148 Q 310 156 345 148" pointer-events="none" />
+      <path id="auto__seams-back" class="seam" d="
+        M250 256 L295 256 C302 256, 302 264, 310 264 C318 264, 318 256, 325 256 L370 256
+        M250 297 L295 297 C302 297, 302 305, 310 305 C318 305, 318 297, 325 297 L370 297
+        M250 338 L295 338 C302 338, 302 346, 310 346 C318 346, 318 338, 325 338 L370 338
+        M250 379 L295 379 C302 379, 302 387, 310 387 C318 387, 318 379, 325 379 L370 379
+      " pointer-events="none"/>
+      <path id="auto__seams-side" class="seam" d="M218 175 C202 190 190 230 192 270 C194 315 204 380 220 425 M402 175 C418 190 430 230 428 270 C426 315 416 380 400 425" pointer-events="none" />
+      <path id="auto__seams-base" class="seam" d="
+        M250 466 H370
+        M250 501 H370
+        M250 537 H370
+        M260 573 H360
+        M265 609 H355
+        M310 580 V662
+      " pointer-events="none"/>
+      <path id="auto__seams-edge" class="seam" d="M230 435 C205 460 195 500 198 540 C200 575 210 615 225 640 Q242 648 260 653 M390 435 C415 460 425 500 422 540 C420 575 410 615 395 640 Q378 648 360 653" pointer-events="none" />
+      <rect id="auto__grain" x="0" y="0" width="620" height="760" fill="#fff" filter="url(#grain)" opacity="0" pointer-events="none" style="mix-blend-mode: overlay;"/>
+      <g fill="none" stroke="#ffffff" filter="url(#glow-filter)" opacity="0.35" pointer-events="none">
+        <path d="M268 65 Q310 61 352 65" stroke-width="4.5" />
+        <!-- Shoulders top rim -->
+        <path d="M195 180 C210 173 220 168 240 170 H380 C400 168 410 173 425 180" stroke-width="3.5" />
+      </g>
+
+      <!-- Volumetric Light Beam (Showroom spotlight cone overlay) -->
+      <polygon points="230,0 390,0 590,760 30,760" fill="url(#volumetric-light)" style="mix-blend-mode: screen;" pointer-events="none" />
+      <g id="auto__labels"></g>
+      <text id="auto__emb" class="label" x="310" y="118" font-size="10" text-anchor="middle" opacity="0"></text>
+    </svg>
+
+    <svg id="svg-moto" class="stage" viewBox="0 0 620 760" style="display:none">
+      <!-- Floor soft shadow -->
+      <ellipse cx="310" cy="695" rx="215" ry="16" fill="#000" filter="url(#shadow-blur)" opacity="0.65"/>
+
+      <!-- Interactive Zones -->
+      <path id="moto__sidesL" class="zone" fill="#151619" d="M 270 100 C 255 140 245 220 250 290 C 245 305 242 320 248 335 C 235 370 210 440 210 500 C 210 550 250 610 275 650 C 250 635 225 590 205 520 C 185 450 180 340 205 240 C 225 160 250 120 270 100 Z" />
+      <path id="moto__sidesL-pat" fill="none" pointer-events="none" d="M 270 100 C 255 140 245 220 250 290 C 245 305 242 320 248 335 C 235 370 210 440 210 500 C 210 550 250 610 275 650 C 250 635 225 590 205 520 C 185 450 180 340 205 240 C 225 160 250 120 270 100 Z" />
+
+      <path id="moto__sidesR" class="zone" fill="#151619" d="M 350 100 C 365 140 375 220 370 290 C 375 305 378 320 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 C 370 635 395 590 415 520 C 435 450 440 340 415 240 C 395 160 370 120 350 100 Z" />
+      <path id="moto__sidesR-pat" fill="none" pointer-events="none" d="M 350 100 C 365 140 375 220 370 290 C 375 305 378 320 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 C 370 635 395 590 415 520 C 435 450 440 340 415 240 C 395 160 370 120 350 100 Z" />
+
+      <path id="moto__copiloto" class="zone" fill="#151619" d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" />
+      <path id="moto__copiloto-pat" fill="none" pointer-events="none" d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" />
+
+      <path id="moto__ridge" class="zone" fill="#18191b" d="M 250 290 Q 310 305 370 290 C 375 305 378 320 372 335 Q 310 355 248 335 C 242 320 245 305 250 290 Z" />
+      <path id="moto__ridge-pat" fill="none" pointer-events="none" d="M 250 290 Q 310 305 370 290 C 375 305 378 320 372 335 Q 310 355 248 335 C 242 320 245 305 250 290 Z" />
+
+      <path id="moto__piloto" class="zone" fill="#1b1c1f" d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" />
+      <path id="moto__piloto-pat" fill="none" pointer-events="none" d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" />
+
+      <!-- Shading Overlays -->
+      <g id="moto__shading" pointer-events="none">
+        <path d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" fill="url(#back-shading-vert)" />
+        <path d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" fill="url(#back-shading-horiz)" />
+        <path d="M 250 290 Q 310 305 370 290 C 375 305 378 320 372 335 Q 310 355 248 335 C 242 320 245 305 250 290 Z" fill="url(#head-shading)" />
+        <path d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" fill="url(#base-shading-vert)" />
+        <path d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" fill="url(#base-shading-horiz)" />
+        <path d="M 270 100 C 255 140 245 220 250 290 C 245 305 242 320 248 335 C 235 370 210 440 210 500 C 210 550 250 610 275 650 C 250 635 225 590 205 520 C 185 450 180 340 205 240 C 225 160 250 120 270 100 Z" fill="url(#side-shading-grad)" />
+        <path d="M 350 100 C 365 140 375 220 370 290 C 375 305 378 320 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 C 370 635 395 590 415 520 C 435 450 440 340 415 240 C 395 160 370 120 350 100 Z" fill="url(#sideR-shading-grad)" />
+      </g>
+
+      <!-- Crease lines (visual depth) -->
+      <g fill="none" stroke="#000000" stroke-width="2.5" opacity="0.55" pointer-events="none">
+        <path d="M 250 290 Q 310 305 370 290" />
+        <path d="M 248 335 Q 310 355 372 335" />
+        <path d="M 262 160 Q 310 152 358 160" />
+        <path d="M 256 220 Q 310 212 364 220" />
+        <path d="M 240 400 Q 310 415 380 400" />
+        <path d="M 226 460 Q 310 475 394 460" />
+        <path d="M 222 520 Q 310 535 398 520" />
+        <path d="M 235 580 Q 310 595 385 580" />
+      </g>
+
+      <!-- Dashed customizable stitches -->
+      <path id="moto__seams-copiloto" class="seam" d="M 262 160 Q 310 152 358 160 M 256 220 Q 310 212 364 220" pointer-events="none" />
+      <path id="moto__seams-ridge" class="seam" d="M 250 290 Q 310 305 370 290 M 248 335 Q 310 355 372 335" pointer-events="none" />
+      <path id="moto__seams-piloto" class="seam" d="M 240 400 Q 310 415 380 400 M 226 460 Q 310 475 394 460 M 222 520 Q 310 535 398 520 M 235 580 Q 310 595 385 580" pointer-events="none" />
+      <path id="moto__seams-sides" class="seam" d="M 270 100 C 250 120 225 160 205 240 C 185 340 180 450 205 520 C 225 590 250 635 275 650 M 350 100 C 370 120 395 160 415 240 C 435 340 440 450 415 520 C 395 590 370 635 345 650" pointer-events="none" />
+
+      <!-- Leather grain texture overlay -->
+      <rect id="moto__grain" x="0" y="0" width="620" height="760" fill="#fff" filter="url(#grain)" opacity="0" pointer-events="none" style="mix-blend-mode: overlay;"/>
+
+      <!-- Volumetric Light Beam -->
+      <polygon points="230,0 390,0 590,760 30,760" fill="url(#volumetric-light)" style="mix-blend-mode: screen;" pointer-events="none" />
+
+      <!-- Labels -->
+      <g id="moto__labels"></g>
+      <text id="moto__emb" class="label" x="310" y="180" font-size="10" text-anchor="middle" opacity="0"></text>
+    </svg>
+
+    <div class="hint">&#128161; Haz clic directamente sobre una parte para seleccionarla y editar su <b>color, patron y costura</b>.</div>
+  </section>
+
+  <section class="card right">
+    <div class="tabs">
+      <button class="tab active" data-t="color">COLOR</button>
+      <button class="tab" data-t="pattern">PATRON</button>
+      <button class="tab" data-t="stitch">COSTURA</button>
+      <button class="tab" data-t="material">MATERIAL</button>
+      <button class="tab" data-t="embroidery">BORDADO</button>
+    </div>
+    <div class="tabscope" id="tabscope"></div>
+    <div class="content" id="content"></div>
+    <div class="pricebar"><span class="lbl">Desde</span><span class="val" id="priceVal">&mdash;</span></div>
+    <div class="pricenote" id="priceNote"></div>
+    <div class="summary" id="summary"></div>
+  </section>
+</div>
+
+<script>
+/* ============================================================
+   F0 — Fundacion:  un producto = una entrada en PRODUCTS.
+   F2 — Catalogo como datos: colores, patrones, materiales,
+        reglas de incompatibilidad y precios "desde".
+   Los <defs> viven en #fx, que NUNCA lleva display:none:
+   en Blink un paint server dentro de display:none no resuelve.
+   ============================================================ */
+
+const NEGOCIO = { tel:'0984353695', wa:'593984353695', ig:'FORROSCUENCA' };
+
+/* --- CATALOGO. Los 14 colores que realmente maneja el taller. --- */
+const COLORS=[
+  ['Negro','#111214'],['Gris','#85878a'],['Plateado','#adb2b8'],['Blanco','#e9e9e6'],
+  ['Beige','#cdbb9b'],['Cafe','#70462e'],['Chocolate','#3d2418'],['Vino','#641c2a'],
+  ['Rojo','#c71d28'],['Naranja','#d86b1c'],['Verde','#145a42'],
+  ['Azul','#164f9d'],['Marino','#162b4a'],['Turquesa','#1594a6']
+];
+
+/* Solo los patrones que el taller hace de verdad. */
+const PATTERNS={
+  Liso:   {svg:null,      cls:''},
+  Rombos: {svg:'pDiamond',cls:'diamond'},
+  Puntos: {svg:'pDots',   cls:'dots'}
+};
+
+const STITCHES=[['Roja','#e50914'],['Blanca','#fff'],['Negra','#111'],['Azul','#2776db'],['Beige','#d7b986'],['Turquesa','#1594a6'],['Gris','#9a9ba0']];
+
+const MATERIALS=[
+  {name:'Cuero Americano', desc:'Importado, acabado suave y uniforme, alto brillo y gran durabilidad.'},
+  {name:'Cuero Colombiano',desc:'Cuero nacional de textura firme y grano marcado, excelente relacion calidad-precio.'},
+  {name:'Tela',            desc:'Tela automotriz resistente, la opcion mas economica y fresca.'}
+];
+
+const EMB=[
+  {t:'Sin bordado',        precio:0},
+  {t:'FORROS CUENCA',      precio:5, tam:'grande'},
+  {t:'Nombre del cliente', precio:2, tam:'pequeno', pideTexto:true},
+  {t:'Logo personalizado', precio:5, tam:'grande',  pideTexto:true}
+];
+
+/* ============================================================
+   PRECIOS — la unica tabla que hay que editar.
+   null = falta el numero del taller; la UI lo dice honestamente.
+   ============================================================ */
+const PRECIOS = {
+  moneda: '$',
+  desde: {
+    auto:       110,
+    moto:       null,
+    camioneta:  null,
+    tablero:    null,
+    techo:      null,
+    pisos:      null
+  },
+  recargoMaterial: { 'Cuero Americano':100, 'Cuero Colombiano':0, 'Tela':0 },
+  nota: 'Precio referencial desde. Incluye instalacion. No cobramos IVA (somos artesanos). Entrega en 1 a 2 dias.'
+};
+
+/* ============================================================
+   CATALOGO DE PRODUCTOS. Agregar uno = una entrada aqui + su svg.
+   pending:true  -> declarado pero sin geometria todavia (F1).
+   ============================================================ */
+const PRODUCTS = {
+  auto: {
+    id:'auto', label:'Auto', wa:'forro de asiento de auto',
+    parts:[
+      {key:'back', label:'Frontal respaldo', num:1, zones:['back'],         labelAt:{x:310,y:300}},
+      {key:'side', label:'Laterales',        num:2, zones:['side','sideR'], labelAt:{x:185,y:300}},
+      {key:'base', label:'Centro base',      num:3, zones:['base'],         labelAt:{x:310,y:550}},
+      {key:'head', label:'Cabecera',         num:4, zones:['head'],         labelAt:{x:310,y:120}},
+      {key:'edge', label:'Bordes base',      num:5, zones:['edge'],         labelAt:{x:455,y:600}}
+    ]
+  },
+  moto: {
+    id:'moto', label:'Moto', wa:'forro de asiento de moto',
+    parts:[
+      {key:'piloto',   label:'Asiento piloto',   num:1, zones:['piloto'],          labelAt:{x:310,y:490}},
+      {key:'copiloto', label:'Asiento copiloto', num:2, zones:['copiloto'],        labelAt:{x:310,y:190}},
+      {key:'sides',    label:'Laterales',        num:3, zones:['sidesL','sidesR'], labelAt:{x:210,y:360}},
+      {key:'ridge',    label:'Borde / Acento',   num:4, zones:['ridge'],           labelAt:{x:310,y:315}}
+    ]
+  },
+  camioneta: { id:'camioneta', label:'Camioneta / SUV', wa:'juego de forros de camioneta', pending:true,
+    parts:[
+      {key:'back', label:'Frontal respaldo', num:1, zones:['back']},
+      {key:'side', label:'Laterales',        num:2, zones:['side','sideR']},
+      {key:'base', label:'Centro base',      num:3, zones:['base']},
+      {key:'head', label:'Cabecera',         num:4, zones:['head']},
+      {key:'banca',label:'Banca trasera',    num:5, zones:['banca']}
+    ]
+  },
+  tablero: { id:'tablero', label:'Tablero', wa:'forro de tablero', pending:true,
+    parts:[ {key:'pieza', label:'Tablero', num:1, zones:['pieza']} ] },
+  techo:   { id:'techo',   label:'Techo',   wa:'forro de techo (cielo raso)', pending:true,
+    parts:[ {key:'pieza', label:'Techo', num:1, zones:['pieza']} ] },
+  pisos:   { id:'pisos',   label:'Pisos',   wa:'juego de pisos', pending:true,
+    parts:[ {key:'pieza', label:'Alfombra', num:1, zones:['pieza']} ] }
+};
+
+/* ============================================================
+   REGLAS DE INCOMPATIBILIDAD — datos, no ifs anidados.
+   Cada veto lleva su motivo, y el motivo se le muestra al cliente.
+   ============================================================ */
+const INCOMPATIBLES = [
+  { producto:'pisos', dim:'pattern', valor:'Puntos',
+    motivo:'El perforado no se usa en pisos: deja pasar el agua y la tierra.' }
+];
+
+const SVGNS='http://www.w3.org/2000/svg';
+const el = (prod, suffix) => document.getElementById(prod+'__'+suffix);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const colorHex  = n => (COLORS.find(c=>c[0]===n)||[])[1]||'#111';
+const stitchHex = n => (STITCHES.find(s=>s[0]===n)||[])[1]||'#e50914';
+const embDef    = t => EMB.find(e=>e.t===t) || EMB[0];
+const buildable = () => Object.values(PRODUCTS).filter(p=>!p.pending);
+
+/* --- vetos vigentes para el producto activo, por dimension --- */
+function vetos(dim){
+  const m = new Map();
+  INCOMPATIBLES.forEach(r=>{
+    if(r.dim===dim && r.producto===productId) m.set(r.valor, r.motivo);
+  });
+  return m;
+}
+
+/* --- estado anidado por producto, DERIVADO del catalogo --- */
+const state = Object.fromEntries(Object.entries(PRODUCTS).map(([id,prod])=>[
+  id, Object.fromEntries(prod.parts.map(x=>[x.key,{color:'Negro',pattern:'Liso',stitch:'Roja'}]))
+]));
+
+let productId = 'auto';
+let activePart = PRODUCTS.auto.parts[0].key;
+let tab = 'color';
+/* El material por defecto es SIEMPRE el de menor recargo, derivado de la tabla:
+   asi el precio que se ve al abrir coincide siempre con el 'desde' que se anuncia. */
+let material = MATERIALS.slice().sort((a,b)=>
+  (PRECIOS.recargoMaterial[a.name]||0) - (PRECIOS.recargoMaterial[b.name]||0))[0].name;
+let embroidery = { type:'Sin bordado', text:'' };
+
+const content  = document.getElementById('content');
+const tabscope = document.getElementById('tabscope');
+
+/* --- repara elecciones que quedaron vetadas al cambiar de producto --- */
+function repararConflictos(){
+  const reparados = [];
+  ['pattern','color','stitch'].forEach(dim=>{
+    const v = vetos(dim);
+    if(!v.size) return;
+    const fallback = dim==='pattern' ? 'Liso' : (dim==='color' ? 'Negro' : 'Roja');
+    PRODUCTS[productId].parts.forEach(part=>{
+      const s = state[productId][part.key];
+      if(v.has(s[dim])){ reparados.push(`${part.label}: ${s[dim]} -> ${fallback}`); s[dim]=fallback; }
+    });
+  });
+  return reparados;
+}
+
+function mountVehicleBar(){
+  const bar = document.getElementById('vehiclebar');
+  bar.innerHTML = Object.values(PRODUCTS).map(p=>
+    `<button class="opt" data-prod="${esc(p.id)}"${p.pending?' disabled title="Estamos dibujando este producto"':''} style="padding:6px 16px;font-size:12px;border-radius:20px">${esc(p.label)}${p.pending?'<span class="soon">pronto</span>':''}</button>`
+  ).join('');
+  bar.addEventListener('click', e=>{
+    const b = e.target.closest('[data-prod]');
+    if(b && !b.disabled) setProduct(b.dataset.prod);
+  });
+}
+
+function mountLabels(){
+  buildable().forEach(prod=>{
+    const g = el(prod.id,'labels');
+    if(!g) return;
+    g.replaceChildren(...prod.parts.map(part=>{
+      const t = document.createElementNS(SVGNS,'text');
+      t.setAttribute('class','label');
+      t.setAttribute('x', part.labelAt.x);
+      t.setAttribute('y', part.labelAt.y);
+      t.textContent = part.num;
+      return t;
+    }));
+  });
+}
+
+function mountZoneHandlers(){
+  buildable().forEach(prod=>prod.parts.forEach(part=>part.zones.forEach(z=>{
+    const zn = el(prod.id, z);
+    if(zn) zn.addEventListener('click', ()=>{ activePart = part.key; render(); paint(); });
+  })));
+}
+
+function setProduct(id){
+  const prod = PRODUCTS[id];
+  if(!prod || prod.pending) return;
+  productId = id;
+  Object.values(PRODUCTS).forEach(p=>{
+    const svg = document.getElementById('svg-'+p.id);
+    if(svg) svg.style.display = (p.id===id ? 'block' : 'none');
+  });
+  document.querySelectorAll('#vehiclebar [data-prod]')
+    .forEach(b=>b.classList.toggle('active', b.dataset.prod===id));
+  if(!prod.parts.some(p=>p.key===activePart)) activePart = prod.parts[0].key;
+  repararConflictos();
+  render(); paint(); paintMaterial(); paintEmbroidery();
+}
+
+function currentPart(){
+  const parts = PRODUCTS[productId].parts;
+  let part = parts.find(p=>p.key===activePart);
+  if(!part){ part = parts[0]; activePart = part.key; }
+  return part;
+}
+
+/* --- precio "desde": base del producto + recargos conocidos --- */
+function precioDesde(){
+  const base = PRECIOS.desde[productId];
+  if(base==null) return null;
+  return base + (PRECIOS.recargoMaterial[material]||0) + embDef(embroidery.type).precio;
+}
+
+function renderPrice(){
+  const v = precioDesde();
+  const valEl = document.getElementById('priceVal');
+  const noteEl = document.getElementById('priceNote');
+  if(v==null){
+    valEl.innerHTML = '<small>Cotizamos tu caso por WhatsApp</small>';
+    noteEl.textContent = 'Todavia no publicamos precio de referencia para este producto.';
+    return;
+  }
+  const extras = [];
+  const rm = PRECIOS.recargoMaterial[material]||0;
+  if(rm) extras.push(`${material} +${PRECIOS.moneda}${rm}`);
+  const re = embDef(embroidery.type).precio;
+  if(re) extras.push(`bordado +${PRECIOS.moneda}${re}`);
+  valEl.innerHTML = `${PRECIOS.moneda}${v}` + (extras.length?` <small>(${esc(extras.join(' &middot; '))})</small>`:'');
+  noteEl.textContent = PRECIOS.nota;
+}
+
+function render(){
+  const part = currentPart();
+  const s = state[productId][part.key];
+  let h = '';
+  if(tab==='color'){
+    tabscope.textContent = `Editando color de: ${part.label}`;
+    const v = vetos('color');
+    h = '<b>COLOR DE LA PARTE SELECCIONADA</b><div class="colors">' + COLORS.map(c=>{
+      const bad = v.get(c[0]);
+      return `<button class="color ${s.color===c[0]?'active':''}" style="background:${c[1]}" title="${esc(bad||c[0])}" ${bad?'disabled':''} data-act="color" data-val="${esc(c[0])}"></button>`;
+    }).join('') + '</div>';
+  }
+  if(tab==='pattern'){
+    tabscope.textContent = `Editando patron de: ${part.label}`;
+    const v = vetos('pattern');
+    h = '<b>TIPO DE PATRON</b><div class="patterns">' + Object.keys(PATTERNS).map(k=>{
+      const bad = v.get(k);
+      return `<button class="pat ${s.pattern===k?'active':''}" ${bad?'disabled':''} title="${esc(bad||k)}" data-act="pattern" data-val="${esc(k)}"><span class="sample ${PATTERNS[k].cls}"></span>${esc(k)}</button>`;
+    }).join('');
+    const motivos = [...v.values()];
+    if(motivos.length) h += `<div class="vetonote">${esc(motivos.join(' '))}</div>`;
+    h += '</div>';
+  }
+  if(tab==='stitch'){
+    tabscope.textContent = `Editando costura de: ${part.label}`;
+    h = '<b>COLOR DE COSTURA</b><div class="swatches">' + STITCHES.map(x=>
+      `<button class="stitch ${s.stitch===x[0]?'active':''}" title="${esc(x[0])}" data-act="stitch" data-val="${esc(x[0])}"><i style="border-color:${x[1]}"></i></button>`).join('') + '</div>';
+  }
+  if(tab==='material'){
+    tabscope.textContent = 'Aplica a todo el producto';
+    h = '<b>MATERIAL</b><div class="options">' + MATERIALS.map(m=>{
+      const r = PRECIOS.recargoMaterial[m.name]||0;
+      const tag = r ? ` (+${PRECIOS.moneda}${r})` : '';
+      return `<button class="opt matopt ${material===m.name?'active':''}" data-act="material" data-val="${esc(m.name)}">${esc(m.name)}${tag}<small>${esc(m.desc)}</small></button>`;
+    }).join('') + '</div>';
+  }
+  if(tab==='embroidery'){
+    tabscope.textContent = 'Aplica a todo el producto';
+    h = '<b>BORDADO</b><div class="options">' + EMB.map(e=>{
+      const tag = e.precio ? ` (+${PRECIOS.moneda}${e.precio})` : '';
+      return `<button class="opt ${embroidery.type===e.t?'active':''}" data-act="emb" data-val="${esc(e.t)}">${esc(e.t)}${tag}</button>`;
+    }).join('') + '</div>';
+    if(embDef(embroidery.type).pideTexto){
+      const ph = embroidery.type==='Nombre del cliente' ? 'Escribe el nombre...' : 'Describe el logo/texto...';
+      h += `<div class="txtbox"><input id="embInput" placeholder="${esc(ph)}"></div>`;
+    }
+  }
+  content.innerHTML = h;
+  const inp = document.getElementById('embInput');
+  if(inp) inp.value = embroidery.text;
+  renderSummary();
+  renderPrice();
+}
+
+function setPart(field,value){
+  if(vetos(field).has(value)) return;
+  state[productId][activePart][field]=value; render(); paint();
+}
+function setMaterial(m){ material=m; render(); paintMaterial(); }
+function setEmbroidery(t){
+  embroidery.type=t;
+  if(!embDef(t).pideTexto) embroidery.text='';
+  render(); paintEmbroidery();
+}
+
+function paint(){
+  PRODUCTS[productId].parts.forEach(part=>{
+    const s = state[productId][part.key];
+    const pd = PATTERNS[s.pattern] || PATTERNS.Liso;
+    part.zones.forEach(z=>{
+      const zn = el(productId, z);
+      if(!zn) return;
+      zn.setAttribute('fill', colorHex(s.color));
+      const ov = el(productId, z+'-pat');
+      if(ov) ov.setAttribute('fill', pd.svg ? `url(#${pd.svg})` : 'none');
+      const sel = part.key===activePart;
+      zn.classList.toggle('sel', sel);
+      zn.style.stroke = sel ? '' : stitchHex(s.stitch);
+    });
+    const seam = el(productId, 'seams-'+part.key);
+    if(seam) seam.style.stroke = stitchHex(s.stitch);
+  });
+}
+
+function paintMaterial(){
+  Object.values(PRODUCTS).forEach(p=>{
+    const g = el(p.id,'grain');
+    if(!g) return;
+    const op = p.id!==productId ? '0'
+      : (material==='Tela' ? '.62' : (material==='Cuero Colombiano' ? '.48' : '.12'));
+    g.setAttribute('opacity', op);
+  });
+  document.getElementById('matBadge').textContent = material;
+  renderPrice();
+}
+
+function paintEmbroidery(){
+  const txt = embroidery.type==='Sin bordado' ? ''
+    : (embroidery.type==='FORROS CUENCA' ? 'FORROS CUENCA'
+      : (embroidery.text || (embroidery.type==='Nombre del cliente' ? 'Tu nombre aqui' : 'Tu logo aqui')));
+  Object.values(PRODUCTS).forEach(p=>{
+    const t = el(p.id,'emb');
+    if(!t) return;
+    const on = (p.id===productId && txt);
+    t.textContent = on ? txt : '';
+    t.setAttribute('opacity', on ? '.9' : '0');
+  });
+  renderPrice();
+}
+
+function renderSummary(){
+  const rows = PRODUCTS[productId].parts.map(part=>{
+    const s = state[productId][part.key];
+    return `<div class="row"><span>${esc(part.label)}</span><b>${esc(s.color)} &middot; ${esc(s.pattern)} &middot; ${esc(s.stitch)}</b></div>`;
+  }).join('');
+  document.getElementById('summary').innerHTML = rows +
+    `<div class="row"><span>Material</span><b>${esc(material)}</b></div>` +
+    `<div class="row"><span>Bordado</span><b>${esc(embroidery.type)}${embroidery.text?' - '+esc(embroidery.text):''}</b></div>`;
+}
+
+function send(){
+  const prod = PRODUCTS[productId];
+  const lines = prod.parts.map(part=>{
+    const s = state[productId][part.key];
+    return `${part.label}: ${s.color}, patron ${s.pattern}, costura ${s.stitch}`;
+  }).join('\n');
+  const v = precioDesde();
+  const precio = v==null ? '' : `\nReferencia web: desde ${PRECIOS.moneda}${v}`;
+  const m = `Hola Forros Cuenca! Quiero cotizar un ${prod.wa}:\n${lines}\nMaterial: ${material}\nBordado: ${embroidery.type}${embroidery.text?' - '+embroidery.text:''}${precio}`;
+  window.open('https://wa.me/'+NEGOCIO.wa+'?text='+encodeURIComponent(m),'_blank');
+}
+
+content.addEventListener('click', e=>{
+  const b = e.target.closest('[data-act]');
+  if(!b || b.disabled) return;
+  const a = b.dataset.act, v = b.dataset.val;
+  if(a==='color'||a==='pattern'||a==='stitch') setPart(a,v);
+  else if(a==='material') setMaterial(v);
+  else if(a==='emb') setEmbroidery(v);
+});
+content.addEventListener('input', e=>{
+  if(e.target.id==='embInput'){ embroidery.text = e.target.value; renderSummary(); paintEmbroidery(); }
+});
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+  tab = b.dataset.t;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  render();
+}));
+document.getElementById('ctaWa').addEventListener('click', send);
+
+mountVehicleBar();
+mountLabels();
+mountZoneHandlers();
+setProduct('auto');
+</script>
+</body>
+</html>

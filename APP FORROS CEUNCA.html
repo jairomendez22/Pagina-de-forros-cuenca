@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FORROS CUENCA - Diseñador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0a0b0d;color:#fff;font-family:'Poppins','Segoe UI',Arial,sans-serif}
+button,input{font-family:inherit}
+header{padding:14px 26px;background:linear-gradient(180deg,#141519,#101114);border-bottom:1px solid #2c2d33;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brandwrap{display:flex;align-items:center;gap:14px}
+.logo{width:64px;height:auto;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.brand{font-size:25px;font-weight:800;font-style:italic;letter-spacing:.3px;font-family:'Poppins',sans-serif}
+.brand span{color:#e50914}
+.tag{color:#9a9ba3;font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-top:2px}
+.hcta{display:flex;align-items:center;gap:14px}
+.phone{color:#c9cad0;font-size:13px;font-weight:500}
+.cta{padding:12px 20px;background:linear-gradient(180deg,#f01824,#c8101c);color:#fff;border:0;border-radius:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;letter-spacing:.3px;box-shadow:0 6px 16px -6px rgba(229,9,20,.6);transition:filter .15s,transform .15s}
+.cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.layout{max-width:1320px;margin:auto;padding:18px;display:grid;grid-template-columns:1fr 400px;gap:14px}
+.card{background:#16171b;border:1px solid #2c2d33;border-radius:16px;overflow:hidden}
+.center{min-height:780px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at top,#2b2e37,#07080b 80%);position:relative;padding:16px}
+.matbadge{position:absolute;top:14px;left:14px;background:#0009;border:1px solid #333;border-radius:20px;padding:6px 12px;font-size:11px;color:#cfd0d5;backdrop-filter:blur(2px)}
+.hint{margin-top:14px;padding:10px 16px;border:1px solid #2c2d33;border-radius:10px;color:#9a9ba3;font-size:12px;text-align:center;background:#101115cc}
+.summary{margin:0;border-top:1px solid #26272d;background:#0e0f12;padding:12px 16px;color:#9a9ba3;font-size:11.5px;line-height:1.6;max-height:230px;overflow:auto}
+.summary .row{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px dashed #24252b}
+.summary .row:last-child{border-bottom:0}
+.summary b{color:#fff}
+.tabs{display:flex;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;padding:12px 3px;background:#101115;border:0;border-right:1px solid #26272d;border-bottom:1px solid #26272d;font-weight:800;font-size:11px;letter-spacing:.5px;color:#c7c8cd;cursor:pointer}
+.tab.active{background:#e50914;color:#fff}
+.tabscope{padding:8px 14px;font-size:10.5px;color:#6f7078;background:#101115;border-bottom:1px solid #26272d;letter-spacing:.5px}
+.content{padding:16px}
+.content b{font-size:12.5px;letter-spacing:.5px}
+.colors{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}
+.color{height:50px;border:2px solid #444;border-radius:9px;cursor:pointer;position:relative}
+.color.active{border-color:#fff;box-shadow:0 0 0 2px #e50914}
+.color span{position:absolute;bottom:-16px;left:0;right:0;text-align:center;font-size:9px;color:#9a9ba3}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.opt{background:#202126;border:1px solid #383940;border-radius:9px;padding:11px;font-weight:700;font-size:12px;cursor:pointer;color:#fff}
+.opt.active{border-color:#e50914;background:#321518}
+.patterns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.pat{height:76px;background:#202126;border:1px solid #3a3b42;border-radius:9px;cursor:pointer;color:#cfd0d5;font-size:11px;font-weight:700}
+.pat.active{border:2px solid #e50914;color:#fff}
+.sample{display:block;width:42px;height:26px;margin:0 auto 6px;background:#2a2b30;border-radius:3px}
+.diamond{background-image:linear-gradient(45deg,transparent 45%,#aaa 46%,#aaa 54%,transparent 55%),linear-gradient(-45deg,transparent 45%,#aaa 46%,#aaa 54%,transparent 55%);background-size:16px 16px}
+.hex{background-image:linear-gradient(30deg,transparent 45%,#aaa 46%,#aaa 52%,transparent 53%),linear-gradient(150deg,transparent 45%,#aaa 46%,#aaa 52%,transparent 53%);background-size:16px 16px}
+.chevronp{background-image:repeating-linear-gradient(135deg,transparent 0 5px,#aaa 5px 6px),repeating-linear-gradient(45deg,transparent 0 5px,#aaa 5px 6px);background-size:14px 14px}
+.dots{background-image:radial-gradient(#aaa 1.4px,transparent 1.4px);background-size:7px 7px}
+.matopt{grid-column:1/-1;display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px}
+.matopt small{color:#9a9ba3;font-weight:500;font-size:11px}
+.swatches{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stitch{width:60px;height:42px;background:#17181c;border:1px solid #3a3b42;border-radius:8px;cursor:pointer;position:relative}
+.stitch i{position:absolute;left:8px;right:8px;top:50%;display:block;border-top:3px dashed red}
+.stitch.active{border-color:#e50914;box-shadow:0 0 0 2px #e50914 inset}
+.txtbox{margin-top:10px}
+.txtbox input{width:100%;padding:10px;border-radius:8px;border:1px solid #3a3b42;background:#101115;color:#fff;font-size:12px}
+.zone{cursor:pointer;stroke:#111;stroke-width:3.5;stroke-dasharray:7 6;stroke-linecap:round;filter:drop-shadow(0px 1.2px 0.8px rgba(0,0,0,0.55));transition:stroke .2s,stroke-width .2s}
+.zone.sel{stroke:#fff !important;stroke-width:6;stroke-dasharray:none;filter:drop-shadow(0px 2px 4px rgba(0,0,0,0.4))}
+.seam{fill:none;stroke-width:2.2;stroke-dasharray:6 5;stroke-linecap:round;filter:drop-shadow(0px 1.2px 0.8px rgba(0,0,0,0.5));transition:stroke .2s}
+.label{fill:#fff;font-weight:bold;font-size:15px;paint-order:stroke;stroke:#111;stroke-width:4;pointer-events:none}
+#seat,#seat-moto{width:min(600px,94%);height:auto;filter:drop-shadow(0 22px 25px rgba(0,0,0,.65))}
+@media(max-width:1150px){.layout{grid-template-columns:250px 1fr}.right{grid-column:1/-1}}
+@media(max-width:700px){.layout{grid-template-columns:1fr}.center{min-height:520px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brandwrap">
+    <img class="logo" src="logo-forros-cuenca.png" alt="Forros Cuenca">
+    <div>
+      <div class="brand">FORROS <span>CUENCA</span></div>
+      <div class="tag">Tapizado por profesionales</div>
+    </div>
+  </div>
+  <div class="hcta">
+    <div class="phone">📞 0984353695</div>
+    <button class="cta" onclick="send()">Cotizar por WhatsApp</button>
+  </div>
+</header>
+
+<div style="background:#141519; border-bottom:1px solid #2c2d33; padding:10px 26px; display:flex; gap:12px; align-items:center;">
+  <span style="color:#9a9ba3; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.1px;">Selecciona tu vehículo:</span>
+  <button id="btn-auto" class="opt active" style="padding:6px 16px; font-size:12px; border-radius:20px;" onclick="setSeatType('auto')">Auto</button>
+  <button id="btn-moto" class="opt" style="padding:6px 16px; font-size:12px; border-radius:20px;" onclick="setSeatType('moto')">Moto</button>
+</div>
+
+<div class="layout">
+  <section class="card center">
+    <div class="matbadge" id="matBadge"></div>
+    <svg id="seat" viewBox="0 0 620 760">
+      <defs>
+        <pattern id="pDiamond" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M0 10L10 0L20 10L10 20Z" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.3"/>
+        </pattern>
+        <pattern id="pHex" width="22" height="19" patternUnits="userSpaceOnUse">
+          <path d="M5.5 0L16.5 0L22 9.5L16.5 19L5.5 19L0 9.5Z" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.2"/>
+        </pattern>
+        <pattern id="pChevron" width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M0 8L8 0L16 8L8 16Z" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.3"/>
+        </pattern>
+        <pattern id="pDots" width="9" height="9" patternUnits="userSpaceOnUse">
+          <circle cx="4.5" cy="4.5" r="1.3" fill="#fff" fill-opacity=".28"/>
+        </pattern>
+        
+        <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/>
+          <feColorMatrix type="matrix" values="
+            0.5 0 0 0 0.2
+            0.5 0 0 0 0.2
+            0.5 0 0 0 0.2
+            0.4 0 0 0 0.14" result="grainNoise"/>
+        </filter>
+
+        <filter id="shadow-blur" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="10" />
+        </filter>
+
+        <!-- Chrome metallic gradient for headrest rods -->
+        <linearGradient id="chrome-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#3a3c42" />
+          <stop offset="25%" stop-color="#b0b3ba" />
+          <stop offset="45%" stop-color="#ffffff" />
+          <stop offset="60%" stop-color="#d0d3da" />
+          <stop offset="85%" stop-color="#70737a" />
+          <stop offset="100%" stop-color="#3a3c42" />
+        </linearGradient>
+
+        <!-- Glow filter for specular rim lighting -->
+        <filter id="glow-filter" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3.5" />
+        </filter>
+
+        <!-- Background studio spotlight glow -->
+        <radialGradient id="bg-spotlight" cx="50%" cy="0%" r="65%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
+          <stop offset="40%" stop-color="#ffffff" stop-opacity="0.05" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- Volumetric light beam overlay -->
+        <linearGradient id="volumetric-light" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.06" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Deep 3D joint crease shadow gradients -->
+        <linearGradient id="joint-shadow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#000000" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+        </linearGradient>
+
+        <linearGradient id="joint-shadow-up" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.85" />
+          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Shading gradients to give volume (intensified highlights) -->
+        <linearGradient id="head-shading" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="30%" stop-color="#ffffff" stop-opacity="0.18"/>
+          <stop offset="70%" stop-color="#000000" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
+        </linearGradient>
+
+        <linearGradient id="back-shading-vert" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.6"/>
+          <stop offset="15%" stop-color="#000000" stop-opacity="0.15"/>
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.26"/>
+          <stop offset="70%" stop-color="#000000" stop-opacity="0.05"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.65"/>
+        </linearGradient>
+
+        <linearGradient id="back-shading-horiz" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.5"/>
+          <stop offset="15%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="85%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
+        </linearGradient>
+
+        <linearGradient id="side-shading-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.35"/>
+          <stop offset="25%" stop-color="#ffffff" stop-opacity="0.38"/>
+          <stop offset="60%" stop-color="#ffffff" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.7"/>
+        </linearGradient>
+
+        <linearGradient id="sideR-shading-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.7"/>
+          <stop offset="40%" stop-color="#ffffff" stop-opacity="0.12"/>
+          <stop offset="75%" stop-color="#ffffff" stop-opacity="0.38"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
+        </linearGradient>
+
+        <linearGradient id="base-shading-vert" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.85"/>
+          <stop offset="25%" stop-color="#000000" stop-opacity="0.2"/>
+          <stop offset="65%" stop-color="#ffffff" stop-opacity="0.38"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.65"/>
+        </linearGradient>
+
+        <linearGradient id="base-shading-horiz" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.5"/>
+          <stop offset="15%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="85%" stop-color="#000000" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
+        </linearGradient>
+
+        <linearGradient id="edge-shading-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="25%" stop-color="#ffffff" stop-opacity="0.15"/>
+          <stop offset="70%" stop-color="#000000" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.75"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Background spotlight glow -->
+      <rect x="0" y="0" width="620" height="760" fill="url(#bg-spotlight)" pointer-events="none" />
+
+      <!-- Floor soft shadow -->
+      <ellipse cx="310" cy="695" rx="215" ry="16" fill="#000" filter="url(#shadow-blur)" opacity="0.65"/>
+      <g id="headrest-rods" pointer-events="none">
+        <rect x="282" y="150" width="8" height="50" rx="3" fill="url(#chrome-gradient)"/>
+        <rect x="330" y="150" width="8" height="50" rx="3" fill="url(#chrome-gradient)"/>
+      </g>
+      <path id="edge" class="zone" fill="#151619" d="M205 430 C175 460 165 500 168 540 C170 580 182 630 200 665 Q310 685 420 665 C438 630 450 580 452 540 C455 500 445 460 415 430 H365 L348 655 Q310 668 272 655 L255 430 Z"/>
+      <path id="edge-pat" fill="none" pointer-events="none" d="M205 430 C175 460 165 500 168 540 C170 580 182 630 200 665 Q310 685 420 665 C438 630 450 580 452 540 C455 500 445 460 415 430 H365 L348 655 Q310 668 272 655 L255 430 Z"/>
+      <path id="base" class="zone" fill="#1b1c1f" d="M255 430 H365 L348 655 Q310 668 272 655 Z"/>
+      <path id="base-pat" fill="none" pointer-events="none" d="M255 430 H365 L348 655 Q310 668 272 655 Z"/>
+      <path id="back" class="zone" fill="#151619" d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="back-pat" fill="none" pointer-events="none" d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="side" class="zone" fill="#151619" d="M240 170 C220 168 210 173 195 180 C175 205 168 245 170 280 C172 325 186 385 205 430 L255 430 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="side-pat" fill="none" pointer-events="none" d="M240 170 C220 168 210 173 195 180 C175 205 168 245 170 280 C172 325 186 385 205 430 L255 430 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z"/>
+      <path id="sideR" class="zone" fill="#151619" d="M380 170 C400 168 410 173 425 180 C445 205 452 245 450 280 C448 325 434 385 415 430 H365 C 368 412, 370 395, 370 379 C 372 365, 372 352, 370 338 C 373 324, 373 311, 370 297 C 373 283, 373 270, 370 256 C 368 220, 378 195, 380 170 Z"/>
+      <path id="sideR-pat" fill="none" pointer-events="none" d="M380 170 C400 168 410 173 425 180 C445 205 452 245 450 280 C448 325 434 385 415 430 H365 C 368 412, 370 395, 370 379 C 372 365, 372 352, 370 338 C 373 324, 373 311, 370 297 C 373 283, 373 270, 370 256 C 368 220, 378 195, 380 170 Z"/>
+      <path id="head" class="zone" fill="#18191b" d="M255 70 C 280 67, 340 67, 365 70 C 378 72, 382 82, 380 95 L 368 165 C 366 175, 355 180, 340 180 C 320 177, 300 177, 280 180 C 265 180, 254 175, 252 165 L 240 95 C 238 82, 242 72, 255 70 Z"/>
+      <path id="head-pat" fill="none" pointer-events="none" d="M255 70 C 280 67, 340 67, 365 70 C 378 72, 382 82, 380 95 L 368 165 C 366 175, 355 180, 340 180 C 320 177, 300 177, 280 180 C 265 180, 254 175, 252 165 L 240 95 C 238 82, 242 72, 255 70 Z"/>
+      <g id="shading-overlays" pointer-events="none">
+        <path d="M205 430 C175 460 165 500 168 540 C170 580 182 630 200 665 Q310 685 420 665 C438 630 450 580 452 540 C455 500 445 460 415 430 H365 L348 655 Q310 668 272 655 L255 430 Z" fill="url(#edge-shading-grad)" />
+        <path d="M255 430 H365 L348 655 Q310 668 272 655 Z" fill="url(#base-shading-vert)" />
+        <path d="M255 430 H365 L348 655 Q310 668 272 655 Z" fill="url(#base-shading-horiz)" />
+        <path d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z" fill="url(#back-shading-vert)" />
+        <path d="M240 170 Q310 182 380 170 C 375 195, 372 220, 370 256 C 375 270, 375 283, 370 297 C 375 311, 375 324, 370 338 C 372 352, 372 365, 370 379 C 370 395, 368 412, 365 430 H255 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z" fill="url(#back-shading-horiz)" />
+        <path d="M240 170 C220 168 210 173 195 180 C175 205 168 245 170 280 C172 325 186 385 205 430 L255 430 C 252 412, 250 395, 250 379 C 248 365, 248 352, 250 338 C 247 324, 247 311, 250 297 C 247 283, 247 270, 250 256 C 250 220, 242 195, 240 170 Z" fill="url(#side-shading-grad)" />
+        <path d="M380 170 C400 168 410 173 425 180 C445 205 452 245 450 280 C448 325 434 385 415 430 H365 C 368 412, 370 395, 370 379 C 372 365, 372 352, 370 338 C 373 324, 373 311, 370 297 C 373 283, 373 270, 370 256 C 368 220, 378 195, 380 170 Z" fill="url(#sideR-shading-grad)" />
+        <path d="M255 70 C 280 67, 340 67, 365 70 C 378 72, 382 82, 380 95 L 368 165 C 366 175, 355 180, 340 180 C 320 177, 300 177, 280 180 C 265 180, 254 175, 252 165 L 240 95 C 238 82, 242 72, 255 70 Z" fill="url(#head-shading)" />
+        <path d="M195 430 H425 Q310 460 195 430 Z" fill="url(#joint-shadow-grad)" />
+        <path d="M205 430 H415 Q310 405 205 430 Z" fill="url(#joint-shadow-up)" />
+      </g>
+      <g id="creases" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" opacity="0.2" pointer-events="none">
+        <path d="M205 200 Q220 207 235 203" />
+        <path d="M415 200 Q400 207 385 203" />
+        <path d="M170 260 Q185 270 205 264" />
+        <path d="M450 260 Q435 270 415 264" />
+        <path d="M160 340 Q180 350 200 344" />
+        <path d="M460 340 Q440 350 420 344" />
+        <path d="M175 400 Q195 408 213 402" />
+        <path d="M445 400 Q425 408 407 402" />
+        <path d="M155 480 Q175 490 195 483" />
+        <path d="M465 480 Q445 490 425 483" />
+        <path d="M165 600 Q185 610 205 603" />
+        <path d="M455 600 Q435 610 415 603" />
+      </g>
+      <g fill="none" stroke="#000000" stroke-width="2.5" opacity="0.55" pointer-events="none">
+        <path d="M 252 148 Q 310 156 368 148" />
+        <path d="M 275 72 C 275 110, 272 145, 270 178 M 345 72 C 345 110, 349 145, 350 178" />
+        <path d="M240 170 H380" />
+        <path d="M250 256 L295 256 C302 256, 302 264, 310 264 C318 264, 318 256, 325 256 L370 256" />
+        <path d="M250 297 L295 297 C302 297, 302 305, 310 305 C318 305, 318 297, 325 297 L370 297" />
+        <path d="M250 338 L295 338 C302 338, 302 346, 310 346 C318 346, 318 338, 325 338 L370 338" />
+        <path d="M250 379 L295 379 C302 379, 302 387, 310 387 C318 387, 318 379, 325 379 L370 379" />
+        <path d="M218 175 C202 190 190 230 192 270 C194 315 204 380 220 425 M402 175 C418 190 430 230 428 270 C426 315 416 380 400 425" />
+        <path d="M230 435 C205 460 195 500 198 540 C200 575 210 615 225 640 Q242 648 260 653 M390 435 C415 460 425 500 422 540 C420 575 410 615 395 640 Q378 648 360 653" />
+        <path d="M205 430 H415" />
+        <path d="M250 466 H370" />
+        <path d="M250 501 H370" />
+        <path d="M250 537 H370" />
+        <path d="M260 573 H360" />
+        <path d="M265 609 H355" />
+        <path d="M310 580 V662" />
+      </g>
+      <path id="seams-head-dash" class="seam" d="M 275 72 C 275 110, 272 145, 270 178 M 345 72 C 345 110, 348 145, 350 178 M 275 148 Q 310 156 345 148" pointer-events="none" />
+      <path id="seams-back-dash" class="seam" d="
+        M250 256 L295 256 C302 256, 302 264, 310 264 C318 264, 318 256, 325 256 L370 256
+        M250 297 L295 297 C302 297, 302 305, 310 305 C318 305, 318 297, 325 297 L370 297
+        M250 338 L295 338 C302 338, 302 346, 310 346 C318 346, 318 338, 325 338 L370 338
+        M250 379 L295 379 C302 379, 302 387, 310 387 C318 387, 318 379, 325 379 L370 379
+      " pointer-events="none"/>
+      <path id="seams-side-dash" class="seam" d="M218 175 C202 190 190 230 192 270 C194 315 204 380 220 425 M402 175 C418 190 430 230 428 270 C426 315 416 380 400 425" pointer-events="none" />
+      <path id="seams-base-dash" class="seam" d="
+        M250 466 H370
+        M250 501 H370
+        M250 537 H370
+        M260 573 H360
+        M265 609 H355
+        M310 580 V662
+      " pointer-events="none"/>
+      <path id="seams-edge-dash" class="seam" d="M230 435 C205 460 195 500 198 540 C200 575 210 615 225 640 Q242 648 260 653 M390 435 C415 460 425 500 422 540 C420 575 410 615 395 640 Q378 648 360 653" pointer-events="none" />
+      <rect id="grainOverlay" x="0" y="0" width="620" height="760" fill="#fff" filter="url(#grain)" opacity="0" pointer-events="none" style="mix-blend-mode: overlay;"/>
+      <g fill="none" stroke="#ffffff" filter="url(#glow-filter)" opacity="0.35" pointer-events="none">
+        <path d="M268 65 Q310 61 352 65" stroke-width="4.5" />
+        <!-- Shoulders top rim -->
+        <path d="M195 180 C210 173 220 168 240 170 H380 C400 168 410 173 425 180" stroke-width="3.5" />
+      </g>
+
+      <!-- Volumetric Light Beam (Showroom spotlight cone overlay) -->
+      <polygon points="230,0 390,0 590,760 30,760" fill="url(#volumetric-light)" style="mix-blend-mode: screen;" pointer-events="none" />
+
+      <text class="label" x="310" y="300">1</text>
+      <text class="label" x="185" y="300">2</text>
+      <text class="label" x="310" y="550">3</text>
+      <text class="label" x="310" y="120">4</text>
+      <text class="label" x="455" y="600">5</text>
+      <text id="embText" class="label" x="310" y="118" font-size="10" text-anchor="middle" opacity="0"></text>
+    </svg>
+
+    <svg id="seat-moto" viewBox="0 0 620 760" style="display:none">
+      <!-- Floor soft shadow -->
+      <ellipse cx="310" cy="695" rx="215" ry="16" fill="#000" filter="url(#shadow-blur)" opacity="0.65"/>
+
+      <!-- Interactive Zones -->
+      <path id="moto_sidesL" class="zone" fill="#151619" d="M 270 100 C 255 140 245 220 250 290 C 245 305 242 320 248 335 C 235 370 210 440 210 500 C 210 550 250 610 275 650 C 250 635 225 590 205 520 C 185 450 180 340 205 240 C 225 160 250 120 270 100 Z" />
+      <path id="moto_sidesL-pat" fill="none" pointer-events="none" d="M 270 100 C 255 140 245 220 250 290 C 245 305 242 320 248 335 C 235 370 210 440 210 500 C 210 550 250 610 275 650 C 250 635 225 590 205 520 C 185 450 180 340 205 240 C 225 160 250 120 270 100 Z" />
+
+      <path id="moto_sidesR" class="zone" fill="#151619" d="M 350 100 C 365 140 375 220 370 290 C 375 305 378 320 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 C 370 635 395 590 415 520 C 435 450 440 340 415 240 C 395 160 370 120 350 100 Z" />
+      <path id="moto_sidesR-pat" fill="none" pointer-events="none" d="M 350 100 C 365 140 375 220 370 290 C 375 305 378 320 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 C 370 635 395 590 415 520 C 435 450 440 340 415 240 C 395 160 370 120 350 100 Z" />
+
+      <path id="moto_copiloto" class="zone" fill="#151619" d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" />
+      <path id="moto_copiloto-pat" fill="none" pointer-events="none" d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" />
+
+      <path id="moto_ridge" class="zone" fill="#18191b" d="M 250 290 Q 310 305 370 290 C 375 305 378 320 372 335 Q 310 355 248 335 C 242 320 245 305 250 290 Z" />
+      <path id="moto_ridge-pat" fill="none" pointer-events="none" d="M 250 290 Q 310 305 370 290 C 375 305 378 320 372 335 Q 310 355 248 335 C 242 320 245 305 250 290 Z" />
+
+      <path id="moto_piloto" class="zone" fill="#1b1c1f" d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" />
+      <path id="moto_piloto-pat" fill="none" pointer-events="none" d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" />
+
+      <!-- Shading Overlays -->
+      <g id="shading-overlays-moto" pointer-events="none">
+        <path d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" fill="url(#back-shading-vert)" />
+        <path d="M 270 100 Q 310 90 350 100 C 365 140 375 220 370 290 Q 310 305 250 290 C 245 220 255 140 270 100 Z" fill="url(#back-shading-horiz)" />
+        <path d="M 250 290 Q 310 305 370 290 C 375 305 378 320 372 335 Q 310 355 248 335 C 242 320 245 305 250 290 Z" fill="url(#head-shading)" />
+        <path d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" fill="url(#base-shading-vert)" />
+        <path d="M 248 335 Q 310 355 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 Q 310 658 275 650 C 250 610 210 550 210 500 C 210 440 235 370 248 335 Z" fill="url(#base-shading-horiz)" />
+        <path d="M 270 100 C 255 140 245 220 250 290 C 245 305 242 320 248 335 C 235 370 210 440 210 500 C 210 550 250 610 275 650 C 250 635 225 590 205 520 C 185 450 180 340 205 240 C 225 160 250 120 270 100 Z" fill="url(#side-shading-grad)" />
+        <path d="M 350 100 C 365 140 375 220 370 290 C 375 305 378 320 372 335 C 385 370 410 440 410 500 C 410 550 370 610 345 650 C 370 635 395 590 415 520 C 435 450 440 340 415 240 C 395 160 370 120 350 100 Z" fill="url(#sideR-shading-grad)" />
+      </g>
+
+      <!-- Crease lines (visual depth) -->
+      <g fill="none" stroke="#000000" stroke-width="2.5" opacity="0.55" pointer-events="none">
+        <path d="M 250 290 Q 310 305 370 290" />
+        <path d="M 248 335 Q 310 355 372 335" />
+        <path d="M 262 160 Q 310 152 358 160" />
+        <path d="M 256 220 Q 310 212 364 220" />
+        <path d="M 240 400 Q 310 415 380 400" />
+        <path d="M 226 460 Q 310 475 394 460" />
+        <path d="M 222 520 Q 310 535 398 520" />
+        <path d="M 235 580 Q 310 595 385 580" />
+      </g>
+
+      <!-- Dashed customizable stitches -->
+      <path id="seams-moto_copiloto-dash" class="seam" d="M 262 160 Q 310 152 358 160 M 256 220 Q 310 212 364 220" pointer-events="none" />
+      <path id="seams-moto_ridge-dash" class="seam" d="M 250 290 Q 310 305 370 290 M 248 335 Q 310 355 372 335" pointer-events="none" />
+      <path id="seams-moto_piloto-dash" class="seam" d="M 240 400 Q 310 415 380 400 M 226 460 Q 310 475 394 460 M 222 520 Q 310 535 398 520 M 235 580 Q 310 595 385 580" pointer-events="none" />
+      <path id="seams-moto_sides-dash" class="seam" d="M 270 100 C 250 120 225 160 205 240 C 185 340 180 450 205 520 C 225 590 250 635 275 650 M 350 100 C 370 120 395 160 415 240 C 435 340 440 450 415 520 C 395 590 370 635 345 650" pointer-events="none" />
+
+      <!-- Leather grain texture overlay -->
+      <rect id="grainOverlay-moto" x="0" y="0" width="620" height="760" fill="#fff" filter="url(#grain)" opacity="0" pointer-events="none" style="mix-blend-mode: overlay;"/>
+
+      <!-- Volumetric Light Beam -->
+      <polygon points="230,0 390,0 590,760 30,760" fill="url(#volumetric-light)" style="mix-blend-mode: screen;" pointer-events="none" />
+
+      <!-- Labels -->
+      <text class="label" x="310" y="490">1</text>
+      <text class="label" x="310" y="190">2</text>
+      <text class="label" x="210" y="360">3</text>
+      <text class="label" x="310" y="315">4</text>
+      <text id="embText-moto" class="label" x="310" y="180" font-size="10" text-anchor="middle" opacity="0"></text>
+    </svg>
+
+    <div class="hint">💡 Haz clic directamente sobre una parte del asiento para seleccionarla y editar su <b>color, patrón y costura</b>.</div>
+  </section>
+
+  <section class="card right">
+    <div class="tabs">
+      <button class="tab active" data-t="color">COLOR</button>
+      <button class="tab" data-t="pattern">PATRÓN</button>
+      <button class="tab" data-t="stitch">COSTURA</button>
+      <button class="tab" data-t="material">MATERIAL</button>
+      <button class="tab" data-t="embroidery">BORDADO</button>
+    </div>
+    <div class="tabscope" id="tabscope"></div>
+    <div class="content" id="content"></div>
+    <div class="summary" id="summary"></div>
+  </section>
+</div>
+
+<script>
+const C=[['Negro','#111214'],['Gris oscuro','#4d4f53'],['Gris','#85878a'],['Beige','#cdbb9b'],['Café','#70462e'],['Rojo','#c71d28'],['Azul','#164f9d'],['Marino','#162b4a'],['Turquesa','#1594a6'],['Morado','#6a3fa0'],['Verde','#145a42'],['Naranja','#d86b1c'],['Blanco','#e9e9e6'],['Borgoña','#641c2a']];
+
+const P={Liso:{svg:null,cls:''},Diamante:{svg:'pDiamond',cls:'diamond'},Hexagonal:{svg:'pHex',cls:'hex'},Deportivo:{svg:'pChevron',cls:'chevronp'},Perforado:{svg:'pDots',cls:'dots'}};
+
+const S=[['Roja','#e50914'],['Blanca','#fff'],['Negra','#111'],['Azul','#2776db'],['Beige','#d7b986'],['Turquesa','#1594a6'],['Morada','#6a3fa0'],['Gris','#9a9ba0']];
+
+const MAT=[
+  {name:'Cuero Americano',desc:'Importado, acabado suave y uniforme, alto brillo y gran durabilidad.'},
+  {name:'Cuero Colombiano',desc:'Cuero nacional de textura firme y grano marcado, excelente relación calidad-precio.'}
+];
+
+const EMB=['Sin bordado','FORROS CUENCA','Nombre del cliente','Logo personalizado'];
+
+const SEAT_TYPES = {
+  auto: {
+    label: 'Auto',
+    parts: [
+      {key:'back',label:'Frontal respaldo',num:1},
+      {key:'side',label:'Laterales',num:2},
+      {key:'base',label:'Centro base',num:3},
+      {key:'head',label:'Cabecera',num:4},
+      {key:'edge',label:'Bordes base',num:5}
+    ]
+  },
+  moto: {
+    label: 'Moto',
+    parts: [
+      {key:'moto_piloto',label:'Asiento piloto',num:1},
+      {key:'moto_copiloto',label:'Asiento copiloto',num:2},
+      {key:'moto_sides',label:'Laterales',num:3},
+      {key:'moto_ridge',label:'Borde / Acento',num:4}
+    ]
+  }
+};
+
+let seatType = 'auto';
+let state = {};
+SEAT_TYPES.auto.parts.forEach(p=>state[p.key]={color:'Negro',pattern:'Liso',stitch:'Roja'});
+SEAT_TYPES.moto.parts.forEach(p=>state[p.key]={color:'Negro',pattern:'Liso',stitch:'Roja'});
+
+let activePart='back';
+let tab='color';
+let material='Cuero Americano';
+let embroidery={type:'Sin bordado',text:''};
+
+const colorHex=n=>(C.find(c=>c[0]===n)||[])[1]||'#111';
+const stitchHex=n=>(S.find(s=>s[0]===n)||[])[1]||'#e50914';
+
+const content=document.getElementById('content');
+const tabscope=document.getElementById('tabscope');
+
+const ZONE_TO_PART_AUTO={back:'back',side:'side',sideR:'side',base:'base',head:'head',edge:'edge'};
+const ZONE_TO_PART_MOTO={moto_piloto:'moto_piloto',moto_copiloto:'moto_copiloto',moto_sidesL:'moto_sides',moto_sidesR:'moto_sides',moto_ridge:'moto_ridge'};
+
+function selectPart(k){activePart=k;render();paint();}
+
+// Attach event listeners for all zones (both auto and moto)
+Object.keys(ZONE_TO_PART_AUTO).forEach(id=>{
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click',()=>selectPart(ZONE_TO_PART_AUTO[id]));
+});
+Object.keys(ZONE_TO_PART_MOTO).forEach(id=>{
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click',()=>selectPart(ZONE_TO_PART_MOTO[id]));
+});
+
+function setSeatType(type) {
+  seatType = type;
+  document.getElementById('seat').style.display = (type === 'auto' ? 'block' : 'none');
+  document.getElementById('seat-moto').style.display = (type === 'moto' ? 'block' : 'none');
+
+  document.getElementById('btn-auto').classList.toggle('active', type === 'auto');
+  document.getElementById('btn-moto').classList.toggle('active', type === 'moto');
+
+  activePart = SEAT_TYPES[type].parts[0].key;
+
+  render();
+  paint();
+  paintMaterial();
+  paintEmbroidery();
+}
+
+function render(){
+  const s=state[activePart];
+  const partsList = SEAT_TYPES[seatType].parts;
+  const partLabel=partsList.find(p=>p.key===activePart).label;
+  let h='';
+  if(tab==='color'){
+    tabscope.textContent=`Editando color de: ${partLabel}`;
+    h='<b>COLOR DE LA PARTE SELECCIONADA</b><div class="colors">'+C.map(c=>`<button class="color ${s.color===c[0]?'active':''}" style="background:${c[1]}" title="${c[0]}" onclick="setPart('color','${c[0]}')"></button>`).join('')+'</div>';
+  }
+  if(tab==='pattern'){
+    tabscope.textContent=`Editando patrón de: ${partLabel}`;
+    h='<b>TIPO DE PATRÓN</b><div class="patterns">'+Object.keys(P).map(p=>`<button class="pat ${s.pattern===p?'active':''}" onclick="setPart('pattern','${p}')"><span class="sample ${P[p].cls}"></span>${p}</button>`).join('')+'</div>';
+  }
+  if(tab==='stitch'){
+    tabscope.textContent=`Editando costura de: ${partLabel}`;
+    h='<b>COLOR DE COSTURA</b><div class="swatches">'+S.map(x=>`<button class="stitch ${s.stitch===x[0]?'active':''}" title="${x[0]}" onclick="setPart('stitch','${x[0]}')"><i style="border-color:${x[1]}"></i></button>`).join('')+'</div>';
+  }
+  if(tab==='material'){
+    tabscope.textContent='Aplica a todo el asiento';
+    h='<b>MATERIAL</b><div class="options">'+MAT.map(m=>`<button class="opt matopt ${material===m.name?'active':''}" onclick="setMaterial('${m.name}')">${m.name}<small>${m.desc}</small></button>`).join('')+'</div>';
+  }
+  if(tab==='embroidery'){
+    tabscope.textContent='Aplica a todo el asiento';
+    h='<b>BORDADO</b><div class="options">'+EMB.map(x=>`<button class="opt ${embroidery.type===x?'active':''}" onclick="setEmbroidery('${x}')">${x}</button>`).join('')+'</div>';
+    if(embroidery.type==='Nombre del cliente'||embroidery.type==='Logo personalizado'){
+      h+=`<div class="txtbox"><input id="embInput" placeholder="${embroidery.type==='Nombre del cliente'?'Escribe el nombre...':'Describe el logo/texto...'}" value="${embroidery.text}" oninput="embroidery.text=this.value;renderSummary();paintEmbroidery();"></div>`;
+    }
+  }
+  content.innerHTML=h;
+  renderSummary();
+}
+
+function setPart(field,value){state[activePart][field]=value;render();paint();}
+function setMaterial(m){material=m;render();paintMaterial();}
+function setEmbroidery(t){embroidery.type=t;if(t!=='Nombre del cliente'&&t!=='Logo personalizado')embroidery.text='';render();paintEmbroidery();}
+
+function paint(){
+  const mapping = seatType === 'auto' ? ZONE_TO_PART_AUTO : ZONE_TO_PART_MOTO;
+  Object.keys(mapping).forEach(id=>{
+    const key=mapping[id];
+    const s=state[key];
+    const el=document.getElementById(id);
+    const overlay=document.getElementById(id+'-pat');
+    if (!el || !overlay) return;
+    el.setAttribute('fill',colorHex(s.color));
+    const pd=P[s.pattern];
+    overlay.setAttribute('fill',pd.svg?`url(#${pd.svg})`:'none');
+    if(key===activePart){
+      el.classList.add('sel');
+      el.style.stroke='';
+    }else{
+      el.classList.remove('sel');
+      el.style.stroke=stitchHex(s.stitch);
+    }
+  });
+
+  if (seatType === 'auto') {
+    const headStitch=stitchHex(state['head'].stitch);
+    const backStitch=stitchHex(state['back'].stitch);
+    const sideStitch=stitchHex(state['side'].stitch);
+    const baseStitch=stitchHex(state['base'].stitch);
+    const edgeStitch=stitchHex(state['edge'].stitch);
+
+    const seamsHead=document.getElementById('seams-head-dash');
+    const seamsBack=document.getElementById('seams-back-dash');
+    const seamsSide=document.getElementById('seams-side-dash');
+    const seamsBase=document.getElementById('seams-base-dash');
+    const seamsEdge=document.getElementById('seams-edge-dash');
+
+    if(seamsHead) seamsHead.style.stroke=headStitch;
+    if(seamsBack) seamsBack.style.stroke=backStitch;
+    if(seamsSide) seamsSide.style.stroke=sideStitch;
+    if(seamsBase) seamsBase.style.stroke=baseStitch;
+    if(seamsEdge) seamsEdge.style.stroke=edgeStitch;
+  } else {
+    const pilotoStitch=stitchHex(state['moto_piloto'].stitch);
+    const copilotoStitch=stitchHex(state['moto_copiloto'].stitch);
+    const sidesStitch=stitchHex(state['moto_sides'].stitch);
+    const ridgeStitch=stitchHex(state['moto_ridge'].stitch);
+
+    const seamsPiloto=document.getElementById('seams-moto_piloto-dash');
+    const seamsCopiloto=document.getElementById('seams-moto_copiloto-dash');
+    const seamsSides=document.getElementById('seams-moto_sides-dash');
+    const seamsRidge=document.getElementById('seams-moto_ridge-dash');
+
+    if(seamsPiloto) seamsPiloto.style.stroke=pilotoStitch;
+    if(seamsCopiloto) seamsCopiloto.style.stroke=copilotoStitch;
+    if(seamsSides) seamsSides.style.stroke=sidesStitch;
+    if(seamsRidge) seamsRidge.style.stroke=ridgeStitch;
+  }
+}
+
+function paintMaterial(){
+  const grain = document.getElementById(seatType === 'auto' ? 'grainOverlay' : 'grainOverlay-moto');
+  const otherGrain = document.getElementById(seatType === 'auto' ? 'grainOverlay-moto' : 'grainOverlay');
+  if (otherGrain) otherGrain.setAttribute('opacity', '0');
+
+  const badge=document.getElementById('matBadge');
+  if(grain) {
+    if(material==='Cuero Colombiano'){grain.setAttribute('opacity','.48');}
+    else{grain.setAttribute('opacity','.12');}
+  }
+  badge.textContent=material;
+}
+
+function paintEmbroidery(){
+  const t = document.getElementById(seatType === 'auto' ? 'embText' : 'embText-moto');
+  const otherT = document.getElementById(seatType === 'auto' ? 'embText-moto' : 'embText');
+  if (otherT) { otherT.setAttribute('opacity', '0'); otherT.textContent = ''; }
+
+  if(embroidery.type==='Sin bordado'){
+    if (t) { t.setAttribute('opacity','0'); t.textContent=''; }
+    return;
+  }
+  let txt=embroidery.type==='FORROS CUENCA'?'FORROS CUENCA':(embroidery.text||(embroidery.type==='Nombre del cliente'?'Tu nombre aquí':'Tu logo aquí'));
+  if (t) {
+    t.textContent=txt;
+    t.setAttribute('opacity','.9');
+  }
+}
+
+function renderSummary(){
+  const partsList = SEAT_TYPES[seatType].parts;
+  const rows=partsList.map(p=>{
+    const s=state[p.key];
+    return `<div class="row"><span>${p.label}</span><b>${s.color} · ${s.pattern} · ${s.stitch}</b></div>`;
+  }).join('');
+  document.getElementById('summary').innerHTML=rows+
+    `<div class="row"><span>Material</span><b>${material}</b></div>`+
+    `<div class="row"><span>Bordado</span><b>${embroidery.type}${embroidery.text?' - '+embroidery.text:''}</b></div>`;
+}
+
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  tab=b.dataset.t;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  render();
+});
+
+function send(){
+  const partsList = SEAT_TYPES[seatType].parts;
+  let lines=partsList.map(p=>`${p.label}: ${state[p.key].color}, patrón ${state[p.key].pattern}, costura ${state[p.key].stitch}`).join('\n');
+  let m=`Hola Forros Cuenca! Quiero cotizar un forro personalizado para mi ${SEAT_TYPES[seatType].label}:\n${lines}\nMaterial: ${material}\nBordado: ${embroidery.type}${embroidery.text?' - '+embroidery.text:''}`;
+  window.open('https://wa.me/593984353695?text='+encodeURIComponent(m),'_blank');
+}
+
+render();
+paint();
+paintMaterial();
+paintEmbroidery();
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Dependencias (se regeneran con npm install)
+node_modules/
+
+# Sistema
+.DS_Store
+
+# Material fuente pesado (se conserva solo en local)
+CATALOGO FORROS CEUCNA/
+Fotos para app de forros cuenca/
+Nuevas fotos/
+*.MOV
+*.mov
+Gemini_Generated_Image_*.jpeg
+
+# Config local de herramientas
+.claude/
+.impeccable/
