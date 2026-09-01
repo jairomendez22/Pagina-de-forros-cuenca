@@ -298,6 +298,99 @@ body{padding-bottom:78px}
   .grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px}
 }
 
+/* ══ TARJETA DE FORRO ══
+   La foto dejo de ser decoracion suelta: cada una es la PORTADA de un juego,
+   y al tocarla se abren las demas fotos DE ESE MISMO forro. El <button>
+   envuelve la imagen entera a proposito: en el telefono el pulgar apunta a la
+   foto, no a un icono de esquina de 20px. */
+.forro-btn{
+  display:block;width:100%;height:100%;margin:0;padding:0;border:0;
+  background:none;font:inherit;color:inherit;cursor:pointer;position:relative;
+  -webkit-tap-highlight-color:transparent;
+}
+/* el outline va hacia DENTRO: la figure recorta con overflow:hidden y un
+   offset positivo se comeria el filo del foco */
+.forro-btn:focus-visible{outline:2px solid var(--texto);outline-offset:-3px}
+/* el pie se apoya en un degradado y no en una banda opaca: asi la foto se ve
+   entera y el texto se lee igual sobre cuero negro que sobre cuero crema */
+.forro-pie{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:8px;
+  padding:30px 10px 9px;text-align:left;
+  background:linear-gradient(to top,#000000e0,#0000009e 44%,transparent);
+}
+.forro-nombre{color:var(--texto);font-size:12.5px;font-weight:700;line-height:1.25}
+.forro-mas{
+  flex:none;color:var(--texto-2);font-size:11px;font-weight:600;
+  border:1px solid #ffffff3d;border-radius:999px;padding:2px 7px;
+  background:#0000005c;white-space:nowrap;
+}
+/* distintivo de las fotos tomadas en el taller, para no venderlas revueltas
+   con las recreaciones de estudio */
+.forro-real{
+  position:absolute;top:8px;left:8px;
+  color:var(--texto);font-size:11px;font-weight:700;letter-spacing:.2px;
+  border:1px solid #ffffff40;border-radius:999px;padding:3px 8px;
+  background:#000000ad;
+}
+@media(max-width:700px){
+  .forro-nombre{font-size:11.5px}
+  .forro-mas{font-size:11px;padding:1px 6px}
+}
+
+/* ══ VISOR DE UN FORRO ══
+   Se monta sobre el mismo .modalbg del formulario: mismo velo, misma
+   animacion, mismo aislamiento del fondo. Solo cambia el ancho y que aqui
+   manda la foto. */
+.visor{
+  width:100%;max-width:920px;max-height:92vh;
+  display:flex;flex-direction:column;gap:12px;
+  /* .modal trae max-width:430px, padding:22px y overflow:auto. Aqui se pisan
+     los tres: el ancho porque manda la foto, y el overflow porque con el
+     marco flexible el scroll saldria doble. */
+  overflow:hidden;
+  background:var(--superficie-alta);border:1px solid var(--borde);
+  border-radius:16px;padding:16px;
+}
+.visor-cab{display:flex;align-items:flex-start;gap:12px}
+.visor-cab h3{margin:0 0 3px;font-size:17px;font-weight:800;color:var(--texto)}
+.visor-cab p{margin:0;color:var(--texto-4);font-size:12.5px;line-height:1.5}
+.visor-x{
+  margin-left:auto;flex:none;width:34px;height:34px;border-radius:9px;
+  border:1px solid var(--linea-fuerte);background:var(--control);
+  color:var(--texto-2);font-size:15px;line-height:1;cursor:pointer;font-family:inherit;
+}
+.visor-marco{
+  position:relative;flex:1;min-height:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--fondo-hondo);border:1px solid var(--linea);
+  border-radius:12px;overflow:hidden;
+}
+.visor-marco img{display:block;max-width:100%;max-height:58vh;object-fit:contain}
+.visor-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--borde);background:#000000c4;color:var(--texto);
+  font-size:15px;cursor:pointer;font-family:inherit;
+}
+.visor-nav.prev{left:8px}
+.visor-nav.sig{right:8px}
+.visor-pie{margin:0;color:var(--texto-4);font-size:12px;line-height:1.5;text-align:center}
+.visor-tira{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.visor-tira button{
+  flex:none;width:62px;aspect-ratio:3/4;padding:0;overflow:hidden;
+  border:1px solid var(--linea-fuerte);border-radius:9px;
+  background:none;cursor:pointer;
+}
+.visor-tira button[aria-current="true"]{border-color:var(--texto)}
+.visor-tira img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:700px){
+  .visor{padding:12px;gap:10px;border-radius:14px}
+  .visor-marco img{max-height:46vh}
+  .visor-cab p{display:none}
+  .visor-tira button{width:52px}
+}
+
 /* --- ver el forro sin las guias de edicion --- */
 .cleanbtn{position:absolute;top:12px;right:12px;z-index:5;padding:7px 13px;background:var(--velo);border:1px solid var(--borde);border-radius:20px;color:var(--texto-alto);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
 .cleanbtn:hover{border-color:var(--borde-hover);color:var(--texto)}
@@ -903,32 +996,57 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
 
 
 <section class="galeria">
-  <h2>Así puede quedar tu vehículo</h2>
-  <p class="sub">Ejemplos de colores, patrones y acabados que trabajamos. El diseño se arma al gusto de cada cliente y se cose a la medida de tu vehículo.</p>
+  <h2>As&iacute; puede quedar tu veh&iacute;culo</h2>
+  <p class="sub">Ejemplos de colores, patrones y acabados que trabajamos. Toca cualquiera para ver ese mismo forro de cerca. El dise&ntilde;o se arma al gusto de cada cliente y se cose a la medida de tu veh&iacute;culo.</p>
   <div class="grid">
-    <!-- Negros -->
-    <figure><img src="fotos/muestra-negro-showroom.webp" srcset="fotos/muestra-negro-showroom-400.webp 400w, fotos/muestra-negro-showroom.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Juego de forros en cuero negro con acolchado de ondas y costura blanca" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-negro-ondas.webp" srcset="fotos/muestra-negro-ondas-400.webp 400w, fotos/muestra-negro-ondas.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero negro con paneles en ondas y costura blanca contrastada" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-detalle-ondas.webp" srcset="fotos/muestra-detalle-ondas-400.webp 400w, fotos/muestra-detalle-ondas.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle del acolchado en ondas con costura clara sobre cuero negro" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-detalle-canaletas.webp" srcset="fotos/muestra-detalle-canaletas-400.webp 400w, fotos/muestra-detalle-canaletas.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Primer plano de las canaletas cosidas en cuero negro" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-detalle-costura.webp" srcset="fotos/muestra-detalle-costura-400.webp 400w, fotos/muestra-detalle-costura.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle de la costura y los paneles en cuero negro combinado con gris" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-negro-cueros.webp" srcset="fotos/muestra-negro-cueros-400.webp 400w, fotos/muestra-negro-cueros.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asientos en cuero negro junto al muestrario de cueros de colores del taller" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Grises -->
-    <figure><img src="fotos/muestra-gris-dmax.webp" srcset="fotos/muestra-gris-dmax-400.webp 400w, fotos/muestra-gris-dmax.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero gris pizarra con bordado Isuzu D-Max" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-gris-panel.webp" srcset="fotos/muestra-gris-panel-400.webp 400w, fotos/muestra-gris-panel.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle del cojin en cuero gris pizarra con costura al tono" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-banca-foton.webp" srcset="fotos/muestra-banca-foton-400.webp 400w, fotos/muestra-banca-foton.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Banca de furgoneta en cuero gris y negro con vivo blanco y bordado Foton" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-foton-vivo.webp" srcset="fotos/muestra-foton-vivo-400.webp 400w, fotos/muestra-foton-vivo.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle del vivo blanco y el perforado en la banca gris y negra" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Blanco y negro -->
-    <figure><img src="fotos/muestra-blanco-negro.webp" srcset="fotos/muestra-blanco-negro-400.webp 400w, fotos/muestra-blanco-negro.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros bicolor blanco y negro con rombos cosidos en el respaldo" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-rombos-blanco.webp" srcset="fotos/muestra-rombos-blanco-400.webp 400w, fotos/muestra-rombos-blanco.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle de los rombos cosidos en el respaldo bicolor blanco y negro" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Azules -->
-    <figure><img src="fotos/muestra-azul-marino.webp" srcset="fotos/muestra-azul-marino-400.webp 400w, fotos/muestra-azul-marino.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero azul marino lisos, con costura al tono" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-azul-cojin.webp" srcset="fotos/muestra-azul-cojin-400.webp 400w, fotos/muestra-azul-cojin.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asiento en cuero azul marino visto de frente, con el muestrario al fondo" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Verde -->
-    <figure><img src="fotos/muestra-verde-hexagonal.webp" srcset="fotos/muestra-verde-hexagonal-400.webp 400w, fotos/muestra-verde-hexagonal.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero verde oscuro con acolchado hexagonal y ribete texturizado" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Camel -->
-    <figure><img src="fotos/muestra-camel-hilux.webp" srcset="fotos/muestra-camel-hilux-400.webp 400w, fotos/muestra-camel-hilux.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero camel con acanalado vertical y bordado Toyota Hilux" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-camel-acanalado.webp" srcset="fotos/muestra-camel-acanalado-400.webp 400w, fotos/muestra-camel-acanalado.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Primer plano del acanalado vertical en cuero camel" width="760" height="1013" loading="lazy" decoding="async"></figure>
+    <figure><button type="button" class="forro-btn" data-forro="negro" aria-label="Negro con ondas: ver las 6 fotos de este forro">
+        <img src="fotos/muestra-negro-showroom.webp" srcset="fotos/muestra-negro-showroom-400.webp 400w, fotos/muestra-negro-showroom.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Juego de forros en cuero negro con acolchado de ondas y costura blanca" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-pie"><span class="forro-nombre">Negro con ondas</span><span class="forro-mas">6 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="jac" aria-label="Negro con costura roja: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-jac-negro.webp" srcset="fotos/muestra-jac-negro-400.webp 400w, fotos/muestra-jac-negro.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asientos de un JAC forrados en cuero negro con pespunte rojo, frente al local de Forros Cuenca" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-real">Foto del taller</span>
+        <span class="forro-pie"><span class="forro-nombre">Negro con costura roja</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="gris" aria-label="Gris pizarra: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-gris-dmax.webp" srcset="fotos/muestra-gris-dmax-400.webp 400w, fotos/muestra-gris-dmax.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero gris pizarra con bordado Isuzu D-Max" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-pie"><span class="forro-nombre">Gris pizarra</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="kia" aria-label="Gris y negro: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-kia-gris.webp" srcset="fotos/muestra-kia-gris-400.webp 400w, fotos/muestra-kia-gris.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Interior de un Kia Rio forrado en gris y negro con el modelo bordado" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-real">Foto del taller</span>
+        <span class="forro-pie"><span class="forro-nombre">Gris y negro</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="bicolor" aria-label="Blanco y negro: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-blanco-negro.webp" srcset="fotos/muestra-blanco-negro-400.webp 400w, fotos/muestra-blanco-negro.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros bicolor blanco y negro con rombos cosidos en el respaldo" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-pie"><span class="forro-nombre">Blanco y negro</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="azul" aria-label="Azul marino: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-azul-marino.webp" srcset="fotos/muestra-azul-marino-400.webp 400w, fotos/muestra-azul-marino.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero azul marino lisos, con costura al tono" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-pie"><span class="forro-nombre">Azul marino</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="camel" aria-label="Camel acanalado: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-camel-hilux.webp" srcset="fotos/muestra-camel-hilux-400.webp 400w, fotos/muestra-camel-hilux.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero camel con acanalado vertical y bordado Toyota Hilux" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-pie"><span class="forro-nombre">Camel acanalado</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="rosa" aria-label="Rosa y crema: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-rosa-crema.webp" srcset="fotos/muestra-rosa-crema-400.webp 400w, fotos/muestra-rosa-crema.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asiento forrado en cuero rosado y crema con acanalado central" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-real">Foto del taller</span>
+        <span class="forro-pie"><span class="forro-nombre">Rosa y crema</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="verde" aria-label="Verde oscuro: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-verde-hexagonal.webp" srcset="fotos/muestra-verde-hexagonal-400.webp 400w, fotos/muestra-verde-hexagonal.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero verde oscuro con acolchado hexagonal y ribete texturizado" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-pie"><span class="forro-nombre">Verde oscuro</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="foton" aria-label="Gris y negro con vivo: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-banca-foton.webp" srcset="fotos/muestra-banca-foton-400.webp 400w, fotos/muestra-banca-foton.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Banca de furgoneta en cuero gris y negro con vivo blanco y bordado Foton" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-pie"><span class="forro-nombre">Gris y negro con vivo</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
+    <figure><button type="button" class="forro-btn" data-forro="crema" aria-label="Crema para banca: ver las 2 fotos de este forro">
+        <img src="fotos/muestra-crema-banca.webp" srcset="fotos/muestra-crema-banca-400.webp 400w, fotos/muestra-crema-banca.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Banca trasera de una camioneta forrada en cuero crema" width="760" height="1013" loading="lazy" decoding="async">
+        <span class="forro-real">Foto del taller</span>
+        <span class="forro-pie"><span class="forro-nombre">Crema para banca</span><span class="forro-mas">2 fotos</span></span>
+      </button></figure>
   </div>
 </section>
 
@@ -1980,6 +2098,206 @@ function abrirFormulario(){
     guardar(); cerrar(); enviarWhatsApp();
   });
 }
+
+/* ══ GALERIA POR FORRO ══
+   Antes la galeria eran 17 fotos sueltas en fila: la general de un juego y
+   sus detalles quedaban separadas por otras cuatro, y el cliente no tenia
+   como saber que eran el MISMO forro. Ahora cada tarjeta es la portada de un
+   juego y al abrirla salen las demas fotos de ese mismo cuero, con su mismo
+   color y su mismo dibujo.
+
+   Como en el resto del sitio, esto es DATO y no codigo: para sumar un forro
+   se anade una entrada aqui y una <figure> en la galeria. La primera foto de
+   cada lista es la portada, la misma que se ve en la tarjeta.
+   'visor' solo se pone cuando la foto grande no es la 3:4 recortada de la
+   tarjeta: las del taller son verticales de telefono y se veria cortada. */
+const GALERIA = {
+  negro: {
+    nombre:'Negro con ondas',
+    desc:'Cuero negro con paneles en ondas y costura blanca. El contraste de la costura es lo que dibuja el relieve.',
+    fotos:[
+      {img:'muestra-negro-showroom',   alt:'Juego de forros en cuero negro con acolchado de ondas y costura blanca'},
+      {img:'muestra-negro-ondas',      alt:'Los mismos forros negros vistos de lado, con las ondas del respaldo y del cojin'},
+      {img:'muestra-negro-cueros',     alt:'Los forros negros junto al muestrario de cueros de colores del taller'},
+      {img:'muestra-detalle-ondas',    alt:'Detalle del acolchado en ondas con costura clara sobre cuero negro'},
+      {img:'muestra-detalle-costura',  alt:'Detalle de la costura y los paneles en cuero negro combinado con gris'},
+      {img:'muestra-detalle-canaletas',alt:'Primer plano de las canaletas cosidas del cojin en cuero negro'}
+    ]
+  },
+  jac: {
+    nombre:'Negro con costura roja', real:true,
+    desc:'Trabajo entregado: forros negros con pespunte rojo y el logo de la marca bordado en el respaldo.',
+    fotos:[
+      {img:'muestra-jac-negro',   visor:'muestra-jac-negro-vista', alt:'Asientos de un JAC forrados en cuero negro con pespunte rojo, frente al local de Forros Cuenca'},
+      {img:'muestra-jac-bordado', alt:'Detalle del logo JAC bordado y del acanalado central en cuero negro con costura roja'}
+    ]
+  },
+  gris: {
+    nombre:'Gris pizarra',
+    desc:'Cuero gris con costura al tono y el nombre del vehiculo bordado en el respaldo.',
+    fotos:[
+      {img:'muestra-gris-dmax',  alt:'Forros en cuero gris pizarra con bordado Isuzu D-Max'},
+      {img:'muestra-gris-panel', alt:'Detalle del cojin en cuero gris pizarra con costura al tono'}
+    ]
+  },
+  kia: {
+    nombre:'Gris y negro', real:true,
+    desc:'Trabajo entregado: bicolor gris y negro, con acanalado vertical y el modelo bordado.',
+    fotos:[
+      {img:'muestra-kia-gris',    visor:'muestra-kia-gris-vista', alt:'Interior de un Kia Rio forrado en gris y negro con el modelo bordado'},
+      {img:'muestra-kia-bordado', alt:'Detalle del bordado Kia Rio Stylus y del acanalado bicolor gris y negro'}
+    ]
+  },
+  bicolor: {
+    nombre:'Blanco y negro',
+    desc:'Bicolor con rombos cosidos en el respaldo y los costados en blanco.',
+    fotos:[
+      {img:'muestra-blanco-negro',  alt:'Forros bicolor blanco y negro con rombos cosidos en el respaldo'},
+      {img:'muestra-rombos-blanco', alt:'Detalle de los rombos cosidos en el respaldo bicolor blanco y negro'}
+    ]
+  },
+  azul: {
+    nombre:'Azul marino',
+    desc:'Cuero azul marino liso, con costura al tono. Sobrio y de los que menos se ensucian.',
+    fotos:[
+      {img:'muestra-azul-marino', alt:'Forros en cuero azul marino lisos, con costura al tono'},
+      {img:'muestra-azul-cojin',  alt:'Asiento en cuero azul marino visto de frente, con el muestrario al fondo'}
+    ]
+  },
+  camel: {
+    nombre:'Camel acanalado',
+    desc:'Cuero camel con acanalado vertical y el logo bordado en el respaldo.',
+    fotos:[
+      {img:'muestra-camel-hilux',     alt:'Forros en cuero camel con acanalado vertical y bordado Toyota Hilux'},
+      {img:'muestra-camel-acanalado', alt:'Primer plano del acanalado vertical en cuero camel'}
+    ]
+  },
+  rosa: {
+    nombre:'Rosa y crema', real:true,
+    desc:'Trabajo entregado: dos tonos suaves con acanalado central y ribete en el contorno.',
+    fotos:[
+      {img:'muestra-rosa-crema',     visor:'muestra-rosa-crema-vista', alt:'Asiento forrado en cuero rosado y crema con acanalado central'},
+      {img:'muestra-rosa-acanalado', alt:'Detalle del acanalado rosado sobre el cuero crema del respaldo y el cojin'}
+    ]
+  },
+  verde: {
+    nombre:'Verde oscuro',
+    desc:'Cuero verde con acolchado hexagonal y ribete texturizado en los costados.',
+    fotos:[
+      {img:'muestra-verde-hexagonal', alt:'Forros en cuero verde oscuro con acolchado hexagonal y ribete texturizado'},
+      {img:'muestra-verde-panel',     alt:'Detalle del acolchado hexagonal y del ribete texturizado en cuero verde oscuro'}
+    ]
+  },
+  foton: {
+    nombre:'Gris y negro con vivo',
+    desc:'Banca de furgoneta en dos tonos, con vivo blanco y perforado en los paneles del centro.',
+    fotos:[
+      {img:'muestra-banca-foton', alt:'Banca de furgoneta en cuero gris y negro con vivo blanco y bordado Foton'},
+      {img:'muestra-foton-vivo',  alt:'Detalle del vivo blanco y el perforado en la banca gris y negra'}
+    ]
+  },
+  crema: {
+    nombre:'Crema para banca', real:true,
+    desc:'Trabajo entregado: banca trasera completa en cuero crema, con la costura siguiendo la forma del respaldo.',
+    fotos:[
+      {img:'muestra-crema-banca',    visor:'muestra-crema-banca-vista', alt:'Banca trasera de una camioneta forrada en cuero crema'},
+      {img:'muestra-crema-respaldo', alt:'Detalle del respaldo en cuero crema con la costura curva y el cinturon de seguridad'}
+    ]
+  }
+};
+
+function abrirForro(clave){
+  const g = GALERIA[clave];
+  if(!g) return;
+  const fotos = g.fotos;
+  let i = 0;
+
+  const bg = document.createElement('div');
+  bg.className = 'modalbg';
+  const varias = fotos.length > 1;
+  bg.innerHTML = `
+    <div class="modal visor" role="dialog" aria-modal="true" aria-labelledby="vTit">
+      <div class="visor-cab">
+        <div>
+          <h3 id="vTit">${g.nombre}</h3>
+          <p>${g.desc}</p>
+        </div>
+        <button class="visor-x" id="vX" aria-label="Cerrar">&#10005;</button>
+      </div>
+      <div class="visor-marco">
+        <img id="vImg" alt="" width="760" height="1013">
+        ${varias ? '<button class="visor-nav prev" id="vPrev" aria-label="Foto anterior">&#8249;</button><button class="visor-nav sig" id="vSig" aria-label="Foto siguiente">&#8250;</button>' : ''}
+      </div>
+      <p class="visor-pie" id="vPie" role="status" aria-live="polite"></p>
+      ${varias ? '<div class="visor-tira" id="vTira"></div>' : ''}
+    </div>`;
+  document.body.appendChild(bg);
+  track('galeria_forro_abierto', {forro: clave, fotos: fotos.length});
+
+  const img = bg.querySelector('#vImg'), pie = bg.querySelector('#vPie');
+  const tira = bg.querySelector('#vTira');
+
+  if(tira){
+    /* Las miniaturas se arman aqui y no en el HTML porque son las mismas
+       fotos de la tabla: escribirlas dos veces es garantia de que un dia
+       digan cosas distintas. */
+    fotos.forEach((f, n)=>{
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.innerHTML = `<img src="fotos/${f.img}-400.webp" alt="" loading="lazy" decoding="async">`;
+      b.setAttribute('aria-label', `Foto ${n+1} de ${fotos.length}`);
+      b.addEventListener('click', ()=>ver(n));
+      tira.appendChild(b);
+    });
+  }
+
+  const ver = n=>{
+    i = (n + fotos.length) % fotos.length;
+    const f = fotos[i];
+    img.src = `fotos/${f.visor || f.img}.webp`;
+    /* La foto va como decorativa y quien la describe es el pie, que esta
+       justo debajo y ademas es region viva: asi el lector de pantalla anuncia
+       el cambio al pasar de foto, y no lee la misma frase dos veces. */
+    pie.textContent = fotos.length > 1
+      ? `${f.alt}. Foto ${i+1} de ${fotos.length}.`
+      : f.alt;
+    if(tira) [...tira.children].forEach((b, n2)=>{
+      b.setAttribute('aria-current', n2===i ? 'true' : 'false');
+    });
+  };
+  ver(0);
+
+  aislarElFondo(bg);
+  bg.querySelector('#vX').focus();
+
+  const cerrar = ()=>{
+    document.removeEventListener('keydown', onKey);
+    soltarElFondo();
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){ bg.remove(); return; }
+    bg.classList.add('cerrando');
+    setTimeout(()=>bg.remove(), 170);
+  };
+  const onKey = e=>{
+    if(e.key === 'Escape'){ cerrar(); return; }
+    if(!varias) return;
+    if(e.key === 'ArrowRight') ver(i+1);
+    if(e.key === 'ArrowLeft')  ver(i-1);
+  };
+  document.addEventListener('keydown', onKey);
+  bg.addEventListener('click', e=>{ if(e.target===bg) cerrar(); });
+  bg.querySelector('#vX').addEventListener('click', cerrar);
+  if(varias){
+    bg.querySelector('#vPrev').addEventListener('click', ()=>ver(i-1));
+    bg.querySelector('#vSig').addEventListener('click',  ()=>ver(i+1));
+  }
+}
+
+/* Un solo oyente en la rejilla en vez de once: las tarjetas se pueden anadir
+   o quitar del HTML sin tocar nada de aqui. */
+document.querySelector('.galeria .grid').addEventListener('click', e=>{
+  const b = e.target.closest('.forro-btn');
+  if(b) abrirForro(b.dataset.forro);
+});
 
 function folio(){
   const d = new Date(), p = n=>String(n).padStart(2,'0');

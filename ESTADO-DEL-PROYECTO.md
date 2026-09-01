@@ -3,7 +3,7 @@
 > **Léeme primero si abres una conversación nueva.**
 > Este archivo es el traspaso completo: qué hay hecho, cómo está armado el
 > código, qué ya se probó y falló, y qué queda pendiente.
-> Última actualización: 1 de septiembre de 2026 (publicación en GitHub Pages).
+> Última actualización: 1 de septiembre de 2026 (galería agrupada por forro).
 
 ---
 
@@ -394,6 +394,29 @@ subir nada a mano. Se conservan solo por si algún día se migra de host.
    muestrarios. Él los vende mejor.
 6. **Reparto de precios del bordado**: $2 nombre / $5 logo / $5 FORROS
    CUENCA. Confirmar.
+
+### Ya resuelto: la galería agrupa por forro (1 sep 2026)
+
+Antes eran 17 fotos sueltas en fila: la vista general de un juego y sus
+detalles quedaban separadas por otras cuatro, y no había forma de saber que
+eran el mismo cuero. Ahora hay **11 tarjetas, una por forro**; al tocar una
+se abre un visor con las demás fotos **de ese mismo color y dibujo**.
+
+- La tabla `GALERIA` (junto a `abrirForro`) es el dato: sumar un forro son una
+  entrada ahí y una `<figure>` en la galería. La **primera foto de cada lista
+  es la portada**, la misma que se ve en la tarjeta.
+- El visor se monta sobre el `.modalbg` del formulario: mismo velo, misma
+  animación, mismo `aislarElFondo`. Escape y flechas ← → funcionan.
+- Se sumaron **4 fotos reales del taller** (JAC, Kia Rio, rosa y crema) que
+  estaban sin usar en `IMAGENES CON IA FORROS CUENCA/`. Llevan el distintivo
+  **"Foto del taller"**: las otras siete son recreaciones de estudio y no
+  deben venderse revueltas con las reales.
+- Los detalles que faltaban (verde, y los de las cuatro reales) son **recortes**
+  hechos con `sharp` desde el original, no fotos nuevas.
+- La foto grande usa `-vista.webp` **solo** cuando la del taller es vertical de
+  teléfono: recortada a 3:4 se veía cortada.
+
+---
 
 ### Bloqueados por falta de fotos
 7. **Camioneta, Techo y Pisos** siguen en `pending:true` y salen como
