@@ -1,0 +1,686 @@
+<title>Plano del configurador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ground:#eef1f4;
+  --sheet:#ffffff;
+  --sheet-2:#f6f8fa;
+  --ink:#13161c;
+  --ink-2:#3a414e;
+  --muted:#626b7b;
+  --rule:#d3d9e1;
+  --rule-soft:#e4e9ee;
+  --brand:#a8101c;
+  --brand-soft:#fdeced;
+  --ok:#0b6357;
+  --ok-soft:#e4f4f1;
+  --warn:#8a5a00;
+  --warn-soft:#fdf2dd;
+  --gutter-w:clamp(0px,3vw,52px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0e1014;
+    --sheet:#161920;
+    --sheet-2:#1c2029;
+    --ink:#e8ebf0;
+    --ink-2:#c0c6d1;
+    --muted:#939bab;
+    --rule:#272c36;
+    --rule-soft:#20242c;
+    --brand:#ff5d68;
+    --brand-soft:#2a1418;
+    --ok:#48c6b3;
+    --ok-soft:#0f2320;
+    --warn:#e0a33c;
+    --warn-soft:#241c0c;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0e1014;
+  --sheet:#161920;
+  --sheet-2:#1c2029;
+  --ink:#e8ebf0;
+  --ink-2:#c0c6d1;
+  --muted:#939bab;
+  --rule:#272c36;
+  --rule-soft:#20242c;
+  --brand:#ff5d68;
+  --brand-soft:#2a1418;
+  --ok:#48c6b3;
+  --ok-soft:#0f2320;
+  --warn:#e0a33c;
+  --warn-soft:#241c0c;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,44px) 90px}
+p,ul,ol{max-width:73ch}
+
+/* ---------- cabecera ---------- */
+.top{
+  border-bottom:2px solid var(--ink);
+  padding:clamp(34px,6vw,60px) 0 20px;
+  margin-bottom:34px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brand);margin:0 0 14px;
+}
+h1{
+  font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;
+  font-weight:700;
+  font-size:clamp(34px,6.5vw,58px);
+  line-height:1.02;letter-spacing:-.015em;
+  margin:0 0 14px;text-wrap:balance;
+}
+.lede{font-size:clamp(16px,1.6vw,18.5px);color:var(--ink-2);margin:0 0 26px;max-width:66ch}
+
+.ficha{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(112px,1fr));
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:4px;overflow:hidden;
+}
+.ficha div{background:var(--sheet);padding:11px 13px}
+.ficha dt{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 3px;
+}
+.ficha dd{
+  margin:0;font-family:'IBM Plex Mono',monospace;
+  font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;
+  line-height:1.15;
+}
+.ficha dd small{font-size:11.5px;font-weight:400;color:var(--muted);display:block;margin-top:2px;letter-spacing:0}
+
+/* ---------- indice ---------- */
+.toc{
+  background:var(--sheet);border:1px solid var(--rule);border-radius:4px;
+  padding:16px 20px;margin:30px 0 8px;
+}
+.toc h2{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500;border:0;padding:0;
+}
+.toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:34px;max-width:none}
+.toc li{margin:0 0 5px;break-inside:avoid}
+.toc a{
+  color:var(--ink-2);text-decoration:none;font-size:14.5px;
+  display:flex;gap:9px;align-items:baseline;
+}
+.toc a:hover{color:var(--brand)}
+.toc a b{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);
+  font-weight:500;flex:none;
+}
+
+/* ---------- secciones ---------- */
+section{margin-top:56px;scroll-margin-top:20px}
+h2{
+  font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;
+  font-size:clamp(23px,3vw,30px);font-weight:700;letter-spacing:-.01em;
+  line-height:1.15;margin:0 0 6px;padding-bottom:9px;
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:baseline;gap:13px;text-wrap:balance;
+}
+h2 .n{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;
+  color:var(--brand);flex:none;letter-spacing:0;
+}
+h3{
+  font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;
+  font-size:18.5px;font-weight:600;margin:32px 0 8px;letter-spacing:-.005em;
+}
+.sub{color:var(--muted);font-size:14.5px;margin:0 0 22px;max-width:70ch}
+
+/* ---------- avisos ---------- */
+.aviso{
+  border:1px solid var(--rule);border-left:3px solid var(--muted);
+  background:var(--sheet);border-radius:0 4px 4px 0;
+  padding:15px 19px;margin:22px 0;
+}
+.aviso.rojo{border-left-color:var(--brand);background:var(--brand-soft)}
+.aviso.ok{border-left-color:var(--ok);background:var(--ok-soft)}
+.aviso.amb{border-left-color:var(--warn);background:var(--warn-soft)}
+.aviso .t{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:600;margin:0 0 6px;
+}
+.aviso.rojo .t{color:var(--brand)}
+.aviso.ok .t{color:var(--ok)}
+.aviso.amb .t{color:var(--warn)}
+.aviso p{margin:0 0 8px}
+.aviso p:last-child{margin-bottom:0}
+
+/* ---------- hoja de dibujo (mermaid) ---------- */
+.hoja{
+  background:#fff;
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 18px;
+  margin:24px 0 10px;
+  overflow-x:auto;
+}
+.hoja pre.mermaid{margin:0;background:none;text-align:center;min-width:min-content}
+.pie{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);
+  margin:0 0 26px;padding-left:2px;
+}
+
+/* ---------- tablas ---------- */
+.tabla{overflow-x:auto;margin:22px 0 10px;border:1px solid var(--rule);border-radius:4px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;
+  text-align:left;padding:10px 13px;border-bottom:1px solid var(--rule);
+  background:var(--sheet-2);white-space:nowrap;
+}
+td{padding:9px 13px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:'IBM Plex Mono',monospace}
+code,.mono{
+  font-family:'IBM Plex Mono',monospace;font-size:.885em;
+  background:var(--sheet-2);border:1px solid var(--rule-soft);
+  padding:.08em .34em;border-radius:3px;white-space:nowrap;
+}
+td code{background:none;border:0;padding:0}
+.hoja code{background:none;border:0}
+
+.pill{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;
+  letter-spacing:.04em;padding:2px 7px;border-radius:3px;white-space:nowrap;
+  display:inline-block;
+}
+.pill.est{background:var(--sheet-2);color:var(--muted);border:1px solid var(--rule)}
+.pill.js{background:var(--brand-soft);color:var(--brand);border:1px solid var(--brand)}
+.pill.alto{background:var(--brand-soft);color:var(--brand);border:1px solid var(--brand)}
+.pill.medio{background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn)}
+.pill.bajo{background:var(--ok-soft);color:var(--ok);border:1px solid var(--ok)}
+
+/* ---------- listas de acciones ---------- */
+.acc{list-style:none;margin:20px 0;padding:0;max-width:none}
+.acc li{
+  background:var(--sheet);border:1px solid var(--rule);border-radius:4px;
+  padding:15px 18px;margin-bottom:10px;
+  display:grid;grid-template-columns:32px 1fr;gap:0 15px;align-items:start;
+}
+.acc li .k{
+  font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;
+  color:var(--brand);grid-row:span 2;line-height:1.35;
+}
+.acc li .h{font-weight:600;margin:0 0 4px;line-height:1.4}
+.acc li .d{margin:0;color:var(--ink-2);font-size:14.5px;max-width:66ch}
+.acc li .d code{font-size:.9em}
+.acc.no li .k{color:var(--muted)}
+
+hr.fin{border:0;border-top:2px solid var(--ink);margin:60px 0 22px}
+.firma{font-size:13.5px;color:var(--muted);max-width:70ch}
+
+@media (max-width:720px){
+  .toc ol{columns:1}
+  body{font-size:15.5px}
+  .acc li{grid-template-columns:1fr;gap:6px}
+  .acc li .k{grid-row:auto}
+}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Forros Cuenca · index.html · 23 ago 2026</p>
+  <h1>Plano del configurador</h1>
+  <p class="lede">Mapa de componentes, flujo de estado, capa de estilos y plan de desacoplamiento, levantado por cuatro lectores en paralelo y sometido a tres verificaciones adversarias.</p>
+
+  <dl class="ficha">
+    <div><dt>Líneas</dt><dd>1 839</dd></div>
+    <div><dt>Peso</dt><dd>123<small>KB, un archivo</small></dd></div>
+    <div><dt>Funciones</dt><dd>39</dd></div>
+    <div><dt>Estado</dt><dd>14<small>piezas mutables</small></dd></div>
+    <div><dt>Hex en CSS</dt><dd>49<small>distintos</small></dd></div>
+    <div><dt>Tokens CSS</dt><dd>0</dd></div>
+    <div><dt>Dependencias</dt><dd>1<small>Google Fonts</small></dd></div>
+    <div><dt>Anti-patrones</dt><dd>0<small>detector Impeccable</small></dd></div>
+  </dl>
+</header>
+
+<nav class="toc">
+  <h2>Contenido</h2>
+  <ol>
+    <li><a href="#s0"><b>00</b> Dos correcciones al encargo</a></li>
+    <li><a href="#s1"><b>01</b> Árbol de componentes</a></li>
+    <li><a href="#s2"><b>02</b> Flujo de estado</a></li>
+    <li><a href="#s3"><b>03</b> La cascada de repintado</a></li>
+    <li><a href="#s4"><b>04</b> Capa de estilos y tokens</a></li>
+    <li><a href="#s5"><b>05</b> Qué está sobrecargado</a></li>
+    <li><a href="#s6"><b>06</b> Hallazgos: 5 defectos reales</a></li>
+    <li><a href="#s7"><b>07</b> Plan de desacoplamiento</a></li>
+  </ol>
+</nav>
+
+<!-- ═══════════════════════════════════════ 00 -->
+<section id="s0">
+  <h2><span class="n">00</span> Dos correcciones al encargo</h2>
+  <p class="sub">El encargo daba por supuestas dos cosas que no existen en este archivo. Conviene despejarlas antes de leer el mapa.</p>
+
+  <div class="aviso rojo">
+    <p class="t">No hay componentes, ni framework</p>
+    <p><code>index.html</code> es HTML, CSS y JavaScript puros en un solo archivo: sin React, sin Vue, sin build, sin <code>node_modules</code> en producción. No existen componentes con props ni jerarquía padre-hijo en el sentido del encargo.</p>
+    <p>Lo que sí existe, y es lo que mapeo aquí, son <b>componentes implícitos</b>: bloques de markup estático y funciones que generan DOM. Se pueden inventariar, medir y desacoplar igual — solo que la unidad no es un componente, es una función o un bloque.</p>
+  </div>
+
+  <div class="aviso rojo">
+    <p class="t">La galería no tiene filtros: es inerte</p>
+    <p>Son 18 <code>&lt;figure&gt;</code> escritos a mano en las líneas 714-732, con <code>srcset</code>, <code>loading=lazy</code> y <code>alt</code> descriptivo. El <code>&lt;script&gt;</code> entero no menciona <code>.galeria</code> ni <code>.grid</code> ni ninguno de esos ficheros.</p>
+    <p>Cero JavaScript, cero filtros, cero conexión con el cotizador. Lo único con comportamiento es una regla CSS de <code>hover</code>. No hay flujo de datos que mapear entre la galería y el resto: <b>no se tocan</b>.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ 01 -->
+<section id="s1">
+  <h2><span class="n">01</span> Árbol de componentes</h2>
+  <p class="sub">94 piezas inventariadas. En rojo las que genera JavaScript; en gris las que están escritas a mano en el HTML.</p>
+
+  <div class="hoja">
+<pre class="mermaid">
+%%{init: {'theme':'neutral', 'flowchart': {'curve':'linear','nodeSpacing':22,'rankSpacing':34}}}%%
+graph TD
+  DOC["document"]
+
+  DOC --> HEAD["head"]
+  DOC --> BODY["body"]
+
+  HEAD --> SEO["SeoMeta<br/>10 og · 4 twitter · favicon SVG"]
+  HEAD --> CSS["GlobalStylesheet<br/>L36-250 · 215 líneas"]
+  HEAD --> LD["JsonLd AutoRepair<br/>L263-299"]
+
+  BODY --> FX["PaintServerLibrary #fx<br/>7 patterns · 18 gradientes · 6 filtros"]
+  BODY --> HDR["SiteHeader"]
+  BODY --> VBAR["VehicleBarShell"]
+  BODY --> RB["RestoreBanner"]
+  BODY --> MAIN["main"]
+  BODY --> INFO["Info · 800 palabras SEO"]
+  BODY --> FOOT["footer"]
+  BODY --> SB["StickyBar"]
+  BODY -.inyectado.-> MOD["2 Modales<br/>abrirFormulario · hojaPendiente"]
+
+  HDR --> BRAND["BrandLockup<br/>logo + h1"]
+  HDR --> CTA1["CtaWhatsApp #ctaWa"]
+
+  VBAR --> CHIP["VehicleChip ×6<br/>3 con PendingBadge"]
+
+  MAIN --> LAY["ConfiguratorLayout<br/>grid 1fr / 400px"]
+  MAIN --> GAL["Galería ×18 figure<br/>INERTE"]
+
+  LAY --> STAGE["StageCard · el visor"]
+  LAY --> PANEL["OptionsPanel"]
+
+  STAGE --> BADGE["MaterialBadge"]
+  STAGE --> LIMPIO["CleanViewToggle"]
+  STAGE --> SVA["svg-auto · 6 zonas"]
+  STAGE --> SVM["svg-moto · 5 zonas"]
+  STAGE --> SVT["svg-tablero · 1 zona"]
+
+  PANEL --> PRE["PresetRow ×3"]
+  PANEL --> TABS["TabBar ×6"]
+  PANEL --> CONT["#content<br/>6 paneles, uno por pestaña"]
+  PANEL --> PRICE["PriceBar + Summary"]
+
+  SB --> CTA2["CtaWhatsApp #ctaSticky"]
+
+  classDef js fill:#fdeced,stroke:#a8101c,stroke-width:1.4px,color:#5c0710;
+  classDef est fill:#f2f4f7,stroke:#b9c0ca,color:#2b323c;
+  classDef mudo fill:#ffffff,stroke:#c8ced6,stroke-dasharray:4 3,color:#59616d;
+  class CHIP,CONT,MOD,PRE,BADGE js;
+  class DOC,HEAD,BODY,SEO,CSS,LD,FX,HDR,VBAR,RB,MAIN,INFO,FOOT,SB,BRAND,CTA1,CTA2,LAY,STAGE,PANEL,LIMPIO,SVA,SVM,SVT,TABS,PRICE est;
+  class GAL mudo;
+</pre>
+  </div>
+  <p class="pie">Fig. 1 — Árbol de componentes. Rojo = generado por JS. Discontinuo = sin lógica asociada.</p>
+
+  <h3>Las duplicaciones que sí importan</h3>
+  <div class="tabla">
+  <table>
+    <thead><tr><th>Qué se duplica</th><th>Dónde</th><th class="num">Veces</th><th>Por qué duele</th></tr></thead>
+    <tbody>
+      <tr><td><b>El catálogo de productos</b></td><td>JSON-LD (L263-299), <code>PRODUCTS</code> (L968), texto <code>.info</code> (L740-797)</td><td class="num">3</td><td>Tres copias de los mismos 6 productos y sus precios. Cambiar uno obliga a editar tres sitios.</td></tr>
+      <tr><td><b>Las 7 tramas</b></td><td><code>&lt;pattern&gt;</code> SVG (L306-343) y clases CSS <code>.diamond/.dots/…</code> (L91-98)</td><td class="num">2</td><td>La misma textura definida dos veces en dos lenguajes: una para el asiento, otra para la miniatura del botón.</td></tr>
+      <tr><td><b>El botón de WhatsApp</b></td><td><code>#ctaWa</code> (L506) y <code>#ctaSticky</code> (L806)</td><td class="num">2</td><td>Mismo texto, mismo handler, dos ids y dos reglas CSS de tamaño distintas.</td></tr>
+      <tr><td><b>El andamiaje de modal</b></td><td><code>abrirFormulario</code> (L1647) y <code>hojaPendiente</code> (L1737)</td><td class="num">2</td><td>Backdrop, Escape, clic fuera, foco y el <i>fallback</i> de <code>window.open</code> bloqueado, copiados casi línea por línea.</td></tr>
+      <tr><td><b>La geometría de zona</b></td><td>dentro de cada <code>svg-*</code></td><td class="num">≤4</td><td>El mismo atributo <code>d</code> aparece en la zona, su overlay de patrón y sus sombreados. <b>Y ya está desincronizado</b>: el refuerzo de cabecera dice <code>M 252 148</code> y la costura dice <code>M 275 148</code>.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ 02 -->
+<section id="s2">
+  <h2><span class="n">02</span> Flujo de estado</h2>
+  <p class="sub">No hay props. Hay nueve variables de módulo que todo el mundo lee y escribe directamente. Este es el diagrama que el encargo pedía como «flujo de estado».</p>
+
+  <div class="hoja">
+<pre class="mermaid">
+%%{init: {'theme':'neutral', 'flowchart': {'curve':'linear','nodeSpacing':26,'rankSpacing':46}}}%%
+graph LR
+  subgraph ENT["ENTRADAS"]
+    direction TB
+    E1["clic en chip<br/>de vehículo"]
+    E2["clic en zona<br/>del SVG"]
+    E3["clic en opción<br/>del panel"]
+    E4["preset"]
+    E5["?d= de la URL"]
+    E6["localStorage"]
+  end
+
+  subgraph SET["SETTERS · único punto de escritura"]
+    direction TB
+    S1["setProduct"]
+    S2["setPart"]
+    S3["setMaterial"]
+    S4["setDiseno"]
+    S5["setEmbroidery"]
+    S6["decodificar"]
+    S7["restaurar"]
+  end
+
+  subgraph EST["ESTADO · 9 variables de módulo"]
+    direction TB
+    V1["state<br/>producto→parte→{color,patrón,costura}"]
+    V2["productId"]
+    V3["activePart · tab"]
+    V4["material<br/>materialPorFamilia"]
+    V5["embroidery · diseno"]
+    V6["cliente"]
+  end
+
+  subgraph SAL["SALIDAS"]
+    direction TB
+    O1["paint<br/>fill de cada zona"]
+    O2["render<br/>panel derecho"]
+    O3["renderPrice<br/>renderSticky"]
+    O4["renderSummary"]
+    O5["guardar<br/>localStorage"]
+    O6["codificar<br/>enlace ?d="]
+    O7["enviarWhatsApp<br/>mensaje"]
+    O8["track<br/>11 eventos"]
+  end
+
+  E1 --> S1
+  E2 --> S2
+  E3 --> S2
+  E3 --> S3
+  E3 --> S4
+  E3 --> S5
+  E4 --> S2
+  E5 --> S6
+  E6 --> S7
+
+  S1 --> V2
+  S2 --> V1
+  S3 --> V4
+  S4 --> V5
+  S5 --> V5
+  S6 --> V1
+  S7 --> V1
+
+  V1 --> O1
+  V1 --> O4
+  V2 --> O2
+  V3 --> O2
+  V4 --> O3
+  V5 --> O3
+  V1 --> O5
+  V1 --> O6
+  V6 --> O7
+  O6 --> O7
+  V2 --> O8
+
+  O8 -.->|"nadie escucha"| NADA["window.__eventos<br/>array en memoria"]
+
+  classDef ent fill:#f2f4f7,stroke:#b9c0ca,color:#2b323c;
+  classDef set fill:#fdeced,stroke:#a8101c,color:#5c0710;
+  classDef est fill:#e4f4f1,stroke:#0b6357,color:#063b33;
+  classDef sal fill:#ffffff,stroke:#c8ced6,color:#2b323c;
+  classDef muerto fill:#ffffff,stroke:#c8ced6,stroke-dasharray:4 3,color:#7a828e;
+  class E1,E2,E3,E4,E5,E6 ent;
+  class S1,S2,S3,S4,S5,S6,S7 set;
+  class V1,V2,V3,V4,V5,V6 est;
+  class O1,O2,O3,O4,O5,O6,O7,O8 sal;
+  class NADA muerto;
+</pre>
+  </div>
+  <p class="pie">Fig. 2 — Flujo de estado. Toda escritura pasa por un setter; toda lectura va a global.</p>
+
+  <div class="aviso ok">
+    <p class="t">Esto ya está bien resuelto</p>
+    <p>Hay un <b>despachador único por delegación</b>: <code>content.addEventListener('click')</code> lee <code>data-act</code>/<code>data-val</code> y enruta a los cuatro setters. Sobrevive al <code>innerHTML</code> que reemplaza el panel entero. Es la pieza mejor diseñada del archivo y el plan no la toca.</p>
+  </div>
+
+  <h3>Las nueve variables, con sus escritores y lectores</h3>
+  <div class="tabla">
+  <table>
+    <thead><tr><th>Variable</th><th class="num">L</th><th class="num">Escritores</th><th class="num">Lectores</th><th>Se persiste</th></tr></thead>
+    <tbody>
+      <tr><td><code>state</code></td><td class="num">1056</td><td class="num">5</td><td class="num">8</td><td>sí</td></tr>
+      <tr><td><code>productId</code></td><td class="num">1060</td><td class="num">3</td><td class="num">19</td><td>sí</td></tr>
+      <tr><td><code>activePart</code></td><td class="num">1061</td><td class="num">3</td><td class="num">3</td><td>no</td></tr>
+      <tr><td><code>tab</code></td><td class="num">1062</td><td class="num">2</td><td class="num">2</td><td>no</td></tr>
+      <tr><td><code>materialPorFamilia</code></td><td class="num">1065</td><td class="num">4</td><td class="num">3</td><td>sí</td></tr>
+      <tr><td><code>material</code></td><td class="num">1067</td><td class="num">3</td><td class="num">7</td><td>derivado</td></tr>
+      <tr><td><code>embroidery</code></td><td class="num">1068</td><td class="num">4</td><td class="num">8</td><td>sí</td></tr>
+      <tr><td><code>diseno</code></td><td class="num">1069</td><td class="num">3</td><td class="num">5</td><td>sí</td></tr>
+      <tr><td><code>cliente</code></td><td class="num">1512</td><td class="num">2</td><td class="num">3</td><td>sí</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="pie"><code>productId</code> lo leen 19 funciones. Es el acoplamiento más fuerte del archivo.</p>
+</section>
+
+<!-- ═══════════════════════════════════════ 03 -->
+<section id="s3">
+  <h2><span class="n">03</span> La cascada de repintado</h2>
+  <p class="sub">Cada setter encadena a mano sus repintados. Nadie coordina. Por eso hay trabajo repetido.</p>
+
+  <div class="hoja">
+<pre class="mermaid">
+%%{init: {'theme':'neutral', 'flowchart': {'curve':'linear','nodeSpacing':20,'rankSpacing':40}}}%%
+graph TD
+  SP["setProduct L1291"] --> R["render L1341"]
+  SP --> P["paint L1439"]
+  SP --> PM["paintMaterial L1458"]
+  SP --> PE["paintEmbroidery L1468"]
+  SP --> PZ["pulsarZonas L1284"]
+
+  R --> RS["renderSummary"]
+  R --> RP1["renderPrice ①"]
+  R --> RST["renderSticky"]
+  PM --> RP2["renderPrice ②"]
+  PE --> RP3["renderPrice ③"]
+
+  RP1 -.-> DUP["renderPrice corre 3 veces<br/>por cada cambio de vehículo"]
+  RP2 -.-> DUP
+  RP3 -.-> DUP
+
+  classDef s fill:#fdeced,stroke:#a8101c,color:#5c0710;
+  classDef n fill:#f2f4f7,stroke:#b9c0ca,color:#2b323c;
+  classDef d fill:#fdf2dd,stroke:#8a5a00,color:#4a3000;
+  class SP s;
+  class R,P,PM,PE,PZ,RS,RST,RP1,RP2,RP3 n;
+  class DUP d;
+</pre>
+  </div>
+  <p class="pie">Fig. 3 — Cascada de <code>setProduct</code>. Dos de las tres llamadas a <code>renderPrice</code> sobran.</p>
+  <p>No es un problema de rendimiento —son microsegundos— sino de <b>quién manda</b>: no hay un solo punto donde decir «el estado cambió, repinta». Cada setter improvisa su lista, y por eso <code>setProduct</code> se olvidó de llamar a <code>guardar()</code>. Ver el defecto ② de la sección 06.</p>
+</section>
+
+<!-- ═══════════════════════════════════════ 04 -->
+<section id="s4">
+  <h2><span class="n">04</span> Capa de estilos y tokens</h2>
+  <p class="sub">Una sola hoja de 215 líneas, tema oscuro fijo, y ni una variable CSS.</p>
+
+  <div class="ficha" style="margin-bottom:24px">
+    <div><dt>Hex en CSS</dt><dd>49<small>distintos</small></dd></div>
+    <div><dt>Custom props</dt><dd>0</dd></div>
+    <div><dt>Usos de var()</dt><dd>0</dd></div>
+    <div><dt>Hex en JS</dt><dd>18<small>fuera del CSS</small></dd></div>
+    <div><dt>Gradientes</dt><dd>18<small>en el SVG</small></dd></div>
+    <div><dt>Breakpoints</dt><dd>2<small>repetidos 3× cada uno</small></dd></div>
+  </div>
+
+  <h3>Los diez tokens que más literales absorberían</h3>
+  <div class="tabla">
+  <table>
+    <thead><tr><th>Token</th><th>Valor</th><th class="num">Reemplaza</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr><td><code>--fs-xs</code></td><td><code>12px</code></td><td class="num">31</td><td>Tamaño de letra menor</td></tr>
+      <tr><td><code>--text</code></td><td><code>#fff</code></td><td class="num">22</td><td>Texto principal</td></tr>
+      <tr><td><code>--brand</code></td><td><code>#e50914</code></td><td class="num">15</td><td><b>El rojo de la marca</b></td></tr>
+      <tr><td><code>--text-muted</code></td><td><code>#a8a9b0</code></td><td class="num">14</td><td>Texto atenuado</td></tr>
+      <tr><td><code>--border-input</code></td><td><code>#3a3b42</code></td><td class="num">12</td><td>Borde de control</td></tr>
+      <tr><td><code>--gutter</code></td><td><code>18px / 12px</code></td><td class="num">11</td><td>Espaciado base</td></tr>
+      <tr><td><code>--pattern-ink</code></td><td><code>#aaa</code></td><td class="num">10</td><td>Tinta de las tramas</td></tr>
+      <tr><td><code>--surface-1</code></td><td><code>#101115</code></td><td class="num">10</td><td>Superficie de tarjeta</td></tr>
+      <tr><td><code>--border</code></td><td><code>#26272d</code></td><td class="num">9</td><td>Borde estándar</td></tr>
+      <tr><td><code>--r-sm</code></td><td><code>9px</code></td><td class="num">8</td><td>Radio pequeño</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="pie">41 tokens en total cubrirían la práctica totalidad de la hoja.</p>
+
+  <div class="aviso amb">
+    <p class="t">Cuidado: los hex del catálogo NO son tokens</p>
+    <p>Los 12 colores de <code>COLORS</code> (L858-872) son <b>datos de producto</b>, no tema: <code>#111214</code> es el cuero negro que vende el taller. Y su <b>posición en el array es el formato del enlace compartible</b> <code>?d=</code>. Moverlos a CSS o reordenarlos rompe cada enlace que ya circula por WhatsApp, en silencio y sin error.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ 05 -->
+<section id="s5">
+  <h2><span class="n">05</span> Qué está sobrecargado</h2>
+  <p class="sub">Diez funciones concentran las responsabilidades mezcladas. Estas son las cinco peores.</p>
+
+  <div class="tabla">
+  <table>
+    <thead><tr><th>Función</th><th class="num">Líneas</th><th>Responsabilidades que mezcla</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>render()</code><br><span class="mono" style="font-size:11px">L1341</span></td>
+        <td class="num">74</td>
+        <td>Seis <code>if(tab===…)</code> <b>independientes</b>, no <code>else-if</code>: los seis se evalúan siempre. Construye nueve plantillas HTML por concatenación, consulta reglas de negocio (<code>vetos</code>, stock, <code>materiales()</code>), segmenta el catálogo en «stock» y «bajo pedido», y decide tres textos de <i>placeholder</i> comparando contra literales en español.</td>
+      </tr>
+      <tr>
+        <td><code>mountRelieve()</code><br><span class="mono" style="font-size:11px">L1190</span></td>
+        <td class="num">53</td>
+        <td>Genera <code>clipPath</code> por zona, la capa de relieve con factores mágicos (<code>×1.34</code>, <code>y-60</code>, <code>h+120</code>), y <b>decide el orden Z buscando la primera <code>.seam</code> del SVG</b>: acoplamiento de posición con <code>mountCosturaVolumen</code>.</td>
+      </tr>
+      <tr>
+        <td><code>abrirFormulario()</code><br><span class="mono" style="font-size:11px">L1647</span></td>
+        <td class="num">51</td>
+        <td>Markup del modal (23 líneas), andamiaje (backdrop, Escape, foco), precarga y validación del formulario, escritura de <code>cliente</code>, persistencia, analítica y encadenado a <code>enviarWhatsApp</code>.</td>
+      </tr>
+      <tr>
+        <td><code>decodificar()</code><br><span class="mono" style="font-size:11px">L1564</span></td>
+        <td class="num">30</td>
+        <td>Parsea, verifica <i>checksum</i> y <b>muta seis globales mientras parsea</b> en vez de devolver un objeto. Si el <code>decodeURIComponent</code> de la L1588 lanza, el diseño queda a medio aplicar.</td>
+      </tr>
+      <tr>
+        <td><code>enviarWhatsApp()</code><br><span class="mono" style="font-size:11px">L1705</span></td>
+        <td class="num">27</td>
+        <td>Recalcula el resumen que <code>renderSummary</code> ya calculó (con otro formato), formatea el mensaje, calcula precio, genera el enlace, emite analítica y aplica el <i>fallback</i> para el navegador interno de Instagram.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ 06 -->
+<section id="s6">
+  <h2><span class="n">06</span> Hallazgos: 5 defectos reales</h2>
+  <p class="sub">Comprobados uno por uno abriendo el archivo. Esto es lo que el mapeo encontró de verdad, y vale más que cualquier refactor.</p>
+
+  <ul class="acc">
+    <li>
+      <span class="k">①</span>
+      <p class="h">Una bomba latente que dejaría la página en blanco</p>
+      <p class="d"><code>mountGrainClips</code>, L1132: <code>(svg.querySelector('defs') || svg).insertBefore(cp, svg.firstChild)</code>. Si el SVG tiene un <code>&lt;defs&gt;</code>, se llama <code>insertBefore</code> sobre él pasándole un nodo de referencia que <b>no es hijo suyo</b> → <code>NotFoundError</code> → muere el script entero → página en blanco. Hoy funciona <b>por casualidad</b>: verifiqué que ninguno de los tres escenarios tiene <code>&lt;defs&gt;</code>. El día que alguien añada uno, se cae el sitio. <b>Arreglo: una línea.</b></p>
+    </li>
+    <li>
+      <span class="k">②</span>
+      <p class="h">Cambiar de vehículo no se guarda</p>
+      <p class="d"><code>setProduct</code> (L1291) no llama a <code>guardar()</code>. Seis funciones sí lo hacen; esta no. El cliente elige Moto, cierra, vuelve, y le sale Auto. <b>Arreglo: una línea.</b></p>
+    </li>
+    <li>
+      <span class="k">③</span>
+      <p class="h">El sistema de vetos entero es código muerto</p>
+      <p class="d"><code>INCOMPATIBLES</code> (L1009) tiene una sola regla y apunta a <code>pisos</code>. Pero <code>pisos</code> es <code>pending:true</code>, y <code>setProduct</code> (L1293) hace <code>if(!prod || prod.pending) return</code>. <b><code>productId</code> nunca puede valer <code>'pisos'</code></b>, así que <code>vetos()</code> devuelve siempre un <code>Map</code> vacío. Toda la maquinaria de botones deshabilitados y notas de veto —repartida por <code>render</code>, <code>setPart</code> y <code>repararConflictos</code>— jamás se ejecuta. Verificado.</p>
+    </li>
+    <li>
+      <span class="k">④</span>
+      <p class="h">La analítica arranca en orden invertido</p>
+      <p class="d"><code>setProduct(productId)</code> (L1835) dispara <code>producto_seleccionado</code> <b>antes</b> de que la L1836 dispare <code>visita</code>. La primera entrada de cada sesión nunca es la visita, lo que rompe cualquier embudo que montes después sobre Plausible o Umami. <b>Arreglo: intercambiar dos líneas.</b></p>
+    </li>
+    <li>
+      <span class="k">⑤</span>
+      <p class="h">Escribir el nombre del bordado no se guarda ni se mide</p>
+      <p class="d">El handler <code>input</code> de <code>#embInput</code> (L1789) actualiza <code>embroidery.text</code> pero no llama a <code>guardar()</code> ni a <code>track()</code>. <b>Ojo:</b> el arreglo tiene que ser <code>guardar()</code> con <i>debounce</i>, nunca <code>render()</code> — <code>render</code> termina en <code>content.innerHTML = h</code> y destruiría el <code>&lt;input&gt;</code> en cada tecla, con lo que el cliente perdería el foco y en móvil se le cerraría el teclado.</p>
+    </li>
+  </ul>
+
+  <p>Además, dos restos inertes que se pueden borrar sin pensarlo: el filtro <code>#soft6</code> (L471), que no referencia nadie, y la regla <code>body.limpio .valle,.labio{opacity:1}</code> (L241), que no cambia un solo píxel. Y un desfase de números mágicos: <code>pulsarZonas</code> quita la clase a los <b>3600 ms</b> mientras la animación dura <b>3300 ms</b>.</p>
+</section>
+
+<!-- ═══════════════════════════════════════ 07 -->
+<section id="s7">
+  <h2><span class="n">07</span> Plan de desacoplamiento</h2>
+  <p class="sub">El encargo pedía dividir lo sobrecargado de forma modular. Sometí cada propuesta a un revisor adversario, y el resultado obliga a matizar.</p>
+
+  <div class="aviso amb">
+    <p class="t">Por qué el plan es más corto de lo que pedías</p>
+    <p>Este archivo <b>funciona</b>, está en cero anti-patrones, y <b>no tiene ni un test automático</b>. Cada refactor estructural se verifica a ojo, en el navegador, sobre seis vehículos × seis pestañas. En un sitio cuyo único trabajo es que un cliente de Cuenca pulse «Cotizar por WhatsApp», la elegancia interna no paga el riesgo de una regresión silenciosa.</p>
+    <p>Así que separo lo que <b>sí</b> hago de lo que <b>recomiendo no hacer</b>. Si quieres cualquiera de la segunda lista, la hago igual — pero quiero que sepas lo que cuesta.</p>
+  </div>
+
+  <h3>Sí: cuatro cambios, unas seis líneas, todos reversibles</h3>
+  <ul class="acc">
+    <li><span class="k">1</span><p class="h">Desactivar la bomba de <code>mountGrainClips</code> <span class="pill bajo">riesgo bajo</span></p><p class="d">L1132: quitar la rama <code>svg.querySelector('defs') ||</code> y dejar <code>svg.insertBefore(cp, svg.firstChild)</code>. Elimina el único fallo capaz de matar la página entera.</p></li>
+    <li><span class="k">2</span><p class="h">Persistir el cambio de vehículo <span class="pill bajo">riesgo bajo</span></p><p class="d">Añadir <code>guardar();</code> al final de <code>setProduct</code> (L1307).</p></li>
+    <li><span class="k">3</span><p class="h">Guardar el texto del bordado <span class="pill bajo">riesgo bajo</span></p><p class="d"><code>guardar()</code> con <i>debounce</i> de ~500 ms en el handler de <code>#embInput</code>. Sin <code>render</code> y sin <code>track</code> por tecla.</p></li>
+    <li><span class="k">4</span><p class="h">Enderezar el orden de la analítica <span class="pill bajo">riesgo bajo</span></p><p class="d">Mover <code>track('visita')</code> por delante de <code>setProduct(productId)</code>, y añadir <code>track('bordado_cambiado')</code> en <code>setEmbroidery</code>.</p></li>
+  </ul>
+
+  <h3>Opcional, si quieres ir un paso más</h3>
+  <ul class="acc">
+    <li><span class="k">5</span><p class="h"><code>decodificar()</code> devuelve un <i>snapshot</i> en vez de mutar <span class="pill medio">riesgo medio</span></p><p class="d">Firma nueva: <code>decodificar(str) → {productId, state, material, embroidery, diseno} | null</code>, y un <code>aplicar(snapshot)</code> que escribe todo de golpe al final. Así un <code>?d=</code> corrupto no deja el diseño a medio aplicar. Es el único refactor estructural que se paga solo.</p></li>
+    <li><span class="k">6</span><p class="h">Borrar el código muerto <span class="pill bajo">riesgo bajo</span></p><p class="d">El filtro <code>#soft6</code> y la regla <code>opacity:1</code> de la L241. Y decidir qué hacer con el sistema de vetos: hoy no hace nada.</p></li>
+  </ul>
+
+  <h3>No: siete refactors que recomiendo no hacer</h3>
+  <ul class="acc no">
+    <li><span class="k">✕</span><p class="h">Reordenar o renombrar cualquier catálogo <span class="pill alto">rompe clientes</span></p><p class="d">Agrupar los <code>pending</code> al final de <code>PRODUCTS</code> es la limpieza más natural del mundo, y <b><code>PRODUCTS</code> es el único catálogo sin comentario de advertencia</b>. Después de hacerlo, cada <code>?d=</code> que circula por WhatsApp abre el producto equivocado. Sin error, sin aviso, y git no lo devuelve.</p></li>
+    <li><span class="k">✕</span><p class="h">Componentizar o generar los tres SVG <span class="pill alto">riesgo alto</span></p><p class="d">El dibujo <b>es</b> el producto: es lo único que distingue esta página de la competencia. La geometría salió de <code>potrace</code>, y generarla con un LLM ya se probó y se descartó. Una regresión aquí no se ve en el diff: se ve en que el asiento sale deformado en producción.</p></li>
+    <li><span class="k">✕</span><p class="h">Sacar la galería, el texto <code>.info</code> o el JSON-LD a JavaScript <span class="pill alto">riesgo alto</span></p><p class="d">Ese markup «duplicado» es el SEO local del negocio: la ficha <i>AutoRepair</i>, 18 <code>alt</code> descriptivos y ~800 palabras indexables. Este taller vive de que alguien busque «tapicería en Cuenca». La duplicación cuesta editar dos sitios una vez al año; sacarlo del HTML servido cuesta clientes y no se nota hasta meses después.</p></li>
+    <li><span class="k">✕</span><p class="h">Separar en <code>index.html</code> + <code>app.js</code> + <code>styles.css</code> <span class="pill medio">choca con el despliegue</span></p><p class="d">El despliegue es manual: arrastras el contenido de <code>SUBIR A LA WEB</code> a Cloudflare Pages. Y ya hay <b>dos copias byte a byte</b> del archivo que hay que sincronizar. Añadir dos ficheros multiplica las formas de publicar un sitio a medias.</p></li>
+    <li><span class="k">✕</span><p class="h">Meter tokens CSS y deduplicar selectores <span class="pill medio">regresión visual</span></p><p class="d">Duele decirlo después de haberlos inventariado, pero: el sitio es <b>solo oscuro</b>, así que los tokens no habilitan nada hoy. Y varios «duplicados» son <i>overrides</i> con carga útil — <code>.stickybar .cta</code> se redefine en la L234 con <code>min-height:44px</code>, que es el área táctil mínima del botón que genera las ventas.</p></li>
+    <li><span class="k">✕</span><p class="h">Arranque declarativo con tabla de pasos <span class="pill medio">más grande de lo que parece</span></p><p class="d">No es «envolver siete <code>mount*</code>»: el cableado de pestañas (L1803-1813) y los CTA (L1814-1820) son sentencias sueltas de nivel superior. Hay que extraer y recablear todo el arranque, la parte que corre una sola vez y que nadie va a volver a probar. Y un <code>try/catch</code> silencioso <b>empeora</b> el modo de fallo.</p></li>
+    <li><span class="k">✕</span><p class="h">Un <code>commit()</code> genérico para los seis setters <span class="pill alto">regresión concreta</span></p><p class="d">En su versión completa introduce dos regresiones: el <code>&lt;input&gt;</code> del bordado pierde el foco en cada tecla, y la analítica se inunda. La versión recortada —los cuatro arreglos de arriba— cierra los mismos defectos con seis líneas en vez de cuarenta.</p></li>
+  </ul>
+</section>
+
+<hr class="fin">
+<p class="firma">Levantado por cuatro lectores en paralelo sobre <code>index.html</code> (1 839 líneas) y verificado por tres pases adversarios: comprobación de hechos, búsqueda de omisiones y evaluación de riesgo. Los desfases de numeración que encontró el verificador ya están corregidos en este documento. Ningún archivo del proyecto fue modificado.</p>
+
+</div>

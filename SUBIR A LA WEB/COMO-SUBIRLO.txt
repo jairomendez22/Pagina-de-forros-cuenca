@@ -1,0 +1,137 @@
+CÓMO SUBIRLO A forroscuenca.com
+================================
+
+Hay dos caminos. El A es el que te recomiendo: es gratis, tarda unos
+minutos y no depende de que tu proveedor tenga panel bueno. El B es el
+clásico, si ya pagaste un hosting y prefieres usarlo.
+
+Antes de empezar necesitas saber UNA cosa: dónde compraste el dominio
+(Hostinger, GoDaddy, Namecheap, otro). Entra a esa cuenta, ahí es donde
+se hacen los cambios de DNS del paso final.
+
+
+==========================================================
+CAMINO A — Cloudflare Pages  (recomendado, gratis)
+==========================================================
+
+Por qué este: no hay servidor que mantener, el HTTPS (el candadito) se
+pone solo, y las fotos cargan rápido desde Ecuador porque Cloudflare
+tiene servidores cerca.
+
+  1. Entra a https://dash.cloudflare.com y crea una cuenta gratis.
+
+  2. En el menú de la izquierda: "Workers & Pages" → botón "Create"
+     → pestaña "Pages" → "Upload assets".
+
+  3. Ponle de nombre:  forroscuenca
+
+  4. Te pide los archivos. Abre esta carpeta "SUBIR A LA WEB", selecciona
+     TODO lo de adentro (index.html, logo, og, fotos, disenos) y arrástralo
+     a la ventana del navegador.
+
+     OJO: arrastra el CONTENIDO, no la carpeta. Si arrastras la carpeta
+     entera la web queda en forroscuenca.com/SUBIR A LA WEB/ y sale rota.
+
+  5. Botón "Deploy site". Espera a que termine.
+
+  6. Te da una dirección tipo  forroscuenca.pages.dev  — ábrela. Ya está
+     tu web funcionando. Compruébala antes de seguir.
+
+  7. Ahora el dominio propio: en esa misma pantalla, pestaña "Custom
+     domains" → "Set up a domain" → escribe  forroscuenca.com
+
+  8. Cloudflare te va a decir qué poner en el DNS. Te pedirá una de dos
+     cosas, según lo que te muestre en pantalla:
+
+     · Cambiar los "nameservers" (te da dos direcciones tipo
+       xxx.ns.cloudflare.com). Entonces vas a donde compraste el dominio,
+       buscas "Nameservers" o "Servidores DNS", borras los que están y
+       pones esos dos.
+
+     · O crear un registro CNAME. Entonces vas a donde compraste el
+       dominio, buscas "DNS" o "Zona DNS", y añades:
+           Tipo: CNAME    Nombre: @  (o www)   Valor: el que te dé Cloudflare
+
+  9. Espera. El dominio puede tardar de 10 minutos a 24 horas en apuntar.
+     Es normal, no toques nada mientras tanto.
+
+
+==========================================================
+CAMINO B — Hosting con cPanel  (Hostinger, GoDaddy, Namecheap…)
+==========================================================
+
+Si ya pagaste un plan de hosting, úsalo.
+
+  1. Entra al panel de tu proveedor y busca "Administrador de archivos"
+     o "File Manager". En Hostinger está en Hosting → Administrar.
+
+  2. Métete en la carpeta   public_html
+     (en algunos proveedores se llama  www  o  htdocs)
+
+  3. Si adentro hay un index.html de bienvenida del proveedor, bórralo.
+
+  4. Botón "Subir" / "Upload". Sube:
+       · index.html
+       · logo-forros-cuenca.png
+       · og-forros-cuenca.jpg
+
+  5. Las carpetas fotos/ y disenos/ tienen 52 archivos entre las dos.
+     Subirlas archivo por archivo es un martirio. Hazlo así:
+
+       a) En tu Mac, comprime cada carpeta: clic derecho sobre "fotos"
+          → "Comprimir fotos". Te crea fotos.zip. Igual con "disenos".
+       b) Sube los dos .zip a public_html.
+       c) En el administrador de archivos, clic derecho sobre cada .zip
+          → "Extraer" / "Extract".
+       d) Borra los .zip cuando ya se extrajeron.
+
+  6. Comprueba que quedó así en el servidor:
+
+         public_html/index.html
+         public_html/logo-forros-cuenca.png
+         public_html/og-forros-cuenca.jpg
+         public_html/fotos/          (36 archivos adentro)
+         public_html/disenos/        (16 archivos adentro)
+
+  7. El dominio: si compraste hosting y dominio en el mismo proveedor,
+     normalmente ya está conectado. Si no, en el panel busca "Dominios"
+     → "Apuntar dominio" y sigue lo que te indique.
+
+  8. HTTPS: busca "SSL" en el panel y actívalo (suele decir "SSL gratis"
+     o "Let's Encrypt"). Sin esto el navegador dice "No es seguro" y la
+     gente se asusta.
+
+
+==========================================================
+DESPUÉS, HAGAS EL CAMINO QUE HAGAS
+==========================================================
+
+Abre https://forroscuenca.com y revisa estas cinco cosas:
+
+  [ ] Carga el diseñador y se ve el asiento.
+  [ ] Arriba a la izquierda se ve el logo (no un cuadro roto).
+  [ ] Bajando, en "Trabajos que ya entregamos" se ven las 18 fotos.
+  [ ] En la pestaña DISEÑO se ven los 8 modelos con su imagen.
+  [ ] El botón "Cotizar por WhatsApp" te abre el chat al 0984353695.
+
+Si las fotos salen rotas: la carpeta fotos/ no subió, o subiste la
+carpeta contenedora en vez de su contenido. Revisa el paso 4 / 6.
+
+Y por último, la prueba de WhatsApp: pégate el enlace a ti mismo en un
+chat. Debe salir la tarjeta con la foto de los asientos y el texto
+"Diseña tu forro y cotiza al instante". Si sale un cuadro gris, es que
+og-forros-cuenca.jpg no subió a la raíz.
+
+
+==========================================================
+NOTA SOBRE LA VISTA PREVIA QUE VISTE EN BLANCO
+==========================================================
+
+Perseguí ese problema hasta el final. No es un fallo del sitio: el visor
+de Claude tarda entre 15 y 20 segundos en cargar la primera vez un
+archivo de este tamaño, y hasta entonces se ve en blanco. Recargando o
+esperando, aparece completo. En tu servidor propio no pasa: carga directo.
+
+Lo único que sí se ve roto en esa vista previa son el logo y las fotos,
+y es esperado: la vista previa muestra un solo archivo, sin las carpetas
+al lado. En forroscuenca.com viajan juntos y se ven bien.

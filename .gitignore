@@ -15,3 +15,10 @@ Gemini_Generated_Image_*.jpeg
 # Config local de herramientas
 .claude/
 .impeccable/
+
+# Material de trabajo pesado (no va al sitio)
+Copia de CATALOGO FORROS CEUCNA/
+Copia de CATALOGO FORROS CEUCNA.zip
+IMAGENES CON IA FORROS CUENCA/
+.agents/
+.codex/

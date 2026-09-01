@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Forros y tapizados para autos y camionetas en Machala | Forros Cuenca</title>
-<meta name="description" content="Tapizamos asientos de auto, camioneta y SUV en Machala. Diseña tu forro en línea: elige color, patrón y costura, y cotiza al instante por WhatsApp. Desde $110, instalación incluida y entrega en 1 a 2 días.">
+<title>Forros y tapizados para autos y motos en Cuenca | Forros Cuenca</title>
+<meta name="description" content="Tapizamos asientos de auto, moto y camioneta en Cuenca. Diseña tu forro en línea: elige color, patrón y costura, y cotiza al instante por WhatsApp. Desde $110, instalación incluida y entrega en 1 a 2 días.">
 <meta name="theme-color" content="#0a0b0d">
 <meta name="author" content="Forros Cuenca">
 
@@ -18,14 +18,14 @@
 <meta property="og:locale" content="es_EC">
 <meta property="og:url" content="https://forroscuenca.com/">
 <meta property="og:title" content="Diseña tu forro y cotiza al instante | Forros Cuenca">
-<meta property="og:description" content="Elige color, patrón y costura de cada parte del asiento y mira cómo queda antes de encargarlo. Tapizados en Machala desde $110, con instalación incluida.">
+<meta property="og:description" content="Elige color, patrón y costura de cada parte del asiento y mira cómo queda antes de encargarlo. Tapizados en Cuenca desde $110, con instalación incluida.">
 <meta property="og:image" content="https://forroscuenca.com/og-forros-cuenca.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Asientos forrados en cuero negro y gris con costura blanca por Forros Cuenca">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Diseña tu forro y cotiza al instante | Forros Cuenca">
-<meta name="twitter:description" content="Tapizados para auto, camioneta y SUV en Machala. Diseña en línea y cotiza por WhatsApp.">
+<meta name="twitter:description" content="Tapizados para auto, moto y camioneta en Cuenca. Diseña en línea y cotiza por WhatsApp.">
 <meta name="twitter:image" content="https://forroscuenca.com/og-forros-cuenca.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23111214'/%3E%3Cpath d='M14 46V18h22v7H23v5h11v7H23v9z' fill='%23fff'/%3E%3Cpath d='M40 18h10v21c0 5-4 8-9 8h-4v-7h3c2 0 3-1 3-3z' fill='%23d4121e'/%3E%3C/svg%3E">
@@ -34,200 +34,135 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════════════════════════════
-   PALETA FORROS CUENCA — rojo, negro y blanco (escudo)
-   Regla de uso del rojo, para que no sature la pagina:
-     --rojo         solo BORDES, marca y contornos de estado activo.
-                    Sobre negro da 4.75:1; no lleva texto pequeno encima.
-     --rojo-solido  solo SUPERFICIES rellenas con texto blanco encima
-                    (el CTA y la pestana activa). Da 6.2:1 con blanco.
-                    El rojo anterior (#e50914) daba 4.14:1 y no pasaba AA.
-     --rojo-tenue   tinte de fondo apenas perceptible para lo seleccionado.
-   Todo lo demas es negro y blanco: el rojo marca la accion, no decora.
-   OJO: los hex del catalogo (COLORS, STITCHES) son colores de cuero y de
-   hilo reales, viven en el JS y NO se tocan desde aqui.
-   ══════════════════════════════════════════════════════════════ */
-:root{
-  /* negros: de la pagina al control, cinco escalones y no mas */
-  --fondo:#0a0b0d;
-  --fondo-hondo:#07080b;
-  --fondo-halo:#282b33;
-  --panel:#0f1013;
-  --superficie:#17181c;
-  --superficie-alta:#1b1c21;
-  --control:#212228;
-  --control-alto:#2a2b31;
-  --velo:#000000a0;
-  --velo-modal:#000000c4;
-  --superficie-velo:#17181cfa;
-  --panel-velo:#0f1013cc;
-
-  /* lineas: tres pesos, no siete */
-  --linea-sutil:#212228;
-  --linea:#282a30;
-  --linea-fuerte:#33353d;
-  --borde:#3d3f47;
-  --borde-hover:#61636d;
-
-  /* blancos: escala de texto con contraste verificado (AA en toda superficie) */
-  --texto:#ffffff;
-  --texto-alto:#e4e5ea;
-  --texto-2:#c8cad1;
-  --texto-cuerpo:#b9bac1;
-  --texto-3:#a8aab2;
-  --texto-4:#9a9ca4;
-  --texto-5:#8a8c94;
-
-  /* rojo: acento con proposito */
-  --rojo:#ef2b36;
-  --rojo-solido:#c1121f;
-  --rojo-cta:#d21c28;
-  --rojo-cta-fin:#a50f19;
-  --rojo-tenue:#1d1215;
-  --rojo-linea:#4a2328;
-  --rojo-suave:#e0a3a6;
-  --rojo-halo:239,43,54;
-  --error:#ff8a90;
-
-  /* muestras de patron (representan el hilo, no la interfaz) */
-  --hilo-muestra:#b0b1b6;
-  --negro-linea:#111318;
-}
-
 *{box-sizing:border-box}
-body{margin:0;background:var(--fondo);color:var(--texto);font-family:'Poppins','Segoe UI',Arial,sans-serif}
+body{margin:0;background:#0a0b0d;color:#fff;font-family:'Poppins','Segoe UI',Arial,sans-serif}
 button,input{font-family:inherit}
-header{padding:14px 26px;background:linear-gradient(180deg,var(--superficie),var(--panel));border-bottom:1px solid var(--linea-fuerte);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+header{padding:14px 26px;background:linear-gradient(180deg,#141519,#101114);border-bottom:1px solid #2c2d33;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .brandwrap{display:flex;align-items:center;gap:14px}
 .logo{width:64px;height:auto;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
 .brand{font-size:25px;font-weight:800;font-style:italic;letter-spacing:.3px;font-family:'Poppins',sans-serif}
-.brand span{color:var(--rojo)}
-.tag{color:var(--texto-3);font-size:12px;letter-spacing:1.8px;text-transform:uppercase;font-weight:600;margin:3px 0 0;line-height:1.3}
+.brand span{color:#e50914}
+.tag{color:#a8a9b0;font-size:12px;letter-spacing:1.8px;text-transform:uppercase;font-weight:600;margin:3px 0 0;line-height:1.3}
 .logo{aspect-ratio:290/195}
 /* --- contenido indexable bajo el configurador --- */
-.info{max-width:1320px;margin:8px auto 0;padding:34px 18px 10px;color:var(--texto-cuerpo);font-size:15px;line-height:1.75}
-.info h2{color:var(--texto);font-size:21px;font-weight:800;letter-spacing:-.2px;margin:34px 0 10px}
+.info{max-width:1320px;margin:8px auto 0;padding:34px 18px 10px;color:#b7b8bf;font-size:15px;line-height:1.75}
+.info h2{color:#fff;font-size:21px;font-weight:800;letter-spacing:-.2px;margin:34px 0 10px}
 .info h2:first-of-type{margin-top:0}
-.info h3{color:var(--texto-alto);font-size:15.5px;font-weight:700;margin:20px 0 5px}
+.info h3{color:#e9eaee;font-size:15.5px;font-weight:700;margin:20px 0 5px}
 .info p{margin:0 0 13px;max-width:74ch}
 .info ul{margin:0 0 13px;padding-left:20px;max-width:74ch}
 .info li{margin-bottom:6px}
-.info a{color:var(--texto-alto);text-decoration:underline;text-decoration-color:var(--rojo);text-underline-offset:3px;text-decoration-thickness:1.5px;transition:color .18s ease}
-.info a:hover{color:var(--rojo)}
+.info a{color:#7fb4e8}
 .info .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:8px 30px}
-footer{max-width:1320px;margin:0 auto;padding:26px 18px 40px;color:var(--texto-5);font-size:13px;border-top:1px solid var(--linea)}
-footer a{color:var(--texto-3)}
+footer{max-width:1320px;margin:0 auto;padding:26px 18px 40px;color:#8b8a92;font-size:13px;border-top:1px solid #26272d}
+footer a{color:#a8a9b0}
 .hcta{display:flex;align-items:center;gap:14px}
-.phone{color:var(--texto-2);font-size:13px;font-weight:500}
-.cta{padding:12px 20px;background:linear-gradient(180deg,var(--rojo-cta),var(--rojo-cta-fin));color:var(--texto);border:0;border-radius:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;letter-spacing:.3px;box-shadow:0 6px 16px -8px rgba(0,0,0,.75)}
+.phone{color:#c9cad0;font-size:13px;font-weight:500}
+.cta{padding:12px 20px;background:linear-gradient(180deg,#d4121e,#a80d18);color:#fff;border:0;border-radius:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;letter-spacing:.3px;box-shadow:0 6px 16px -8px rgba(0,0,0,.75);transition:filter .15s,transform .15s}
+.cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .layout{max-width:1320px;margin:auto;padding:18px;display:grid;grid-template-columns:1fr 400px;gap:14px}
-.card{background:var(--superficie-alta);border:1px solid var(--linea-fuerte);border-radius:16px;overflow:hidden}
-.center{min-height:clamp(400px,70vh,780px);display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at top,var(--fondo-halo),var(--fondo-hondo) 80%);position:relative;padding:16px}
-.matbadge{position:absolute;bottom:14px;right:14px;background:var(--velo);border:1px solid var(--linea-fuerte);border-radius:20px;padding:6px 12px;font-size:12px;color:var(--texto-2);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
-.hint{margin-top:14px;padding:10px 16px;border:1px solid var(--linea-fuerte);border-radius:10px;color:var(--texto-3);font-size:12.5px;text-align:center;background:var(--panel-velo)}
-.summary{margin:0;border-top:1px solid var(--linea);background:var(--panel);padding:12px 16px;color:var(--texto-4);font-size:12.5px;line-height:1.6}
-.summary .row{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px dashed var(--linea-sutil)}
+.card{background:#16171b;border:1px solid #2c2d33;border-radius:16px;overflow:hidden}
+.center{min-height:clamp(400px,70vh,780px);display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at top,#2b2e37,#07080b 80%);position:relative;padding:16px}
+.matbadge{position:absolute;bottom:14px;right:14px;background:#0009;border:1px solid #333;border-radius:20px;padding:6px 12px;font-size:12px;color:#cfd0d5;backdrop-filter:blur(2px)}
+.hint{margin-top:14px;padding:10px 16px;border:1px solid #2c2d33;border-radius:10px;color:#a8a9b0;font-size:12.5px;text-align:center;background:#101115cc}
+.summary{margin:0;border-top:1px solid #26272d;background:#0e0f12;padding:12px 16px;color:#9a9ba3;font-size:12.5px;line-height:1.6}
+.summary .row{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px dashed #24252b}
 .summary .row:last-child{border-bottom:0}
-.summary b{color:var(--texto)}
+.summary b{color:#fff}
 .tabs{display:flex;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:1 0 auto;min-width:78px;padding:12px 9px;white-space:nowrap;background:var(--panel);border:0;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);font-weight:800;font-size:12px;letter-spacing:.4px;color:var(--texto-2);cursor:pointer}
-.tab.active{background:var(--rojo-solido);color:var(--texto)}
-.tabscope{padding:9px 14px;font-size:12px;color:var(--texto-3);font-weight:600;background:var(--panel);border-bottom:1px solid var(--linea);letter-spacing:.5px}
+.tab{flex:1 0 auto;min-width:78px;padding:12px 9px;white-space:nowrap;background:#101115;border:0;border-right:1px solid #26272d;border-bottom:1px solid #26272d;font-weight:800;font-size:12px;letter-spacing:.4px;color:#c7c8cd;cursor:pointer}
+.tab.active{background:#e50914;color:#fff}
+.tabscope{padding:9px 14px;font-size:12px;color:#a8a9b0;font-weight:600;background:#101115;border-bottom:1px solid #26272d;letter-spacing:.5px}
 .content{padding:16px}
 .content b{font-size:12.5px;letter-spacing:.5px}
 .colors{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 9px;margin-top:12px;margin-bottom:26px}
-.color{height:50px;border:2px solid var(--borde);border-radius:9px;cursor:pointer;position:relative}
-.color.active{border-color:var(--texto);box-shadow:0 0 0 2px var(--rojo)}
-.color span{position:absolute;bottom:-19px;left:0;right:0;text-align:center;font-size:12px;color:var(--texto-3)}
+.color{height:50px;border:2px solid #444;border-radius:9px;cursor:pointer;position:relative}
+.color.active{border-color:#fff;box-shadow:0 0 0 2px #e50914}
+.color span{position:absolute;bottom:-19px;left:0;right:0;text-align:center;font-size:12px;color:#a8a9b0}
 .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.opt{background:var(--control);border:1px solid var(--borde);border-radius:9px;padding:11px;font-weight:700;font-size:12px;cursor:pointer;color:var(--texto)}
-.opt.active{border-color:var(--rojo);background:var(--rojo-tenue);color:var(--texto)}
+.opt{background:#202126;border:1px solid #383940;border-radius:9px;padding:11px;font-weight:700;font-size:12px;cursor:pointer;color:#fff}
+.opt.active{border-color:#e50914;background:#321518}
 .patterns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
 .pat{padding:6px 3px}
-.pat{height:76px;background:var(--control);border:1px solid var(--borde);border-radius:9px;cursor:pointer;color:var(--texto-2);font-size:12px;font-weight:700}
-.pat.active{border-color:var(--rojo);box-shadow:0 0 0 1px var(--rojo) inset;color:var(--texto)}
-.sample{display:block;width:42px;height:26px;margin:0 auto 6px;background:var(--control-alto);border-radius:3px}
-.diamond{background-image:linear-gradient(45deg,transparent 45%,var(--hilo-muestra) 46%,var(--hilo-muestra) 54%,transparent 55%),linear-gradient(-45deg,transparent 45%,var(--hilo-muestra) 46%,var(--hilo-muestra) 54%,transparent 55%);background-size:16px 16px}
+.pat{height:76px;background:#202126;border:1px solid #3a3b42;border-radius:9px;cursor:pointer;color:#cfd0d5;font-size:12px;font-weight:700}
+.pat.active{border:2px solid #e50914;color:#fff}
+.sample{display:block;width:42px;height:26px;margin:0 auto 6px;background:#2a2b30;border-radius:3px}
+.diamond{background-image:linear-gradient(45deg,transparent 45%,#aaa 46%,#aaa 54%,transparent 55%),linear-gradient(-45deg,transparent 45%,#aaa 46%,#aaa 54%,transparent 55%);background-size:16px 16px}
 
 
-.dots{background-image:radial-gradient(var(--hilo-muestra) 1.4px,transparent 1.4px);background-size:7px 7px}
-.micro{background-image:radial-gradient(var(--hilo-muestra) .9px,transparent .9px);background-size:4px 4px}
-.hex{background-image:linear-gradient(30deg,transparent 45%,var(--hilo-muestra) 46%,var(--hilo-muestra) 52%,transparent 53%),linear-gradient(150deg,transparent 45%,var(--hilo-muestra) 46%,var(--hilo-muestra) 52%,transparent 53%);background-size:16px 16px}
+.dots{background-image:radial-gradient(#aaa 1.4px,transparent 1.4px);background-size:7px 7px}
+.micro{background-image:radial-gradient(#aaa .9px,transparent .9px);background-size:4px 4px}
+.hex{background-image:linear-gradient(30deg,transparent 45%,#aaa 46%,#aaa 52%,transparent 53%),linear-gradient(150deg,transparent 45%,#aaa 46%,#aaa 52%,transparent 53%);background-size:16px 16px}
 .chevronp{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12'%3E%3Cpath d='M0 9L7 3L14 9' fill='none' stroke='%23aaa' stroke-width='1.3'/%3E%3C/svg%3E")}
 .canal{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 0V6' stroke='%23aaa' stroke-width='1.1'/%3E%3C/svg%3E")}
 .matopt{grid-column:1/-1;display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px}
-.matopt small{color:var(--texto-3);font-weight:500;font-size:12px}
+.matopt small{color:#a8a9b0;font-weight:500;font-size:12px}
 .swatches{display:flex;gap:27px 8px;flex-wrap:wrap;margin-top:12px;margin-bottom:10px}
-.stitch{width:60px;height:42px;background:var(--control);border:1px solid var(--borde);border-radius:8px;cursor:pointer;position:relative}
+.stitch{width:60px;height:42px;background:#17181c;border:1px solid #3a3b42;border-radius:8px;cursor:pointer;position:relative}
 .stitch i{position:absolute;left:8px;right:8px;top:50%;display:block;border-top:3px dashed red}
-.stitch.active{border-color:var(--rojo);box-shadow:0 0 0 2px var(--rojo) inset}
+.stitch.active{border-color:#e50914;box-shadow:0 0 0 2px #e50914 inset}
 .txtbox{margin-top:10px}
-.txtbox input{width:100%;padding:10px;border-radius:8px;border:1px solid var(--borde);background:var(--panel);color:var(--texto);font-size:12px}
-.zone{cursor:pointer;stroke:var(--negro-linea);stroke-width:3.5;stroke-dasharray:7 6;stroke-linecap:round;filter:drop-shadow(0px 1.2px 0.8px rgba(0,0,0,0.55));transition:stroke .2s,stroke-width .2s}
-.zone.sel{stroke:var(--texto) !important;stroke-width:6;stroke-dasharray:none;filter:drop-shadow(0px 2px 4px rgba(0,0,0,0.4))}
+.txtbox input{width:100%;padding:10px;border-radius:8px;border:1px solid #3a3b42;background:#101115;color:#fff;font-size:12px}
+.zone{cursor:pointer;stroke:#111;stroke-width:3.5;stroke-dasharray:7 6;stroke-linecap:round;filter:drop-shadow(0px 1.2px 0.8px rgba(0,0,0,0.55));transition:stroke .2s,stroke-width .2s}
+.zone.sel{stroke:#fff !important;stroke-width:6;stroke-dasharray:none;filter:drop-shadow(0px 2px 4px rgba(0,0,0,0.4))}
 .seam{fill:none;stroke-width:2.2;stroke-dasharray:6 5;stroke-linecap:round;filter:drop-shadow(0px 1.2px 0.8px rgba(0,0,0,0.5));transition:stroke .2s}
-.label{fill:var(--texto);font-weight:bold;font-size:15px;paint-order:stroke;stroke:var(--negro-linea);stroke-width:4;pointer-events:none}
+.label{fill:#fff;font-weight:bold;font-size:15px;paint-order:stroke;stroke:#111;stroke-width:4;pointer-events:none}
 .stage{width:min(600px,94%);height:auto;filter:drop-shadow(0 22px 25px rgba(0,0,0,.65))}
 @media(max-width:1150px){.layout{grid-template-columns:1fr;gap:0}}
 
 
 
 .opt[disabled],.pat[disabled],.color[disabled]{opacity:.3;cursor:not-allowed;filter:grayscale(.75)}
-.vetonote{grid-column:1/-1;color:var(--rojo-suave);font-size:12px;line-height:1.5;margin-top:10px;padding:9px 11px;border:1px solid var(--rojo-linea);border-radius:8px;background:var(--rojo-tenue)}
-.pricebar{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:13px 16px;background:var(--panel);border-top:1px solid var(--linea)}
-.pricebar .lbl{color:var(--texto-3);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700}
-.pricebar .val{color:var(--texto);font-size:23px;font-weight:800;letter-spacing:-.5px}
-.pricebar .val small{font-size:12px;font-weight:600;color:var(--texto-4);letter-spacing:0}
-.pricenote{padding:0 16px 12px;color:var(--texto-5);font-size:12px;line-height:1.5;background:var(--panel);border-bottom:1px solid var(--linea)}
+.vetonote{grid-column:1/-1;color:#d3a0a0;font-size:12px;line-height:1.5;margin-top:10px;padding:9px 11px;border:1px solid #4a2b2b;border-radius:8px;background:#1d1315}
+.pricebar{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:13px 16px;background:#101115;border-top:1px solid #26272d}
+.pricebar .lbl{color:#a8a9b0;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700}
+.pricebar .val{color:#fff;font-size:23px;font-weight:800;letter-spacing:-.5px}
+.pricebar .val small{font-size:12px;font-weight:600;color:#9a9ba3;letter-spacing:0}
+.pricenote{padding:0 16px 12px;color:#8b8a92;font-size:12px;line-height:1.5;background:#101115;border-bottom:1px solid #26272d}
+.soon{font-size:10.5px;letter-spacing:.6px;opacity:.6;margin-left:5px}
 
 body{padding-bottom:78px}
-.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 18px;background:var(--superficie-velo);border-top:1px solid var(--linea-fuerte)}
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 18px;background:#141519f2;backdrop-filter:blur(8px);border-top:1px solid #2c2d33}
 .stickybar .sp{display:flex;flex-direction:column;gap:1px;min-width:0}
-.stickybar .sl{color:var(--texto-3);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
-.stickybar .sv{color:var(--texto);font-size:19px;font-weight:800;letter-spacing:-.4px;white-space:nowrap}
-.stickybar .sv small{font-size:12px;font-weight:600;color:var(--texto-4)}
+.stickybar .sl{color:#a8a9b0;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
+.stickybar .sv{color:#fff;font-size:19px;font-weight:800;letter-spacing:-.4px;white-space:nowrap}
+.stickybar .sv small{font-size:12px;font-weight:600;color:#9a9ba3}
 .stickybar .cta{padding:12px 18px;font-size:13.5px;white-space:nowrap}
-.presets{display:flex;gap:8px;overflow-x:auto;padding:11px 14px;background:var(--panel);border-bottom:1px solid var(--linea)}
-.preset{flex:none;display:flex;align-items:center;gap:7px;padding:7px 11px;background:var(--control);border:1px solid var(--borde);border-radius:20px;color:var(--texto-alto);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
+.presets{display:flex;gap:8px;overflow-x:auto;padding:11px 14px;background:#101115;border-bottom:1px solid #26272d}
+.preset{flex:none;display:flex;align-items:center;gap:7px;padding:7px 11px;background:#202126;border:1px solid #383940;border-radius:20px;color:#e2e3e8;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
+.preset:hover{border-color:#5a5b63}
 .preset .dots{display:flex;gap:3px}
 .preset .dots i{width:11px;height:11px;border-radius:50%;border:1px solid #00000060}
-.presetlbl{padding:11px 14px 0;background:var(--panel);color:var(--texto-3);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
-.modalbg{position:fixed;inset:0;z-index:90;background:var(--velo-modal);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:18px}
-.modal{width:100%;max-width:430px;background:var(--superficie-alta);border:1px solid var(--borde);border-radius:16px;padding:22px;max-height:90vh;overflow:auto}
-.modal h3{margin:0 0 5px;font-size:18px;font-weight:800;color:var(--texto)}
-.modal p.sub{margin:0 0 17px;color:var(--texto-4);font-size:12.5px;line-height:1.55}
+.presetlbl{padding:11px 14px 0;background:#101115;color:#a8a9b0;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
+.modalbg{position:fixed;inset:0;z-index:90;background:#000000b8;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:18px}
+.modal{width:100%;max-width:430px;background:#16171b;border:1px solid #3a3b42;border-radius:16px;padding:22px;max-height:90vh;overflow:auto}
+.modal h3{margin:0 0 5px;font-size:18px;font-weight:800;color:#fff}
+.modal p.sub{margin:0 0 17px;color:#9a9ba3;font-size:12.5px;line-height:1.55}
 .field{margin-bottom:13px}
-.field label{display:block;color:var(--texto-2);font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:5px}
-.field label span{color:var(--texto-4);font-weight:500;letter-spacing:0}
-.field input{width:100%;padding:11px;border-radius:9px;border:1px solid var(--borde);background:var(--panel);color:var(--texto);font-size:14px}
-.field input:focus{outline:2px solid var(--rojo);outline-offset:1px;border-color:var(--rojo)}
-.field input[aria-invalid="true"]{border-color:var(--error)}
-.field .err{color:var(--error);font-size:12px;margin-top:5px;display:none}
+.field label{display:block;color:#c7c8cd;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:5px}
+.field label span{color:#9a9ba3;font-weight:500;letter-spacing:0}
+.field input{width:100%;padding:11px;border-radius:9px;border:1px solid #3a3b42;background:#101115;color:#fff;font-size:14px}
+.field input:focus{outline:2px solid #e50914;outline-offset:1px;border-color:#e50914}
+.field input[aria-invalid="true"]{border-color:#e50914}
+.field .err{color:#ff7b82;font-size:12px;margin-top:5px;display:none}
 .field input[aria-invalid="true"] ~ .err{display:block}
 .modalact{display:flex;gap:9px;margin-top:18px}
 .modalact button{flex:1;padding:13px;border-radius:11px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;border:0}
-.btnghost{background:var(--control);color:var(--texto-2);border:1px solid var(--borde) !important}
-.restore{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 18px;background:var(--superficie-alta);border-bottom:1px solid var(--linea-fuerte);color:var(--texto-2);font-size:12px}
-.restore button{background:none;border:0;color:var(--rojo);font-weight:700;font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit}
+.btnghost{background:#202126;color:#c7c8cd;border:1px solid #3a3b42 !important}
+.restore{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 18px;background:#16202a;border-bottom:1px solid #24384a;color:#bcd4e8;font-size:12px}
+.restore button{background:none;border:0;color:#7fb4e8;font-weight:700;font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit}
 @media(max-width:700px){.stickybar .sv{font-size:17px}.stickybar .cta{padding:11px 14px;font-size:12.5px}}
 
 /* --- nombres de color y costura visibles (en movil no existe el hover) --- */
-.stitch span{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:12px;color:var(--texto-3)}
+.stitch span{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:12px;color:#a8a9b0}
 
 /* --- las zonas se ven tocables --- */
-/* El hover de las zonas va detras de la reja tactil como el resto: al tocar,
-   el navegador simula un hover que no se retira y la zona se quedaba
-   resaltada. Y excluye la zona ya seleccionada: .zone.sel pone stroke-width:6
-   y este ponia 5 con la misma especificidad pero mas abajo, o sea que pasar
-   por encima de tu propia seleccion se la ADELGAZABA. */
-@media (hover:hover) and (pointer:fine){
-  .zone:not(.sel):hover{stroke:var(--texto);stroke-width:5}
-}
-.zone:focus-visible{outline:none;stroke:var(--texto);stroke-width:6;filter:drop-shadow(0 0 6px rgba(255,255,255,.9))}
+.zone:hover{stroke:#fff;stroke-width:5}
+.zone:focus-visible{outline:none;stroke:#fff;stroke-width:6;filter:drop-shadow(0 0 6px rgba(255,255,255,.9))}
 /* la seleccion no puede depender del color de la costura: con costura blanca
    todas las zonas tenian contorno blanco y no se sabia cual estabas editando */
-.zone.sel{filter:drop-shadow(0 0 5px rgba(var(--rojo-halo),.95))}
+.zone.sel{filter:drop-shadow(0 0 5px rgba(229,9,20,.95))}
 @keyframes zonepulse{0%,100%{stroke-opacity:1}50%{stroke-opacity:.3}}
 .stage.pulsar .zone{animation:zonepulse 1.1s ease-in-out 3}
 
@@ -239,12 +174,7 @@ body{padding-bottom:78px}
   .center{position:sticky;top:0;z-index:20;min-height:0;padding:8px 8px 6px;border-top:0}
   .stage{max-height:44vh;width:auto;max-width:92%}
   .hint{margin:0 0 6px;padding:7px 12px;font-size:12px}
-  /* La pastilla del material vivia en la esquina inferior derecha, y a scroll 0
-     el borde de abajo de la tarjeta cae bajo la barra fija de cotizar: el
-     cliente no veia con que material esta cotizando. La subimos a la misma
-     banda que el boton "Ver limpio", que ahora va en el flujo: material a la
-     izquierda, control a la derecha. */
-  .matbadge{top:8px;left:10px;bottom:auto;right:auto;font-size:12px;padding:4px 9px}
+  .matbadge{bottom:8px;right:10px;font-size:12px;padding:4px 9px}
   .right{border-top:0}
 }
 /* En tablet sobra ancho: el asiento puede ser mas grande sin comerse las opciones. */
@@ -252,27 +182,10 @@ body{padding-bottom:78px}
   .stage{max-height:56vh}
   .center{padding:14px}
 }
-/* ── El visor movil tiene que caber por encima de la barra fija de cotizar ──
-   A scroll 0 la tarjeta arranca ~259 px abajo (cabecera + barra de vehiculos +
-   titulo) y la barra fija ocupa los ultimos 67. Lo que sobra para el asiento es
-   100vh menos esos dos, menos lo que ocupa la propia tarjeta por dentro
-   (padding + fila de herramientas + pista). De ahi salen las constantes.
-   Se usa min() a proposito: estas reglas solo pueden ENCOGER el asiento
-   respecto al 44vh de arriba, nunca agrandarlo, asi que si algun dia cambia la
-   cabecera lo peor que pasa es que el asiento salga un pelo mas pequeno.
-   Medido en el navegador el 24 ago 2026 a 406x693. */
-@media(max-width:1150px){
-  /* con la pista visible y sin banner: 259 + 112 + 67 */
-  .stage{max-height:min(44vh,calc(100vh - 438px))}
-  /* ya toco una zona: la pista se va y el asiento recupera su tamano */
-  body.yatoco .stage{max-height:min(44vh,calc(100vh - 381px))}
-  body.yatoco .hint{display:none}
-  /* cliente que vuelve: el banner de "retomamos" empuja la tarjeta 56 px mas */
-  body.conbanner.yatoco .stage{max-height:min(44vh,calc(100vh - 437px))}
-}
 @media(prefers-reduced-motion:reduce){.stage.pulsar .zone{animation:none}}
 
-.vehrow{background:var(--superficie);border-bottom:1px solid var(--linea-fuerte);padding:10px 26px;display:flex;gap:12px;align-items:center;min-width:0}
+.vehrow{background:#141519;border-bottom:1px solid #2c2d33;padding:10px 26px;display:flex;gap:12px;align-items:center;min-width:0}
+.vehlbl{flex:none;color:#a8a9b0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.1px}
 #vehiclebar{display:flex;gap:10px;overflow-x:auto;min-width:0;padding:2px 0;scrollbar-width:none}
 #vehiclebar::-webkit-scrollbar{display:none}
 #vehiclebar>button{flex:none}
@@ -280,53 +193,38 @@ body{padding-bottom:78px}
 .presets{scrollbar-width:none}
 @media(max-width:700px){
   .vehrow{padding:9px 12px;gap:9px}
+  .vehlbl{font-size:12px;letter-spacing:.6px}
   .presetlbl{padding:10px 12px 0}
   .presets{padding:9px 12px}
   .content{padding:14px 12px}
 }
 
 .galeria{max-width:1320px;margin:0 auto;padding:34px 18px 6px}
-.tituloapp{max-width:1320px;margin:0 auto;padding:16px 18px 0;color:var(--texto);font-size:19px;font-weight:800;letter-spacing:-.2px}
+.tituloapp{max-width:1320px;margin:0 auto;padding:16px 18px 0;color:#fff;font-size:19px;font-weight:800;letter-spacing:-.2px}
 @media(max-width:1150px){.tituloapp{padding:12px 14px 8px;font-size:17px}}
-.galeria h2{color:var(--texto);font-size:21px;font-weight:800;letter-spacing:-.2px;margin:0 0 4px}
-.galeria .sub{color:var(--texto-3);font-size:14px;margin:0 0 18px}
+.galeria h2{color:#fff;font-size:21px;font-weight:800;letter-spacing:-.2px;margin:0 0 4px}
+.galeria .sub{color:#a8a9b0;font-size:14px;margin:0 0 18px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-.grid figure{margin:0;border-radius:12px;overflow:hidden;background:var(--superficie-alta);border:1px solid var(--linea-fuerte);aspect-ratio:3/4}
-.grid img{display:block;width:100%;height:100%;object-fit:cover}
+.grid figure{margin:0;border-radius:12px;overflow:hidden;background:#16171b;border:1px solid #2c2d33;aspect-ratio:3/4}
+.grid img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.grid figure:hover img{transform:scale(1.05)}
 @media(max-width:700px){
   .galeria{padding:26px 12px 4px}
   .grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px}
 }
+@media(prefers-reduced-motion:reduce){.grid img{transition:none}.grid figure:hover img{transform:none}}
 
 /* --- ver el forro sin las guias de edicion --- */
-.cleanbtn{position:absolute;top:12px;right:12px;z-index:5;padding:7px 13px;background:var(--velo);border:1px solid var(--borde);border-radius:20px;color:var(--texto-alto);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
-.cleanbtn:hover{border-color:var(--borde-hover);color:var(--texto)}
-/* En movil .center se vuelve compacto y .hint arranca pegado al borde de
-   arriba, justo donde flotaba este boton: se pisaban. Alli lo sacamos de
-   position:absolute y lo dejamos en el flujo, alineado a la derecha sobre la
-   pista. Asi no puede pisar nada, a ninguna anchura ni a ningun scroll.
-   Se probo antes bajarlo a la esquina inferior izquierda y NO vale: a scroll 0
-   el borde de abajo de la tarjeta cae bajo la barra fija de cotizar (z-index
-   60 contra 5) y el boton quedaba tapado y sin poder pulsarse.
-   OJO: esta regla tiene que ir DESPUES de .cleanbtn, no dentro del bloque
-   @media de arriba: un media query no suma especificidad, asi que alli la
-   regla base la pisaba y el boton se estiraba de lado a lado. */
-@media(max-width:1150px){
-  .cleanbtn{position:static;align-self:flex-end;margin:0 0 6px;flex:none}
-}
+.cleanbtn{position:absolute;top:12px;right:12px;z-index:5;padding:7px 13px;background:#0009;border:1px solid #3a3b42;border-radius:20px;color:#e2e3e8;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;backdrop-filter:blur(2px)}
+.cleanbtn:hover{border-color:#5a5b63;color:#fff}
 body.limpio .zone{stroke:none!important;filter:none!important}
-/* ...pero el foco no se esconde. La regla de arriba tapaba el trazo del foco
-   por el !important, y de .zone:focus-visible solo sobrevivia su outline:none,
-   que ademas quita el anillo del navegador: las seis zonas seguian siendo
-   tabulables y activables con Enter, sin ninguna senal de donde estabas. */
-body.limpio .zone:focus-visible{stroke:var(--texto)!important;stroke-width:5;filter:drop-shadow(0 0 6px rgba(255,255,255,.9))!important}
 body.limpio .label{opacity:0}
 body.limpio .hint{opacity:.45}
 
 /* --- productos que todavia no se dibujan --- */
 .opt[data-pending]{opacity:.62;filter:grayscale(.45)}
 .opt[data-pending]:hover{opacity:.85}
-.soon{font-size:12px;letter-spacing:.4px;opacity:1;color:var(--texto-5);margin-left:6px;font-weight:600}
+.soon{font-size:12px;letter-spacing:.4px;opacity:1;color:#8b8a92;margin-left:6px;font-weight:600}
 
 /* --- area tactil minima en los enlaces de contacto --- */
 a.phone{display:inline-flex;align-items:center;min-height:44px;padding:2px 6px;border-radius:8px}
@@ -334,171 +232,30 @@ footer a{display:inline-block;min-height:44px;padding:11px 4px}
 
 /* --- los dos CTA deben medir igual --- */
 .stickybar .cta{min-height:44px;font-size:13.33px}
-.grupolbl{margin:4px 0 2px;color:var(--texto-3);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
+.grupolbl{margin:4px 0 2px;color:#a8a9b0;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
 .grupolbl:first-of-type{margin-top:12px}
-.pedidonota{margin-top:4px;color:var(--texto-5);font-size:12px;line-height:1.5}
-.summary .bp{font-style:normal;font-size:11px;font-weight:600;color:var(--texto-5);letter-spacing:.2px}
+.pedidonota{margin-top:4px;color:#8b8a92;font-size:12px;line-height:1.5}
+.summary .bp{font-style:normal;font-size:11px;font-weight:600;color:#8b8a92;letter-spacing:.2px}
 .valle{fill:none;stroke:#000;stroke-width:4.4;stroke-opacity:.30;filter:url(#soft3);transform:translateY(1.6px)}
-.labio{fill:none;stroke:var(--texto);stroke-width:1.6;stroke-opacity:.16;filter:url(#soft1);transform:translateY(-2.2px)}
+.labio{fill:none;stroke:#fff;stroke-width:1.6;stroke-opacity:.16;filter:url(#soft1);transform:translateY(-2.2px)}
 body.limpio .valle,body.limpio .labio{opacity:1}
 .modelos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:12px}
-.modelo{padding:0;background:var(--control);border:1px solid var(--borde);border-radius:11px;overflow:hidden;cursor:pointer;font-family:inherit;text-align:left}
+.modelo{padding:0;background:#202126;border:1px solid #383940;border-radius:11px;overflow:hidden;cursor:pointer;font-family:inherit;text-align:left}
 .modelo img{display:block;width:100%;height:auto;aspect-ratio:280/380;object-fit:cover}
-.modelo .mnom{display:block;padding:8px 9px;color:var(--texto-alto);font-size:12px;font-weight:700;line-height:1.3}
-.modelo.active{border-color:var(--rojo);box-shadow:0 0 0 1px var(--rojo)}
-.modelo.active .mnom{color:var(--texto)}
+.modelo .mnom{display:block;padding:8px 9px;color:#e2e3e8;font-size:12px;font-weight:700;line-height:1.3}
+.modelo.active{border-color:#e50914;box-shadow:0 0 0 1px #e50914}
+.modelo.active .mnom{color:#fff}
+.modelo:hover{border-color:#5a5b63}
 #fx{position:absolute;width:0;height:0;overflow:hidden}
-
-/* ══════════════════════════════════════════════════════════════
-   MOVIMIENTO
-   Tres reglas que no se rompen:
-   1. Solo se animan  opacity  y  transform : las unicas dos que el
-      navegador resuelve en el compositor. Nada de height/top/width,
-      que obligan a recalcular el layout en cada fotograma.
-   2. Nada de esto puede esconder contenido si el JS no corre. El
-      estado oculto vive bajo  html.anim , clase que solo pone el JS
-      despues de comprobar que hay IntersectionObserver. Sin JS, sin
-      soporte o con reduced-motion, la pagina se ve entera y quieta.
-   3. El configurador NO hace fade-in: es lo primero que el cliente
-      tiene que poder tocar, y no se le hace esperar por un efecto.
-   ══════════════════════════════════════════════════════════════ */
-:root{ --curva:cubic-bezier(.16,1,.3,1); --vel:.5s; }
-
-/* ── aparecer al entrar en pantalla ── */
-html.anim .reveal{opacity:0;transform:translateY(14px)}
-html.anim .reveal.dentro{
-  opacity:1;transform:none;
-  transition:opacity var(--vel) var(--curva) var(--d,0ms),
-             transform var(--vel) var(--curva) var(--d,0ms);
-}
-
-/* Las fotos solo funden, sin subir. Llevan una clase propia, 'revfade', en vez
-   de la 'reveal' de los textos, y la diferencia no es cosmetica: 'reveal'
-   declara transform, y como la clase no se retira nunca, ese transform le
-   ganaba por especificidad (0,3,2 contra 0,2,1) al del hover — un @media no
-   suma nada — y la tarjeta no se levantaba jamas. Aqui ninguna regla toca el
-   transform de la figura, asi que el hover lo tiene entero. */
-html.anim .revfade{opacity:0}
-html.anim .revfade.dentro{
-  opacity:1;
-  transition:opacity var(--vel) var(--curva) var(--d,0ms),
-             transform .3s var(--curva),
-             border-color .3s ease, box-shadow .3s ease;
-}
-
-/* ── tarjetas de la galeria: se levantan y el borde se aclara ── */
-.grid figure{transition:transform .3s var(--curva),border-color .3s ease,box-shadow .3s ease}
-.grid img{transition:transform .3s var(--curva)}
-
-/* ── controles del configurador ── */
-.preset,.opt,.pat,.modelo{transition:transform .18s var(--curva),border-color .18s ease,background-color .18s ease,color .18s ease}
-/* el swatch de color y el de costura llevan el nombre colgando por debajo:
-   no se mueven, solo se les aclara el filo, para que el texto no baile */
-.color,.stitch{transition:border-color .18s ease,box-shadow .18s ease}
-/* el :hover no puede pisar a la muestra ya elegida: .color.active es (0,2,0)
-   y el hover (0,3,0), asi que al pasar por encima de tu propia eleccion le
-   borraba el filo blanco. En tactil ademas se quedaba pegado. */
-.color:not([disabled]):not(.active):hover,.stitch:not(.active):hover{border-color:var(--texto-3)}
-/* hundir al pulsar: en movil es el unico acuse de recibo que hay. El
-   0.97 es el minimo que se percibe; por encima de 0.98 no se nota. */
-.preset:active,.opt:not([disabled]):active,.pat:not([disabled]):active,.modelo:active{transform:scale(.97)}
-
-/* ══ EFECTOS DE HOVER ══
-   Todo lo que se mueve al pasar por encima vive aqui dentro, y no es una
-   floritura: en una pantalla tactil no existe el hover, pero el navegador lo
-   simula al tocar y NO lo retira hasta que tocas otra cosa. Sin esta reja, el
-   cliente toca una foto de la galeria y la tarjeta se queda levantada, como
-   colgada. La mayor parte de las visitas llegan desde WhatsApp, o sea desde el
-   telefono, asi que seria el caso normal y no la excepcion.
-   Los cambios de color y de borde se quedan fuera a proposito: esos si ayudan
-   en tactil, porque marcan lo ultimo que tocaste, y no descuadran nada. */
-@media (hover:hover) and (pointer:fine){
-  .grid figure:hover{
-    transform:translateY(-4px);
-    border-color:var(--borde-hover);
-    box-shadow:0 14px 28px -18px #000, 0 4px 10px -8px #000;
-  }
-  .grid figure:hover img{transform:scale(1.06)}
-  .preset:hover,.opt:not([disabled]):hover,.pat:not([disabled]):hover,.modelo:hover{
-    transform:translateY(-2px);border-color:var(--borde-hover)
-  }
-  .opt:not([disabled]):hover,.pat:not([disabled]):hover{background:var(--control-alto);color:var(--texto)}
-  .tab:not(.active):hover{background:var(--control);color:var(--texto)}
-  .cta:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 12px 22px -12px #000}
-  .cleanbtn:hover{border-color:var(--borde-hover);color:var(--texto)}
-  a.phone:hover{color:var(--texto)}
-  .info a:hover{color:var(--rojo)}
-}
-
-/* ── pestanas y botones ── */
-.tab{transition:background-color .2s ease,color .2s ease}
-.cta{transition:transform .18s var(--curva),box-shadow .18s ease,filter .18s ease}
-.cta:active{transform:scale(.97)}
-.cleanbtn,.btnghost{transition:border-color .18s ease,color .18s ease,background-color .18s ease}
-a.phone{transition:color .18s ease}
-
-/* El panel del configurador no lleva animacion, y es deliberado. Tuvo una, y
-   no hacia nada: #content es un div permanente al que render() solo le cambia
-   el innerHTML, y una animation de CSS no se reinicia porque cambien los
-   hijos. Lo unico que producia era un destello de opacidad al cargar, cuando
-   el script anade la clase 'anim' sobre el configurador ya pintado: justo lo
-   que prohibe la regla 3 de aqui arriba. Si algun dia se quiere el fundido al
-   cambiar de pestana, tiene que ser una transicion reiniciada a mano en el
-   handler, no una animation sobre un nodo que nunca se recrea. */
-
-/* ── modal: el velo funde y la tarjeta sube ──
-   La salida lleva sus propios keyframes en vez de reproducir la entrada con
-   'reverse'. Reproducir al reves invierte tambien la curva, y una ease-out se
-   convierte en ease-in: el modal arrancaba su salida despacio justo cuando el
-   cliente ya habia decidido cerrar. Al cerrar, el sistema responde de
-   inmediato; entrar puede tomarse su tiempo, cerrar no. */
-@keyframes veloIn{from{opacity:0}to{opacity:1}}
-@keyframes veloOut{to{opacity:0}}
-@keyframes modalIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
-@keyframes modalOut{to{opacity:0;transform:translateY(6px) scale(.98)}}
-.modalbg{animation:veloIn .18s ease-out}
-.modalbg .modal{animation:modalIn .26s var(--curva)}
-.modalbg.cerrando{animation:veloOut .16s ease-out forwards}
-.modalbg.cerrando .modal{animation:modalOut .16s ease-out forwards}
-
-/* ── el banner de "retomamos" baja en vez de dar un salto ── */
-@keyframes bannerIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-html.anim .restore{animation:bannerIn .32s var(--curva)}
-
-/* ── menos movimiento no es cero movimiento ──
-   Se quita lo que se desplaza y se conserva lo que funde: el fundido no marea
-   y sigue explicando que algo aparecio o se fue. Apagar tambien la opacidad
-   dejaba los modales entrando de golpe, que es peor para todo el mundo.
-   OJO con los selectores: tienen que ser LOS MISMOS que ponen el movimiento,
-   con su :not([disabled]) incluido. Aqui ponia .opt:hover a secas, que pesa
-   (0,2,0) contra los (0,3,0) del selector real, y perdia: quien pedia menos
-   movimiento seguia viendo desplazarse las opciones y los patrones. Un @media
-   no suma especificidad; lo unico que inclina el empate es ir despues. */
-@media(prefers-reduced-motion:reduce){
-  .grid figure,.grid figure:hover,.grid figure:hover img,
-  .preset:hover,.opt:not([disabled]):hover,.pat:not([disabled]):hover,.modelo:hover,.cta:hover,
-  .preset:active,.opt:not([disabled]):active,.pat:not([disabled]):active,.modelo:active,.cta:active{transform:none}
-  /* el fundido se queda; lo que se va es el desplazamiento */
-  @keyframes modalIn{from{opacity:0}to{opacity:1}}
-  @keyframes modalOut{to{opacity:0}}
-  @keyframes bannerIn{from{opacity:0}to{opacity:1}}
-  /* Si alguien cambia la preferencia con la pagina ya abierta, la clase 'anim'
-     ya esta puesta y lo que aun no ha entrado en pantalla seguiria en
-     opacity:0. Aqui se muestra sin mas: visible gana a elegante. */
-  html.anim .reveal,html.anim .revfade{transform:none;opacity:1}
-}
-
 </style>
 
 <!-- ############################################################
      FICHA DEL NEGOCIO PARA GOOGLE
      Esto es lo que hace que aparezcas en el mapa cuando alguien
-     busca "tapiceria en Machala".
+     busca "tapiceria en Cuenca".
 
      REVISA DOS COSAS ANTES DE PUBLICAR:
-       1. FALTA streetAddress: se quito para no publicar un texto vacio en
-          Google. Cuando tengas la calle y numero, se agrega aqui dentro
-          de "address" como "streetAddress": "Tu calle 123",
+       1. streetAddress dice COMPLETAR: pon la calle y numero del taller.
        2. El horario 08:00-18:00 de lunes a sabado es una SUPOSICION mia.
           Cambialo por el tuyo real: un horario equivocado en Google
           hace que la gente llegue con el taller cerrado.
@@ -508,7 +265,7 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
   "@context": "https://schema.org",
   "@type": "AutoRepair",
   "name": "Forros Cuenca",
-  "description": "Taller artesanal de tapizados para autos, camionetas y SUV en Machala, Ecuador desde 2002. Forros de asientos, tableros, techos y pisos, en cuero americano, cuero colombiano y tela.",
+  "description": "Taller artesanal de tapizados para autos, motos y camionetas en Cuenca, Ecuador desde 2002. Forros de asientos, tableros, techos y pisos, en cuero americano, cuero colombiano y tela.",
   "foundingDate": "2002",
   "url": "https://forroscuenca.com/",
   "telephone": "+593984353695",
@@ -517,11 +274,12 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
   "currenciesAccepted": "USD",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Machala",
-    "addressRegion": "El Oro",
+    "streetAddress": "COMPLETAR: calle y numero del taller",
+    "addressLocality": "Cuenca",
+    "addressRegion": "Azuay",
     "addressCountry": "EC"
   },
-  "areaServed": { "@type": "City", "name": "Machala" },
+  "areaServed": { "@type": "City", "name": "Cuenca" },
   "sameAs": ["https://www.instagram.com/FORROSCUENCA/", "https://www.facebook.com/FORROSCUENCA", "https://www.tiktok.com/@FORROSCUENCA"],
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
@@ -531,6 +289,7 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
   }],
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Forro de asientos de auto" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Forro de asiento de moto" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Forros para camioneta y SUV" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Forro de tablero" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Forro de techo o cielo raso" } },
@@ -739,7 +498,7 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
     <img class="logo" src="logo-forros-cuenca.png" alt="Forros Cuenca, taller de tapizados" width="290" height="195" fetchpriority="high">
     <div>
       <div class="brand">FORROS <span>CUENCA</span></div>
-      <h1 class="tag">Tapizados para autos y camionetas en Machala</h1>
+      <h1 class="tag">Tapizados para autos y motos en Cuenca</h1>
     </div>
   </div>
   <div class="hcta">
@@ -749,7 +508,8 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
 </header>
 
 <div class="vehrow">
-  <span id="vehiclebar" role="group" aria-label="Selecciona qué quieres tapizar"></span>
+  <span class="vehlbl">Selecciona tu vehículo:</span>
+  <span id="vehiclebar"></span>
 </div>
 
 <div class="restore" id="restoreBar" style="display:none"><span>Retomamos el diseño que dejaste a medias.</span><button id="restoreReset">Empezar de cero</button></div>
@@ -880,6 +640,52 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
       <text id="auto__emb" class="label" x="310" y="118" font-size="10" text-anchor="middle" opacity="0"></text>
     </svg>
 
+    <svg id="svg-moto" class="stage" viewBox="0 0 620 760" style="display:none">
+      <ellipse cx="310" cy="716" rx="176" ry="14" fill="#000" filter="url(#shadow-blur)" opacity="0.6"/>
+
+      <path id="moto__sidesL" class="zone" fill="#151619" d="M 310 128 C 292 129 280 140 273 162 C 262 200 253 246 249 296 C 246 312 245 322 245 330 C 224 356 200 396 184 440 C 166 486 156 532 158 566 C 162 606 178 642 204 664 C 232 688 270 700 310 702 Z" />
+      <path id="moto__sidesL-pat" fill="none" pointer-events="none" d="M 310 128 C 292 129 280 140 273 162 C 262 200 253 246 249 296 C 246 312 245 322 245 330 C 224 356 200 396 184 440 C 166 486 156 532 158 566 C 162 606 178 642 204 664 C 232 688 270 700 310 702 Z" />
+      <path id="moto__sidesR" class="zone" fill="#151619" d="M 310 128 C 328 129 340 140 347 162 C 358 200 367 246 371 296 C 374 312 375 322 375 330 C 396 356 420 396 436 440 C 454 486 464 532 462 566 C 458 606 442 642 416 664 C 388 688 350 700 310 702 Z" />
+      <path id="moto__sidesR-pat" fill="none" pointer-events="none" d="M 310 128 C 328 129 340 140 347 162 C 358 200 367 246 371 296 C 374 312 375 322 375 330 C 396 356 420 396 436 440 C 454 486 464 532 462 566 C 458 606 442 642 416 664 C 388 688 350 700 310 702 Z" />
+
+      <path id="moto__copiloto" class="zone" fill="#151619" d="M 310 146 C 296 148 287 158 281 178 C 272 212 264 254 260 300 Q 310 314 360 300 C 356 254 348 212 339 178 C 333 158 324 148 310 146 Z" />
+      <path id="moto__copiloto-pat" fill="none" pointer-events="none" d="M 310 146 C 296 148 287 158 281 178 C 272 212 264 254 260 300 Q 310 314 360 300 C 356 254 348 212 339 178 C 333 158 324 148 310 146 Z" />
+
+      <path id="moto__piloto" class="zone" fill="#1b1c1f" d="M 258 350 Q 310 366 362 350 C 380 380 402 418 416 458 C 432 500 440 538 436 568 C 431 604 415 634 392 654 C 368 676 340 686 310 688 C 280 686 252 676 228 654 C 205 634 189 604 184 568 C 180 538 188 500 204 458 C 218 418 240 380 258 350 Z" />
+      <path id="moto__piloto-pat" fill="none" pointer-events="none" d="M 258 350 Q 310 366 362 350 C 380 380 402 418 416 458 C 432 500 440 538 436 568 C 431 604 415 634 392 654 C 368 676 340 686 310 688 C 280 686 252 676 228 654 C 205 634 189 604 184 568 C 180 538 188 500 204 458 C 218 418 240 380 258 350 Z" />
+
+      <path id="moto__ridge" class="zone" fill="#18191b" d="M 260 300 Q 310 314 360 300 C 364 318 366 336 362 350 Q 310 366 258 350 C 254 336 256 318 260 300 Z" />
+      <path id="moto__ridge-pat" fill="none" pointer-events="none" d="M 260 300 Q 310 314 360 300 C 364 318 366 336 362 350 Q 310 366 258 350 C 254 336 256 318 260 300 Z" />
+
+      <g id="moto__shading" pointer-events="none">
+        <path d="M 310 128 C 292 129 280 140 273 162 C 262 200 253 246 249 296 C 246 312 245 322 245 330 C 224 356 200 396 184 440 C 166 486 156 532 158 566 C 162 606 178 642 204 664 C 232 688 270 700 310 702 Z" fill="url(#side-shading-grad)" />
+        <path d="M 310 128 C 328 129 340 140 347 162 C 358 200 367 246 371 296 C 374 312 375 322 375 330 C 396 356 420 396 436 440 C 454 486 464 532 462 566 C 458 606 442 642 416 664 C 388 688 350 700 310 702 Z" fill="url(#sideR-shading-grad)" />
+        <path d="M 310 146 C 296 148 287 158 281 178 C 272 212 264 254 260 300 Q 310 314 360 300 C 356 254 348 212 339 178 C 333 158 324 148 310 146 Z" fill="url(#back-shading-vert)" />
+        <path d="M 310 146 C 296 148 287 158 281 178 C 272 212 264 254 260 300 Q 310 314 360 300 C 356 254 348 212 339 178 C 333 158 324 148 310 146 Z" fill="url(#back-shading-horiz)" />
+        <path d="M 258 350 Q 310 366 362 350 C 380 380 402 418 416 458 C 432 500 440 538 436 568 C 431 604 415 634 392 654 C 368 676 340 686 310 688 C 280 686 252 676 228 654 C 205 634 189 604 184 568 C 180 538 188 500 204 458 C 218 418 240 380 258 350 Z" fill="url(#base-shading-vert)" />
+        <path d="M 258 350 Q 310 366 362 350 C 380 380 402 418 416 458 C 432 500 440 538 436 568 C 431 604 415 634 392 654 C 368 676 340 686 310 688 C 280 686 252 676 228 654 C 205 634 189 604 184 568 C 180 538 188 500 204 458 C 218 418 240 380 258 350 Z" fill="url(#base-shading-horiz)" />
+        <path d="M 260 300 Q 310 314 360 300 C 364 318 366 336 362 350 Q 310 366 258 350 C 254 336 256 318 260 300 Z" fill="url(#head-shading)" />
+      </g>
+
+      <g fill="none" stroke="#000000" stroke-width="2.5" opacity="0.5" pointer-events="none"><path d="M 282 196 Q 310 204 338 196" /><path d="M 266 258 Q 310 268 354 258" /><path d="M 260 300 Q 310 314 360 300" /><path d="M 258 350 Q 310 366 362 350" /><path d="M 222 412 Q 310 430 398 412" /><path d="M 200 480 Q 310 500 420 480" /><path d="M 194 548 Q 310 568 426 548" /><path d="M 212 616 Q 310 636 408 616" /></g>
+
+      <path id="moto__seams-copiloto" class="seam" d="M 282 196 Q 310 204 338 196 M 266 258 Q 310 268 354 258" pointer-events="none" />
+      <path id="moto__seams-ridge"    class="seam" d="M 260 300 Q 310 314 360 300 M 258 350 Q 310 366 362 350" pointer-events="none" />
+      <path id="moto__seams-piloto"   class="seam" d="M 222 412 Q 310 430 398 412 M 200 480 Q 310 500 420 480 M 194 548 Q 310 568 426 548 M 212 616 Q 310 636 408 616" pointer-events="none" />
+      <path id="moto__seams-sides"    class="seam" d="M 296 138 C 283 148 274 168 267 194 C 257 230 249 268 246 306 C 228 340 208 380 194 424 C 178 470 170 524 172 562 C 176 600 190 634 214 656 M 324 138 C 337 148 346 168 353 194 C 363 230 371 268 374 306 C 392 340 412 380 426 424 C 442 470 450 524 448 562 C 444 600 430 634 406 656" pointer-events="none" />
+
+      <rect id="moto__grain" x="0" y="0" width="620" height="760" fill="url(#grainTile)" opacity="0" pointer-events="none" style="mix-blend-mode: overlay;"/>
+
+      <g fill="none" stroke="#ffffff" filter="url(#glow-filter)" opacity="0.3" pointer-events="none">
+        <path d="M 288 136 Q 310 128 332 136" stroke-width="4" />
+      </g>
+
+      <polygon points="230,0 390,0 590,760 30,760" fill="url(#volumetric-light)" style="mix-blend-mode: screen;" pointer-events="none" />
+
+      <g id="moto__labels"></g>
+      <text id="moto__emb" class="label" x="310" y="285" font-size="10" text-anchor="middle" opacity="0"></text>
+    </svg>
+
   </section>
 
   <section class="card right">
@@ -903,32 +709,27 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
 
 
 <section class="galeria">
-  <h2>Así puede quedar tu vehículo</h2>
-  <p class="sub">Ejemplos de colores, patrones y acabados que trabajamos. El diseño se arma al gusto de cada cliente y se cose a la medida de tu vehículo.</p>
+  <h2>Trabajos que ya entregamos</h2>
+  <p class="sub">Trabajos reales entregados en nuestro taller de Cuenca. Los colores y acabados se eligen al gusto de cada cliente.</p>
   <div class="grid">
-    <!-- Negros -->
-    <figure><img src="fotos/muestra-negro-showroom.webp" srcset="fotos/muestra-negro-showroom-400.webp 400w, fotos/muestra-negro-showroom.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Juego de forros en cuero negro con acolchado de ondas y costura blanca" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-negro-ondas.webp" srcset="fotos/muestra-negro-ondas-400.webp 400w, fotos/muestra-negro-ondas.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero negro con paneles en ondas y costura blanca contrastada" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-detalle-ondas.webp" srcset="fotos/muestra-detalle-ondas-400.webp 400w, fotos/muestra-detalle-ondas.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle del acolchado en ondas con costura clara sobre cuero negro" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-detalle-canaletas.webp" srcset="fotos/muestra-detalle-canaletas-400.webp 400w, fotos/muestra-detalle-canaletas.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Primer plano de las canaletas cosidas en cuero negro" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-detalle-costura.webp" srcset="fotos/muestra-detalle-costura-400.webp 400w, fotos/muestra-detalle-costura.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle de la costura y los paneles en cuero negro combinado con gris" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-negro-cueros.webp" srcset="fotos/muestra-negro-cueros-400.webp 400w, fotos/muestra-negro-cueros.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asientos en cuero negro junto al muestrario de cueros de colores del taller" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Grises -->
-    <figure><img src="fotos/muestra-gris-dmax.webp" srcset="fotos/muestra-gris-dmax-400.webp 400w, fotos/muestra-gris-dmax.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero gris pizarra con bordado Isuzu D-Max" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-gris-panel.webp" srcset="fotos/muestra-gris-panel-400.webp 400w, fotos/muestra-gris-panel.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle del cojin en cuero gris pizarra con costura al tono" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-banca-foton.webp" srcset="fotos/muestra-banca-foton-400.webp 400w, fotos/muestra-banca-foton.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Banca de furgoneta en cuero gris y negro con vivo blanco y bordado Foton" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-foton-vivo.webp" srcset="fotos/muestra-foton-vivo-400.webp 400w, fotos/muestra-foton-vivo.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle del vivo blanco y el perforado en la banca gris y negra" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Blanco y negro -->
-    <figure><img src="fotos/muestra-blanco-negro.webp" srcset="fotos/muestra-blanco-negro-400.webp 400w, fotos/muestra-blanco-negro.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros bicolor blanco y negro con rombos cosidos en el respaldo" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-rombos-blanco.webp" srcset="fotos/muestra-rombos-blanco-400.webp 400w, fotos/muestra-rombos-blanco.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle de los rombos cosidos en el respaldo bicolor blanco y negro" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Azules -->
-    <figure><img src="fotos/muestra-azul-marino.webp" srcset="fotos/muestra-azul-marino-400.webp 400w, fotos/muestra-azul-marino.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero azul marino lisos, con costura al tono" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-azul-cojin.webp" srcset="fotos/muestra-azul-cojin-400.webp 400w, fotos/muestra-azul-cojin.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asiento en cuero azul marino visto de frente, con el muestrario al fondo" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Verde -->
-    <figure><img src="fotos/muestra-verde-hexagonal.webp" srcset="fotos/muestra-verde-hexagonal-400.webp 400w, fotos/muestra-verde-hexagonal.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero verde oscuro con acolchado hexagonal y ribete texturizado" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <!-- Camel -->
-    <figure><img src="fotos/muestra-camel-hilux.webp" srcset="fotos/muestra-camel-hilux-400.webp 400w, fotos/muestra-camel-hilux.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero camel con acanalado vertical y bordado Toyota Hilux" width="760" height="1013" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/muestra-camel-acanalado.webp" srcset="fotos/muestra-camel-acanalado-400.webp 400w, fotos/muestra-camel-acanalado.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Primer plano del acanalado vertical en cuero camel" width="760" height="1013" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-showroom.webp" srcset="fotos/trabajo-showroom-400.webp 400w, fotos/trabajo-showroom.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asiento de exhibici&oacute;n de Forros Cuenca en cuero negro con rojo, capiton&eacute; de rombos y logo bordado" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-chevrolet-turquesa.webp" srcset="fotos/trabajo-chevrolet-turquesa-400.webp 400w, fotos/trabajo-chevrolet-turquesa.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros negro con turquesa, chevrones y logo Chevrolet bordado, en un Chevrolet Spark" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-negro-chevron.webp" srcset="fotos/trabajo-negro-chevron-400.webp 400w, fotos/trabajo-negro-chevron.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros de cuero negro con acolchado de chevrones y costura blanca en una Hyundai Tucson" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-4.webp" srcset="fotos/trabajo-4-400.webp 400w, fotos/trabajo-4.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros negro con gris y costura blanca en una furgoneta Chery Karry" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-9.webp" srcset="fotos/trabajo-9-400.webp 400w, fotos/trabajo-9.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros de cuero negro con costura roja y bordado Fortuner en una Toyota Fortuner" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-10.webp" srcset="fotos/trabajo-10-400.webp 400w, fotos/trabajo-10.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros negro con azul electrico y bordado Hilux en una Toyota Hilux" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-13.webp" srcset="fotos/trabajo-13-400.webp 400w, fotos/trabajo-13.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Detalle de respaldo en cuero negro con panel microperforado gris y ribete azul" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-14.webp" srcset="fotos/trabajo-14-400.webp 400w, fotos/trabajo-14.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros negro con beige y techo tapizado en una Hyundai Tucson" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-15.webp" srcset="fotos/trabajo-15-400.webp 400w, fotos/trabajo-15.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros negro con celeste y bordado KIA en un Kia" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-16.webp" srcset="fotos/trabajo-16-400.webp 400w, fotos/trabajo-16.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros negro microperforado con vivo rojo y bordado Raize en un Toyota Raize" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-17.webp" srcset="fotos/trabajo-17-400.webp 400w, fotos/trabajo-17.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros de cuero negro con costura blanca y bordado Toyota en una camioneta" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-18.webp" srcset="fotos/trabajo-18-400.webp 400w, fotos/trabajo-18.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero rojo con relieve hexagonal en un Kia" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-20.webp" srcset="fotos/trabajo-20-400.webp 400w, fotos/trabajo-20.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros bicolor cafe camel y negro con acolchado de rombos en una camioneta" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-22.webp" srcset="fotos/trabajo-22-400.webp 400w, fotos/trabajo-22.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros beige con costura dorada y chevrones en un Hyundai" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-23.webp" srcset="fotos/trabajo-23-400.webp 400w, fotos/trabajo-23.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros rojo con negro en un sedan pequeno" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-24.webp" srcset="fotos/trabajo-24-400.webp 400w, fotos/trabajo-24.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros de una camioneta Chevrolet High Country" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-25.webp" srcset="fotos/trabajo-25-400.webp 400w, fotos/trabajo-25.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuerina lila en un Kia Soluto" width="760" height="1075" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/trabajo-27.webp" srcset="fotos/trabajo-27-400.webp 400w, fotos/trabajo-27.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuerina blanca en los asientos delanteros de un auto" width="760" height="1075" loading="lazy" decoding="async"></figure>
   </div>
 </section>
 
@@ -937,15 +738,15 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
 <!-- Texto indexable. Antes la pagina tenia ~45 palabras y ningun encabezado:
      para Google era practicamente invisible. -->
 <section class="info">
-  <h2>Tapizados a medida en Machala, hechos por artesanos</h2>
-  <p>En <strong>Forros Cuenca</strong> tapizamos interiores de vehículos en la ciudad de Machala, provincia de El Oro. Trabajamos forros de asientos para auto, camioneta y SUV, y tambien tableros, techos y pisos. Cada trabajo se corta y se cose a la medida del vehículo: no vendemos fundas universales.</p>
+  <h2>Tapizados a medida en Cuenca, hechos por artesanos</h2>
+  <p>En <strong>Forros Cuenca</strong> tapizamos interiores de vehículos en la ciudad de Cuenca, provincia del Azuay. Trabajamos forros de asientos para auto, moto y camioneta, y tambien tableros, techos y pisos. Cada trabajo se corta y se cose a la medida del vehículo: no vendemos fundas universales.</p>
   <p>Tapizamos <strong>desde 2002</strong>. Somos <strong>artesanos calificados</strong>, asi que <strong>no cobramos IVA</strong>. El precio que te pasamos ya incluye la instalación, y la mayoría de los trabajos quedan listos en <strong>1 a 2 días</strong>.</p>
 
   <h2>Que tapizamos</h2>
   <div class="cols">
     <div>
       <h3>Forros de asiento</h3>
-      <p>Para auto, camioneta y SUV. Puedes combinar un color distinto en el respaldo, los laterales, la base y la cabecera.</p>
+      <p>Para auto, moto, camioneta y SUV. Puedes combinar un color distinto en el respaldo, los laterales, la base y la cabecera.</p>
     </div>
     <div>
       <h3>Tableros y techos</h3>
@@ -978,7 +779,7 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
   <p>Siempre tenemos en stock <strong>negro, gris, gris claro, gris oscuro, beige y café</strong>. Y conseguimos <strong>blanco, vino, rojo, verde, azul y turquesa</strong> bajo pedido: escríbenos y te confirmamos el tiempo. Y lo rematas <strong>liso, con rombos, con perforado de puntos o microperforado, hexagonal, chevrón en V o canaletas verticales</strong>. La costura va aparte, así que puedes ponerla de un color que contraste para que el trabajo se note.</p>
 
   <h2>Cuánto cuesta</h2>
-  <p>Un forro de asientos de auto arranca <strong>desde $110</strong>, un tablero <strong>desde $25</strong> y un techo <strong>desde $60</strong>. El precio final depende del modelo del vehículo, del modelo del forro, del material y de los acabados que elijas, por eso el diseñador de arriba te muestra un valor referencial y te lo confirmamos por WhatsApp apenas veamos tu carro.</p>
+  <p>Un forro de asientos de auto arranca <strong>desde $110</strong>, el de moto <strong>desde $35</strong>, un tablero <strong>desde $25</strong> y un techo <strong>desde $60</strong>. El precio final depende del modelo del vehículo, del modelo del forro, del material y de los acabados que elijas, por eso el diseñador de arriba te muestra un valor referencial y te lo confirmamos por WhatsApp apenas veamos tu carro.</p>
 
   <h2>Preguntas frecuentes</h2>
   <h3>&iquest;Cuanto se demora el trabajo?</h3>
@@ -991,12 +792,12 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
   <p>Sí. Bordamos el emblema de la marca de tu vehículo sobre el respaldo o la cabecera. Lo hemos hecho en Toyota, Kia, Hyundai y Chevrolet, entre otros.</p>
   <h3>&iquest;Puedo combinar dos colores?</h3>
   <p>Sí, y es de lo más pedido. En el diseñador de arriba puedes darle un color al centro del asiento y otro a los laterales, y ver cómo queda antes de encargarlo.</p>
-  <h3>&iquest;Atienden fuera de Machala?</h3>
+  <h3>&iquest;Atienden fuera de Cuenca?</h3>
   <p>Escríbenos por WhatsApp y lo vemos según donde estés.</p>
 </section>
 
 <footer>
-  <p><strong>Forros Cuenca.</strong> Tapizados para autos, camionetas y SUV. Machala, El Oro, Ecuador.<br>
+  <p><strong>Forros Cuenca.</strong> Tapizados para autos, motos y camionetas. Cuenca, Azuay, Ecuador.<br>
   WhatsApp <a href="https://wa.me/593984353695">0984353695</a> &middot; Instagram <a href="https://www.instagram.com/FORROSCUENCA/" rel="noopener">@FORROSCUENCA</a></p>
 </footer>
 
@@ -1147,16 +948,13 @@ const PRECIOS = {
 
   desde: {
     auto:       110,   // <-- forro de asiento de auto
+    moto:        35,   // <-- forro de asiento de moto
+    camioneta: null,   // <-- juego de camioneta / SUV. PON TU NUMERO AQUI.
+                       //     Mientras sea null, la web dice "Precio a medida"
+                       //     en vez de inventar una cifra.
     tablero:     25,   // <-- forro de tablero (felpa; malla +$5, cuero +$10)
-
-    /* Retirados del selector el 29 ago 2026: el configurador solo muestra
-       Forros y Tablero. Los numeros se dejan aqui porque son precios que
-       confirmo el dueno, y asi no hay que volver a preguntarlos si algun dia
-       estos productos vuelven a la barra. No se consultan mientras no exista
-       su entrada en PRODUCTS. */
-    camioneta: null,   // sin precio publicado: se cotiza a medida
-    techo:       60,
-    pisos:      110
+    techo:       60,   // <-- forro de techo (cielo raso)
+    pisos:      110    // <-- juego de pisos / alfombras
   },
 
   // El texto chico que aparece debajo del precio.
@@ -1169,7 +967,7 @@ const PRECIOS = {
    ============================================================ */
 const PRODUCTS = {
   auto: {
-    id:'auto', familia:'forro', usaDiseno:true, label:'Forros', wa:'juego de forros de asiento',
+    id:'auto', familia:'forro', usaDiseno:true, label:'Auto', wa:'forro de asiento de auto',
     parts:[
       {key:'back', label:'Frontal respaldo', num:1, rol:'centro',  zones:['back'],         labelAt:{x:310,y:300}},
       {key:'side', label:'Laterales',        num:2, rol:'lateral', zones:['side','sideR'], labelAt:{x:185,y:300}},
@@ -1178,28 +976,37 @@ const PRODUCTS = {
       {key:'edge', label:'Bordes base',      num:5, rol:'lateral', zones:['edge'],         labelAt:{x:455,y:600}}
     ]
   },
+  moto: {
+    id:'moto', familia:'forro', label:'Moto', wa:'forro de asiento de moto',
+    parts:[
+      {key:'piloto',   label:'Asiento piloto',   num:1, rol:'centro',  zones:['piloto'],          labelAt:{x:310,y:530}},
+      {key:'copiloto', label:'Asiento copiloto', num:2, rol:'centro',  zones:['copiloto'],        labelAt:{x:310,y:240}},
+      {key:'sides',    label:'Laterales',        num:3, rol:'lateral', zones:['sidesL','sidesR'], labelAt:{x:180,y:520}},
+      {key:'ridge',    label:'Borde / Acento',   num:4, rol:'lateral', zones:['ridge'],           labelAt:{x:310,y:338}}
+    ]
+  },
+  camioneta: { id:'camioneta', familia:'forro', usaDiseno:true, label:'Camioneta / SUV', wa:'juego de forros de camioneta', pending:true,
+    parts:[
+      {key:'back', label:'Frontal respaldo', num:1, rol:'centro', zones:['back']},
+      {key:'side', label:'Laterales',        num:2, rol:'lateral', zones:['side','sideR']},
+      {key:'base', label:'Centro base',      num:3, rol:'centro', zones:['base']},
+      {key:'head', label:'Cabecera',         num:4, rol:'lateral', zones:['head']},
+      {key:'banca',label:'Banca trasera',    num:5, rol:'centro', zones:['banca']}
+    ]
+  },
   tablero: { id:'tablero', familia:'tablero', label:'Tablero', wa:'forro de tablero',
-    parts:[ {key:'pieza', label:'Tablero', num:1, rol:'centro', zones:['pieza'], labelAt:{x:500,y:250}} ] }
+    parts:[ {key:'pieza', label:'Tablero', num:1, rol:'centro', zones:['pieza'], labelAt:{x:500,y:250}} ] },
+  techo:   { id:'techo', familia:'techo',   label:'Techo',   wa:'forro de techo (cielo raso)', pending:true,
+    parts:[ {key:'pieza', label:'Techo', num:1, rol:'centro', zones:['pieza']} ] },
+  pisos:   { id:'pisos', familia:'piso',   label:'Pisos',   wa:'juego de pisos', pending:true,
+    parts:[ {key:'pieza', label:'Alfombra', num:1, rol:'centro', zones:['pieza']} ] }
 };
 
 /* ============================================================
    REGLAS DE INCOMPATIBILIDAD — datos, no ifs anidados.
    Cada veto lleva su motivo, y el motivo se le muestra al cliente.
-
-   NO BORRAR ESTA MAQUINARIA AUNQUE PAREZCA MUERTA.
-   Hoy no se dispara nunca, y es facil confundirlo con codigo muerto: la
-   unica regla apunta a 'pisos', que esta pending:true, y setProduct
-   rechaza los pendientes, asi que vetos() siempre devuelve vacio.
-   Esta DORMIDA, no muerta. Comprobado en navegador el 24 ago 2026 que en
-   cuanto pisos deje de estar pendiente las cuatro capas funcionan:
-     · vetos()             devuelve la regla con su motivo
-     · render()            pinta el boton disabled y el motivo en el title
-     · setPart()           lo rechaza aunque se fuerce por consola
-     · repararConflictos() arregla un diseno guardado que ya no vale
    ============================================================ */
 const INCOMPATIBLES = [
-  /* Esta regla apunta a 'pisos', que salio del selector el 29 ago 2026: queda
-     inerte pero valida, y vuelve a aplicarse sola si el producto regresa. */
   { producto:'pisos', dim:'pattern', valor:'Puntos',
     motivo:'El perforado no se usa en pisos: deja pasar el agua y la tierra.' }
 ];
@@ -1264,10 +1071,6 @@ let diseno = DISENOS[0].id;
 const content  = document.getElementById('content');
 const tabscope = document.getElementById('tabscope');
 
-/* Lo que reparo el ultimo cambio de producto, pendiente de contarselo al
-   cliente. render() lo pinta una vez y lo vacia. */
-let ultimasReparaciones = [];
-
 /* --- repara elecciones que quedaron vetadas al cambiar de producto --- */
 function repararConflictos(){
   const reparados = [];
@@ -1288,19 +1091,13 @@ function mountVehicleBar(){
   bar.innerHTML = Object.values(PRODUCTS).map(p=>
     `<button class="opt" data-prod="${esc(p.id)}"${p.pending?' data-pending="1"':''} style="padding:6px 16px;font-size:12px;border-radius:20px">${esc(p.label)}${p.pending?'<span class="soon">pronto</span>':''}</button>`
   ).join('');
+  bar.addEventListener('click', e=>{
+    const b = e.target.closest('[data-prod]');
+    if(!b) return;
+    if(b.dataset.pending) hojaPendiente(PRODUCTS[b.dataset.prod]);
+    else setProduct(b.dataset.prod);
+  });
 }
-
-/* La delegacion se engancha UNA sola vez, FUERA de mountVehicleBar. #vehiclebar
-   es markup fijo y sobrevive al innerHTML, asi que no hace falta reengancharla.
-   Si estuviera dentro, repintar la barra —justo lo que habra que hacer el dia
-   que camioneta/techo/pisos dejen de estar pending:true— duplicaria el listener
-   y cada clic dispararia setProduct dos veces. Mismo patron que #content. */
-document.getElementById('vehiclebar').addEventListener('click', e=>{
-  const b = e.target.closest('[data-prod]');
-  if(!b) return;
-  if(b.dataset.pending) hojaPendiente(PRODUCTS[b.dataset.prod]);
-  else setProduct(b.dataset.prod);
-});
 
 function mountLabels(){
   buildable().forEach(prod=>{
@@ -1332,13 +1129,7 @@ function mountGrainClips(){
       u.setAttribute('href', '#'+prod.id+'__'+z);
       cp.appendChild(u);
     }));
-    /* Un clipPath no pinta nada, asi que vale como hijo directo del <svg>.
-       Antes esto decia (svg.querySelector('defs') || svg).insertBefore(...,
-       svg.firstChild): si el SVG llegaba a tener un <defs>, se le pasaba a
-       insertBefore un nodo de referencia que NO era hijo suyo, lanzaba
-       NotFoundError y se moria el script entero. Hoy ninguno tiene <defs>,
-       o sea que funcionaba de milagro. */
-    svg.insertBefore(cp, svg.firstChild);
+    (svg.querySelector('defs') || svg).insertBefore(cp, svg.firstChild);
     grain.setAttribute('clip-path', 'url(#'+prod.id+'__clip)');
   });
 }
@@ -1375,6 +1166,19 @@ const RELIEVE = {
       ['sideR', 368, 186,  74, 240, 'crown-R'],
       ['edge',  198, 452,  62, 200, 'crown-L'],
       ['edge',  360, 452,  62, 200, 'crown-R']
+    ]
+  },
+  moto: {
+    pillows: [
+      ['copiloto', 310, 200, 48, 78, 0],
+      ['piloto',   310, 430, 74, 60, 0], ['piloto', 310, 520, 88, 46, 0],
+      ['piloto',   310, 596, 76, 40, 0],
+      ['ridge',    310, 325, 52, 22, 0],
+      ['sidesL',   238, 420, 26, 170, 0], ['sidesR', 382, 420, 26, 170, 0]
+    ],
+    crowns: [
+      ['sidesL', 210, 240, 60, 380, 'crown-L'],
+      ['sidesR', 350, 240, 60, 380, 'crown-R']
     ]
   },
   tablero: {
@@ -1431,14 +1235,9 @@ function mountRelieve(){
       grupo(z).appendChild(r);
     });
 
-    /* La capa va justo ANTES de las costuras, para que el hilo quede encima.
-       Subimos hasta el hijo DIRECTO del <svg>: hoy todas las .seam lo son,
-       pero si algun dia se envuelven en un <g>, insertBefore recibiria un
-       nodo de referencia que no es hijo suyo y lanzaria NotFoundError, la
-       misma trampa que ya se desactivo en mountGrainClips. */
-    let ref = svg.querySelector('.seam');
-    while(ref && ref.parentNode !== svg) ref = ref.parentNode;
-    svg.insertBefore(capa, ref || null);
+    /* la capa va justo ANTES de las costuras, para que el hilo quede encima */
+    const primeraCostura = svg.querySelector('.seam');
+    svg.insertBefore(capa, primeraCostura || null);
   });
 }
 
@@ -1469,18 +1268,7 @@ function mountZoneHandlers(){
   buildable().forEach(prod=>prod.parts.forEach(part=>part.zones.forEach(z=>{
     const zn = el(prod.id, z);
     if(!zn) return;
-    /* Aqui no hay delegacion: se engancha zona por zona. La marca evita que
-       volver a llamar a esta funcion enganche dos veces la misma zona y cada
-       toque cuente doble. */
-    if(zn.dataset.enganchada) return;
-    zn.dataset.enganchada = '1';
-    const elegir = ()=>{
-      /* La pista ("toca una parte para cambiarle el color...") es una
-         instruccion de una sola vez. En cuanto el cliente toca una zona ya la
-         aprendio, y en movil esos 57 px valen mas como asiento. */
-      document.body.classList.add('yatoco');
-      toggleLimpio(false); activePart = part.key; render(); paint();
-    };
+    const elegir = ()=>{ toggleLimpio(false); activePart = part.key; render(); paint(); };
     zn.setAttribute('role','button');
     zn.setAttribute('tabindex','0');
     zn.setAttribute('aria-label', `Personalizar ${part.label}`);
@@ -1513,9 +1301,8 @@ function setProduct(id){
   if(!prod.parts.some(p=>p.key===activePart)) activePart = prod.parts[0].key;
   material = materialPorFamilia[prod.familia];
   sincronizarPestanas();
-  ultimasReparaciones = repararConflictos();
+  repararConflictos();
   render(); paint(); paintMaterial(); paintEmbroidery(); pulsarZonas();
-  guardar();   /* cambiar de vehiculo tambien se recuerda */
   track('producto_seleccionado', {label: prod.label});
 }
 
@@ -1618,30 +1405,7 @@ function render(){
       h += `<div class="txtbox"><input id="embInput" placeholder="${esc(ph)}" aria-label="${esc(ph)}"></div>`;
     }
   }
-  /* Si al cambiar de producto hubo que ajustar una eleccion vetada, se le
-     dice al cliente en vez de cambiarsela a la callada. */
-  if(ultimasReparaciones.length){
-    h += `<div class="vetonote">Ajustamos tu diseño para este producto: ${esc(ultimasReparaciones.join('; '))}.</div>`;
-    ultimasReparaciones = [];
-  }
-  /* Reescribir el panel entero destruye el boton que el cliente acaba de
-     activar, y con el se va el foco: el teclado volvia al principio del
-     documento y habia que tabular hasta aqui otra vez en CADA eleccion de
-     color, patron o costura. Como todos los controles llevan data-act y
-     data-val, basta con anotar cual estaba enfocado y buscar su equivalente
-     despues de repintar. */
-  const enfocado = document.activeElement;
-  const marca = enfocado && enfocado.dataset && enfocado.dataset.act
-    ? {act: enfocado.dataset.act, val: enfocado.dataset.val} : null;
-  const habiaFocoEnElPanel = !!(marca && content.contains(enfocado));
-
   content.innerHTML = h;
-
-  if(habiaFocoEnElPanel){
-    const vuelve = content.querySelector('[data-act="'+marca.act+'"]'
-      + (marca.val != null ? '[data-val="'+CSS.escape(marca.val)+'"]' : ''));
-    if(vuelve) vuelve.focus();
-  }
   const inp = document.getElementById('embInput');
   if(inp) inp.value = embroidery.text;
   renderSummary();
@@ -1670,7 +1434,6 @@ function setEmbroidery(t){
   embroidery.type=t;
   if(!embDef(t).pideTexto) embroidery.text='';
   render(); paintEmbroidery(); guardar();
-  track('bordado_cambiado', {tipo:t});
 }
 
 function paint(){
@@ -1770,13 +1533,11 @@ function mountPresets(){
     `<i style="background:${colorHex(p.lateral.color)}"></i>`+
     `<i style="background:${stitchHex(p.centro.stitch)}"></i>`+
     `</span>${esc(p.name)}</button>`).join('');
+  c.addEventListener('click', e=>{
+    const b = e.target.closest('[data-preset]');
+    if(b) aplicarPreset(+b.dataset.preset);
+  });
 }
-
-/* Misma razon que en #vehiclebar: la delegacion, una sola vez y fuera. */
-document.getElementById('presets').addEventListener('click', e=>{
-  const b = e.target.closest('[data-preset]');
-  if(b) aplicarPreset(+b.dataset.preset);
-});
 
 /* ---------- diseno compartible en la URL ---------- */
 const A64='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
@@ -1784,14 +1545,9 @@ const idxColor  = n => Math.max(0, COLORS.findIndex(c=>c[0]===n));
 const idxPat    = n => Math.max(0, Object.keys(PATTERNS).indexOf(n));
 const idxStitch = n => Math.max(0, STITCHES.findIndex(s=>s[0]===n));
 
-/* Orden historico de productos para el enlace ?d=. NO reordenar ni compactar:
-   el indice viaja dentro del enlace, asi que un enlace ya compartido tiene que
-   seguir resolviendo al mismo producto. 'moto' se retiro del catalogo el
-   25 ago 2026 y su posicion queda reservada para no desplazar a los demas. */
-const ORDEN_URL = ['auto', null /* moto (retirado) */, 'camioneta', 'tablero', 'techo', 'pisos'];
-
 function codificar(){
-  const nums = [ORDEN_URL.indexOf(productId)];
+  const prods = Object.keys(PRODUCTS);
+  const nums = [prods.indexOf(productId)];
   PRODUCTS[productId].parts.forEach(part=>{
     const s = state[productId][part.key];
     nums.push(idxColor(s.color), idxPat(s.pattern), idxStitch(s.stitch));
@@ -1813,7 +1569,8 @@ function decodificar(str){
     if(nums.some(n=>n<0) || nums.length < 5) return false;
     const chk = nums.pop();
     if(nums.reduce((a,b)=>(a+b)%64, 7) !== chk) return false;
-    const prod = PRODUCTS[ORDEN_URL[nums[0]]];
+    const prods = Object.keys(PRODUCTS);
+    const prod = PRODUCTS[prods[nums[0]]];
     if(!prod || prod.pending) return false;
     const esperado = 1 + prod.parts.length*3 + 2;
     if(nums.length !== esperado && nums.length !== esperado + 1) return false;
@@ -1887,38 +1644,6 @@ function renderSticky(){
 }
 
 /* ---------- formulario del vehiculo ---------- */
-/* ============================================================
-   FOCO MIENTRAS HAY UN MODAL ABIERTO
-   Los dos modales de este archivo se pintan encima de la pagina, pero el
-   teclado seguia recorriendo lo de detras: desde el ultimo boton del
-   formulario, un Tab salia al configurador y paseaba por la cabecera, la
-   barra de vehiculos y las seis zonas del asiento, todas ellas tabulables
-   (tabindex=0), tapadas por el velo y sin verse donde estaba el foco.
-   Se resuelve marcando 'inert' a los hermanos del modal: los saca del orden
-   de tabulacion de una vez, sin tener que ciclar el Tab a mano.
-   Y al cerrar, el foco vuelve a quien abrio el modal. Antes caia a <body>, asi
-   que quien lo abria desde la barra fija de abajo reaparecia al principio del
-   documento y tenia que tabular la pagina entera para volver.
-   ============================================================ */
-let abrioElModal = null;
-
-function aislarElFondo(bg){
-  abrioElModal = document.activeElement;
-  document.querySelectorAll('body > *').forEach(n=>{
-    if(n !== bg && !n.hasAttribute('inert')){ n.inert = true; n.dataset.inertPorModal = '1'; }
-  });
-}
-
-function soltarElFondo(){
-  document.querySelectorAll('[data-inert-por-modal]').forEach(n=>{
-    n.inert = false; delete n.dataset.inertPorModal;
-  });
-  /* se devuelve ya, sin esperar a la animacion de salida: si se esperara, el
-     foco pasaria ese rato en la nada */
-  if(abrioElModal && document.contains(abrioElModal)) abrioElModal.focus();
-  abrioElModal = null;
-}
-
 function abrirFormulario(){
   const bg = document.createElement('div');
   bg.className = 'modalbg';
@@ -1938,7 +1663,7 @@ function abrirFormulario(){
       </div>
       <div class="field">
         <label for="fCiu">Ciudad <span>(opcional)</span></label>
-        <input id="fCiu" placeholder="Machala" autocomplete="address-level2">
+        <input id="fCiu" placeholder="Cuenca" autocomplete="address-level2">
       </div>
       <div class="modalact">
         <button class="btnghost" id="mCancel">Volver</button>
@@ -1949,19 +1674,9 @@ function abrirFormulario(){
   track('formulario_abierto', {precio: precioDesde()});
   const veh = bg.querySelector('#fVeh'), nom = bg.querySelector('#fNom'), ciu = bg.querySelector('#fCiu');
   veh.value = cliente.vehiculo; nom.value = cliente.nombre; ciu.value = cliente.ciudad;
-  aislarElFondo(bg);
   veh.focus();
 
-  const cerrar = ()=>{
-    document.removeEventListener('keydown', onKey);
-    soltarElFondo();
-    /* El nodo se quita cuando termina la animacion de salida, no antes, o se
-       veria desaparecer de golpe. Con reduced-motion no hay animacion que
-       esperar y se va en el acto. */
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){ bg.remove(); return; }
-    bg.classList.add('cerrando');
-    setTimeout(()=>bg.remove(), 170);
-  };
+  const cerrar = ()=>{ bg.remove(); document.removeEventListener('keydown', onKey); };
   const onKey = e=>{ if(e.key==='Escape') cerrar(); };
   document.addEventListener('keydown', onKey);
   bg.addEventListener('click', e=>{ if(e.target===bg) cerrar(); });
@@ -2035,16 +1750,7 @@ function hojaPendiente(prod){
       </div>
     </div>`;
   document.body.appendChild(bg);
-  const cerrar = ()=>{
-    document.removeEventListener('keydown', onKey);
-    soltarElFondo();
-    /* El nodo se quita cuando termina la animacion de salida, no antes, o se
-       veria desaparecer de golpe. Con reduced-motion no hay animacion que
-       esperar y se va en el acto. */
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){ bg.remove(); return; }
-    bg.classList.add('cerrando');
-    setTimeout(()=>bg.remove(), 170);
-  };
+  const cerrar = ()=>{ bg.remove(); document.removeEventListener('keydown', onKey); };
   const onKey = e=>{ if(e.key==='Escape') cerrar(); };
   document.addEventListener('keydown', onKey);
   bg.addEventListener('click', e=>{ if(e.target===bg) cerrar(); });
@@ -2057,7 +1763,6 @@ function hojaPendiente(prod){
     if(!w || w.closed || typeof w.closed==='undefined') location.href = url;
     cerrar();
   });
-  aislarElFondo(bg);
   bg.querySelector('#hpClose').focus();
   track('vio_producto_pendiente', {producto: prod.id});
 }
@@ -2081,17 +1786,8 @@ content.addEventListener('click', e=>{
   else if(a==='emb') setEmbroidery(v);
   else if(a==='diseno') setDiseno(v);
 });
-/* Guardar con retardo. Guardar en cada tecla castiga al movil, y llamar a
-   render() aqui seria peor: termina en content.innerHTML y destruiria este
-   mismo <input>, con lo que el cliente perderia el foco y el teclado. */
-let embSaveT = null;
 content.addEventListener('input', e=>{
-  if(e.target.id==='embInput'){
-    embroidery.text = e.target.value;
-    renderSummary(); paintEmbroidery();
-    clearTimeout(embSaveT);
-    embSaveT = setTimeout(guardar, 500);
-  }
+  if(e.target.id==='embInput'){ embroidery.text = e.target.value; renderSummary(); paintEmbroidery(); }
 });
 function sincronizarPestanas(){
   const usa = !!PRODUCTS[productId].usaDiseno;
@@ -2134,102 +1830,10 @@ mountPresets();
 /* Prioridad: un diseno compartido por link gana sobre lo guardado. */
 const compartido = decodificar(new URLSearchParams(location.search).get('d'));
 const recuperado = !compartido && restaurar();
-if(recuperado){
-  document.getElementById('restoreBar').style.display = 'flex';
-  /* Quien vuelve ya uso el configurador: no necesita la pista, y ademas el
-     banner le empuja la tarjeta 56 px hacia abajo. */
-  document.body.classList.add('yatoco','conbanner');
-}
+if(recuperado) document.getElementById('restoreBar').style.display = 'flex';
 
-/* 'visita' PRIMERO: setProduct dispara 'producto_seleccionado', y si va antes
-   la primera entrada de la sesion nunca es la visita y el embudo sale al reves. */
-track('visita', {origen: compartido ? 'link_compartido' : (recuperado ? 'volvio' : 'nuevo')});
 setProduct(productId);
-
-/* ============================================================
-   APARICION AL HACER SCROLL
-   Sin librerias: IntersectionObserver, que ya viene en todos los
-   navegadores que nos importan.
-
-   Por que el estado oculto lo pone el JS y no el CSS: debajo del
-   configurador estan las 400 palabras que indexa Google. Si el
-   opacity:0 viviera en la hoja de estilos y el JS fallara, ese texto
-   quedaria invisible para siempre. Asi, si algo se rompe, lo peor que
-   pasa es que la pagina no se anime.
-
-   Tres redes de seguridad, en este orden:
-     1. Si no hay IntersectionObserver o el visitante pidio menos
-        movimiento, no se toca nada.
-     2. Lo que ya esta en pantalla al cargar se revela sin animar.
-     3. Un seguro contra un observador muerto: al empezar a observar,
-        IntersectionObserver siempre avisa una primera vez de cada
-        elemento (aunque sea para decir que no se ve). Si a los 2 s no
-        ha avisado ni una vez, damos por roto el mecanismo y se muestra
-        todo. Ojo: el seguro NO puede ser un simple plazo que revele
-        todo pasado un rato. Se probo asi y anulaba el efecto: el
-        cliente pasa mas de tres segundos en el configurador antes de
-        bajar, con lo que llegaba a la galeria ya revelada y no veia
-        aparecer nada.
-   ============================================================ */
-(function(){
-  var menosMovimiento = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(menosMovimiento || !('IntersectionObserver' in window)) return;
-
-  /* Los objetivos se marcan desde aqui a proposito: el HTML no lleva ni una
-     clase de presentacion, asi que sin este script no hay nada que revelar. */
-  var objetivos = [].concat(
-    [].slice.call(document.querySelectorAll('.galeria > h2, .galeria > .sub')),
-    [].slice.call(document.querySelectorAll('.grid figure')),
-    [].slice.call(document.querySelectorAll('.info > h2, .info > p, .info > ul, .info > .cols')),
-    [].slice.call(document.querySelectorAll('footer'))
-  );
-  if(!objetivos.length) return;
-
-  document.documentElement.classList.add('anim');
-  /* las fotos funden y nada mas; los textos ademas suben */
-  objetivos.forEach(function(el){
-    el.classList.add(el.tagName === 'FIGURE' ? 'revfade' : 'reveal');
-  });
-
-  var mostrar = function(el, puestoEnElLote){
-    if(el.classList.contains('dentro')) return;
-    /* El retraso se cuenta dentro del LOTE que entra a la vez, no por su
-       posicion en la grilla. Antes se usaba el indice entre las dieciocho
-       fotos, y como al bajar entran de una en una, doce de ellas recibian el
-       mismo retraso de tope: 270 ms que no escalonaban respecto a nadie:
-       eran espera y ya. Quien entra solo empieza en el acto. */
-    if(puestoEnElLote != null){
-      el.style.setProperty('--d', Math.min(puestoEnElLote, 3) * 45 + 'ms');
-    }
-    el.classList.add('dentro');
-  };
-
-  var observadorVivo = false;
-  var obs = new IntersectionObserver(function(entradas){
-    observadorVivo = true;       /* dio senales de vida: el seguro sobra */
-    var entrando = entradas.filter(function(e){ return e.isIntersecting });
-    entrando.forEach(function(e, i){
-      mostrar(e.target, e.target.tagName === 'FIGURE' ? i : null);
-      obs.unobserve(e.target);   /* una vez visible, ya no se vigila */
-    });
-  }, {rootMargin: '0px 0px -6% 0px', threshold: 0.05});
-
-  objetivos.forEach(function(el){
-    /* Red 2: lo que ya se ve al cargar no tiene por que aparecer; animarlo
-       seria un parpadeo gratuito en el primer pintado. */
-    var r = el.getBoundingClientRect();
-    if(r.top < innerHeight && r.bottom > 0){ el.classList.add('dentro'); return; }
-    obs.observe(el);
-  });
-
-  /* Red 3: si el observador nunca dio senales, se muestra todo. */
-  setTimeout(function(){
-    if(observadorVivo) return;
-    objetivos.forEach(function(el){ el.classList.add('dentro'); });
-    obs.disconnect();
-  }, 2000);
-})();
-
+track('visita', {origen: compartido ? 'link_compartido' : (recuperado ? 'volvio' : 'nuevo')});
 </script>
 </body>
 </html>
