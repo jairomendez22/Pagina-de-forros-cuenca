@@ -3,7 +3,7 @@
 > **Léeme primero si abres una conversación nueva.**
 > Este archivo es el traspaso completo: qué hay hecho, cómo está armado el
 > código, qué ya se probó y falló, y qué queda pendiente.
-> Última actualización: 24 de agosto de 2026 (segunda tanda).
+> Última actualización: 1 de septiembre de 2026 (publicación en GitHub Pages).
 
 ---
 
@@ -21,7 +21,8 @@ camionetas en **Machala, provincia de El Oro**, Ecuador, activo **desde
 > con **El Oro**, no Azuay) y el texto indexable.
 Contacto del negocio: WhatsApp **0984353695** (`593984353695`).
 Redes: **@FORROSCUENCA** en Instagram, Facebook y TikTok.
-Dominio comprado: **forroscuenca.com** (21 ago 2026). Aún sin publicar.
+Dominio: **forroscuenca.com** (comprado 21 ago 2026). **PUBLICADO** en
+GitHub Pages desde el 1 sep 2026 — ver §8.
 
 El corazón del sitio es un **configurador**: el cliente elige vehículo,
 color, patrón, costura, modelo de diseño y material, ve el asiento
@@ -340,26 +341,45 @@ Si hay que instalar herramientas: `npm install --no-save` **no** sirve
 
 ---
 
-## 8. Estado de publicación
+## 8. Publicación — CÓMO SE PUBLICA AHORA
 
-**La carpeta `SUBIR A LA WEB/` está lista.** 57 archivos, 2,2 MB,
-verificada: todas las referencias del HTML existen.
+**El sitio está en línea: https://forroscuenca.com**
 
-`COMO-SUBIRLO.txt` tiene los pasos exactos de los dos caminos:
-- **Cloudflare Pages** (recomendado): gratis, arrastrar y soltar, HTTPS solo.
-- **cPanel** (Hostinger/GoDaddy/Namecheap): `public_html`, con el truco de
-  subir `fotos/` y `disenos/` comprimidas para no subir 52 archivos a mano.
+Se sirve con **GitHub Pages** desde el repo
+`jairomendez22/Pagina-de-forros-cuenca`, rama `main`, carpeta raíz `/`.
+El DNS lo gestiona **Cloudflare** (nameservers `diana`/`rohin.ns.cloudflare.com`)
+y apunta a las IP de GitHub Pages. El archivo `CNAME` de la raíz del repo
+contiene `forroscuenca.com` y **no debe borrarse**: si desaparece, el
+dominio propio se cae. HTTPS forzado activado el 1 sep 2026.
 
-**Dato que falta:** no sabemos **dónde compró Jairo el dominio**. Es lo
-único que impide dar los pasos exactos de DNS en vez de los genéricos.
+### Publicar un cambio son tres comandos
+
+    cp index.html "SUBIR A LA WEB/index.html"   # sincronizar la copia
+    git add -A . && git commit -m "..."
+    git push origin main
+
+GitHub tarda **1-3 minutos** en reconstruir. Hasta que termina, el sitio
+sigue mostrando la versión anterior.
+
+> **La trampa que ya nos costó una semana:** editar `index.html` NO
+> publica nada. Del 22 al 31 de agosto el sitio en línea fue el commit
+> inicial mientras todo el trabajo (corrección a Machala, fotos
+> renombradas) vivía solo en el disco de Jairo. **Si un cambio no se ve
+> en forroscuenca.com, lo primero que hay que mirar es `git status`.**
+
+`SUBIR A LA WEB/` y `COMO-SUBIRLO.txt` describen el camino manual
+(Cloudflare Pages / cPanel). **Quedaron obsoletos**: ya no hace falta
+subir nada a mano. Se conservan solo por si algún día se migra de host.
 
 ---
 
 ## 9. PENDIENTES
 
-### Bloquean la publicación — solo Jairo puede contestarlos
-1. **Dirección del taller.** El JSON-LD dice literalmente
-   `"streetAddress": "COMPLETAR: calle y numero del taller"` (línea 277).
+### Datos que solo Jairo puede confirmar (el sitio ya está en línea con supuestos)
+1. **Dirección del taller.** El campo `streetAddress` se **quitó** del
+   JSON-LD el 1 sep 2026 para no publicar el texto "COMPLETAR", que Google
+   habría leído tal cual. El resto de la dirección (Machala, El Oro, EC)
+   sí está. Falta la calle y número.
 2. **Horario.** Puse 08:00–18:00 de lunes a sábado. **Es una suposición
    mía.** Un horario equivocado en Google hace que la gente llegue con el
    taller cerrado.
