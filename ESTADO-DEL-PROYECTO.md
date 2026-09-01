@@ -376,10 +376,10 @@ subir nada a mano. Se conservan solo por si algún día se migra de host.
 ## 9. PENDIENTES
 
 ### Datos que solo Jairo puede confirmar (el sitio ya está en línea con supuestos)
-1. **Dirección del taller.** El campo `streetAddress` se **quitó** del
-   JSON-LD el 1 sep 2026 para no publicar el texto "COMPLETAR", que Google
-   habría leído tal cual. El resto de la dirección (Machala, El Oro, EC)
-   sí está. Falta la calle y número.
+1. ~~**Dirección del taller.**~~ **RESUELTO el 1 sep 2026.** Jairo
+   confirmó: **Napoleón Mera entre Primera Diagonal y Rocafuerte**,
+   Machala. Ya está en el `streetAddress` del JSON-LD y publicada.
+   Ojo: solo vive en los metadatos, no se muestra en la página.
 2. **Horario.** Puse 08:00–18:00 de lunes a sábado. **Es una suposición
    mía.** Un horario equivocado en Google hace que la gente llegue con el
    taller cerrado.
