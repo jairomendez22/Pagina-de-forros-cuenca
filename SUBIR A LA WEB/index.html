@@ -325,14 +325,6 @@ body{padding-bottom:78px}
   border:1px solid #ffffff3d;border-radius:999px;padding:2px 7px;
   background:#0000005c;white-space:nowrap;
 }
-/* distintivo de las fotos tomadas en el taller, para no venderlas revueltas
-   con las recreaciones de estudio */
-.forro-real{
-  position:absolute;top:8px;left:8px;
-  color:var(--texto);font-size:11px;font-weight:700;letter-spacing:.2px;
-  border:1px solid #ffffff40;border-radius:999px;padding:3px 8px;
-  background:#000000ad;
-}
 @media(max-width:700px){
   .forro-nombre{font-size:11.5px}
   .forro-mas{font-size:11px;padding:1px 6px}
@@ -360,13 +352,43 @@ body{padding-bottom:78px}
   border:1px solid var(--linea-fuerte);background:var(--control);
   color:var(--texto-2);font-size:15px;line-height:1;cursor:pointer;font-family:inherit;
 }
+/* La caja aguanta la altura y aloja las flechas; el que se desplaza es el
+   marco de dentro. Si las flechas vivieran dentro del marco se irian con el
+   scroll y desaparecerian a la primera foto. */
+.visor-caja{position:relative;flex:1 1 58vh;min-height:0;display:flex}
+/* El deslizamiento lo lleva el propio navegador: scroll horizontal con
+   scroll-snap. Sale mejor que moverlo a mano con transform porque el arrastre
+   con el dedo trae la fisica de verdad -- inercia, rebote y ese frenado que
+   uno reconoce sin saber nombrarlo -- y ademas responde al trackpad y a la
+   rueda del raton, que una pista movida por JS no atiende. */
 .visor-marco{
-  position:relative;flex:1;min-height:0;
-  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:0;
+  display:flex;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  overscroll-behavior-x:contain;
   background:var(--fondo-hondo);border:1px solid var(--linea);
-  border-radius:12px;overflow:hidden;
+  border-radius:12px;
+  scrollbar-width:none;
 }
-.visor-marco img{display:block;max-width:100%;max-height:58vh;object-fit:contain}
+/* la barra sobra: para eso estan las miniaturas y el pie */
+.visor-marco::-webkit-scrollbar{display:none}
+/* La hoja lleva su altura explicita: sin ella el 100% de la foto se resuelve
+   contra un alto 'auto' que el flex estira, el navegador lo da por indefinido
+   y la imagen sale a tamano natural y se desborda del marco. */
+.visor-hoja{
+  flex:0 0 100%;height:100%;box-sizing:border-box;padding:8px;
+  scroll-snap-align:center;scroll-snap-stop:always;
+}
+.visor-hoja img{
+  display:block;width:100%;height:100%;object-fit:contain;
+  /* al arrastrar con el raton, el navegador intentaria llevarse la imagen */
+  -webkit-user-drag:none;user-select:none;
+  /* las de al lado se quedan un punto atras, para que la vista vaya sola a la
+     que se esta mirando y se note de que lado viene la siguiente */
+  opacity:.4;transform:scale(.96);
+  transition:opacity .38s ease, transform .5s var(--curva-desliz);
+}
+.visor-hoja[aria-current="true"] img{opacity:1;transform:none}
 .visor-nav{
   position:absolute;top:50%;transform:translateY(-50%);
   width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
@@ -375,18 +397,30 @@ body{padding-bottom:78px}
 }
 .visor-nav.prev{left:8px}
 .visor-nav.sig{right:8px}
+.visor-nav[disabled]{opacity:.3;cursor:default}
 .visor-pie{margin:0;color:var(--texto-4);font-size:12px;line-height:1.5;text-align:center}
-.visor-tira{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.visor-tira{display:flex;gap:8px;overflow-x:auto;padding:3px 2px 5px;scroll-behavior:smooth}
 .visor-tira button{
   flex:none;width:62px;aspect-ratio:3/4;padding:0;overflow:hidden;
   border:1px solid var(--linea-fuerte);border-radius:9px;
-  background:none;cursor:pointer;
+  background:none;cursor:pointer;opacity:.55;
+  transition:border-color .25s ease, opacity .25s ease, transform .25s var(--curva);
 }
-.visor-tira button[aria-current="true"]{border-color:var(--texto)}
+.visor-tira button[aria-current="true"]{border-color:var(--texto);opacity:1;transform:translateY(-3px)}
 .visor-tira img{display:block;width:100%;height:100%;object-fit:cover}
+@media (hover:hover) and (pointer:fine){ .visor-tira button:hover{opacity:1} }
+/* el pie cambia de frase en cada foto: que se funda en vez de saltar */
+.visor-pie{transition:opacity .22s ease}
+.visor-pie.cambiando{opacity:0}
+/* quien pidio menos movimiento no quiere una fila deslizandose */
+@media (prefers-reduced-motion: reduce){
+  .visor-hoja img,.visor-tira button,.visor-pie{transition:none}
+  .visor-marco,.visor-tira{scroll-behavior:auto}
+  .visor-hoja img{opacity:1;transform:none}
+}
 @media(max-width:700px){
   .visor{padding:12px;gap:10px;border-radius:14px}
-  .visor-marco img{max-height:46vh}
+  .visor-caja{flex-basis:46vh}
   .visor-cab p{display:none}
   .visor-tira button{width:52px}
 }
@@ -455,7 +489,13 @@ body.limpio .valle,body.limpio .labio{opacity:1}
    3. El configurador NO hace fade-in: es lo primero que el cliente
       tiene que poder tocar, y no se le hace esperar por un efecto.
    ══════════════════════════════════════════════════════════════ */
-:root{ --curva:cubic-bezier(.16,1,.3,1); --vel:.5s; }
+:root{ --curva:cubic-bezier(.16,1,.3,1); --vel:.5s;
+  /* La de arriba es una easeOutExpo: perfecta para algo pequeno que aparece,
+     pesima para recorrer 900px. Hace el 98% del camino en los primeros 80ms,
+     asi que la foto sale disparada y frena de golpe: se lee como un salto, no
+     como un deslizamiento. Esta reparte el recorrido, arranca decidida y
+     aterriza suave, que es lo que se espera al pasar una foto con el dedo. */
+  --curva-desliz:cubic-bezier(.32,.72,0,1); }
 
 /* ── aparecer al entrar en pantalla ── */
 html.anim .reveal{opacity:0;transform:translateY(14px)}
@@ -1003,19 +1043,9 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
         <img src="fotos/muestra-negro-showroom.webp" srcset="fotos/muestra-negro-showroom-400.webp 400w, fotos/muestra-negro-showroom.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Juego de forros en cuero negro con acolchado de ondas y costura blanca" width="760" height="1013" loading="lazy" decoding="async">
         <span class="forro-pie"><span class="forro-nombre">Negro con ondas</span><span class="forro-mas">6 fotos</span></span>
       </button></figure>
-    <figure><button type="button" class="forro-btn" data-forro="jac" aria-label="Negro con costura roja: ver las 2 fotos de este forro">
-        <img src="fotos/muestra-jac-negro.webp" srcset="fotos/muestra-jac-negro-400.webp 400w, fotos/muestra-jac-negro.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asientos de un JAC forrados en cuero negro con pespunte rojo, frente al local de Forros Cuenca" width="760" height="1013" loading="lazy" decoding="async">
-        <span class="forro-real">Foto del taller</span>
-        <span class="forro-pie"><span class="forro-nombre">Negro con costura roja</span><span class="forro-mas">2 fotos</span></span>
-      </button></figure>
     <figure><button type="button" class="forro-btn" data-forro="gris" aria-label="Gris pizarra: ver las 2 fotos de este forro">
         <img src="fotos/muestra-gris-dmax.webp" srcset="fotos/muestra-gris-dmax-400.webp 400w, fotos/muestra-gris-dmax.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero gris pizarra con bordado Isuzu D-Max" width="760" height="1013" loading="lazy" decoding="async">
         <span class="forro-pie"><span class="forro-nombre">Gris pizarra</span><span class="forro-mas">2 fotos</span></span>
-      </button></figure>
-    <figure><button type="button" class="forro-btn" data-forro="kia" aria-label="Gris y negro: ver las 2 fotos de este forro">
-        <img src="fotos/muestra-kia-gris.webp" srcset="fotos/muestra-kia-gris-400.webp 400w, fotos/muestra-kia-gris.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Interior de un Kia Rio forrado en gris y negro con el modelo bordado" width="760" height="1013" loading="lazy" decoding="async">
-        <span class="forro-real">Foto del taller</span>
-        <span class="forro-pie"><span class="forro-nombre">Gris y negro</span><span class="forro-mas">2 fotos</span></span>
       </button></figure>
     <figure><button type="button" class="forro-btn" data-forro="bicolor" aria-label="Blanco y negro: ver las 2 fotos de este forro">
         <img src="fotos/muestra-blanco-negro.webp" srcset="fotos/muestra-blanco-negro-400.webp 400w, fotos/muestra-blanco-negro.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros bicolor blanco y negro con rombos cosidos en el respaldo" width="760" height="1013" loading="lazy" decoding="async">
@@ -1029,11 +1059,6 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
         <img src="fotos/muestra-camel-hilux.webp" srcset="fotos/muestra-camel-hilux-400.webp 400w, fotos/muestra-camel-hilux.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Forros en cuero camel con acanalado vertical y bordado Toyota Hilux" width="760" height="1013" loading="lazy" decoding="async">
         <span class="forro-pie"><span class="forro-nombre">Camel acanalado</span><span class="forro-mas">2 fotos</span></span>
       </button></figure>
-    <figure><button type="button" class="forro-btn" data-forro="rosa" aria-label="Rosa y crema: ver las 2 fotos de este forro">
-        <img src="fotos/muestra-rosa-crema.webp" srcset="fotos/muestra-rosa-crema-400.webp 400w, fotos/muestra-rosa-crema.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Asiento forrado en cuero rosado y crema con acanalado central" width="760" height="1013" loading="lazy" decoding="async">
-        <span class="forro-real">Foto del taller</span>
-        <span class="forro-pie"><span class="forro-nombre">Rosa y crema</span><span class="forro-mas">2 fotos</span></span>
-      </button></figure>
     <figure><button type="button" class="forro-btn" data-forro="verde" aria-label="Verde oscuro: ver las 3 fotos de este forro">
         <img src="fotos/muestra-verde-showroom.webp" srcset="fotos/muestra-verde-showroom-400.webp 400w, fotos/muestra-verde-showroom.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Juego de forros en cuero verde oscuro con acolchado hexagonal, vistos de frente" width="760" height="1013" loading="lazy" decoding="async">
         <span class="forro-pie"><span class="forro-nombre">Verde oscuro</span><span class="forro-mas">3 fotos</span></span>
@@ -1041,11 +1066,6 @@ html.anim .restore{animation:bannerIn .32s var(--curva)}
     <figure><button type="button" class="forro-btn" data-forro="foton" aria-label="Gris y negro con vivo: ver las 2 fotos de este forro">
         <img src="fotos/muestra-banca-foton.webp" srcset="fotos/muestra-banca-foton-400.webp 400w, fotos/muestra-banca-foton.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Banca de furgoneta en cuero gris y negro con vivo blanco y bordado Foton" width="760" height="1013" loading="lazy" decoding="async">
         <span class="forro-pie"><span class="forro-nombre">Gris y negro con vivo</span><span class="forro-mas">2 fotos</span></span>
-      </button></figure>
-    <figure><button type="button" class="forro-btn" data-forro="crema" aria-label="Crema para banca: ver las 2 fotos de este forro">
-        <img src="fotos/muestra-crema-banca.webp" srcset="fotos/muestra-crema-banca-400.webp 400w, fotos/muestra-crema-banca.webp 760w" sizes="(max-width:700px) 46vw, (max-width:1150px) 30vw, 210px" alt="Banca trasera de una camioneta forrada en cuero crema" width="760" height="1013" loading="lazy" decoding="async">
-        <span class="forro-real">Foto del taller</span>
-        <span class="forro-pie"><span class="forro-nombre">Crema para banca</span><span class="forro-mas">2 fotos</span></span>
       </button></figure>
   </div>
 </section>
@@ -2124,28 +2144,12 @@ const GALERIA = {
       {img:'muestra-detalle-canaletas',alt:'Primer plano de las canaletas cosidas del cojin en cuero negro'}
     ]
   },
-  jac: {
-    nombre:'Negro con costura roja', real:true,
-    desc:'Trabajo entregado: forros negros con pespunte rojo y el logo de la marca bordado en el respaldo.',
-    fotos:[
-      {img:'muestra-jac-negro',   visor:'muestra-jac-negro-vista', alt:'Asientos de un JAC forrados en cuero negro con pespunte rojo, frente al local de Forros Cuenca'},
-      {img:'muestra-jac-bordado', alt:'Detalle del logo JAC bordado y del acanalado central en cuero negro con costura roja'}
-    ]
-  },
   gris: {
     nombre:'Gris pizarra',
     desc:'Cuero gris con costura al tono y el nombre del vehiculo bordado en el respaldo.',
     fotos:[
       {img:'muestra-gris-dmax',  alt:'Forros en cuero gris pizarra con bordado Isuzu D-Max'},
       {img:'muestra-gris-panel', alt:'Detalle del cojin en cuero gris pizarra con costura al tono'}
-    ]
-  },
-  kia: {
-    nombre:'Gris y negro', real:true,
-    desc:'Trabajo entregado: bicolor gris y negro, con acanalado vertical y el modelo bordado.',
-    fotos:[
-      {img:'muestra-kia-gris',    visor:'muestra-kia-gris-vista', alt:'Interior de un Kia Rio forrado en gris y negro con el modelo bordado'},
-      {img:'muestra-kia-bordado', alt:'Detalle del bordado Kia Rio Stylus y del acanalado bicolor gris y negro'}
     ]
   },
   bicolor: {
@@ -2172,14 +2176,6 @@ const GALERIA = {
       {img:'muestra-camel-acanalado', alt:'Primer plano del acanalado vertical en cuero camel'}
     ]
   },
-  rosa: {
-    nombre:'Rosa y crema', real:true,
-    desc:'Trabajo entregado: dos tonos suaves con acanalado central y ribete en el contorno.',
-    fotos:[
-      {img:'muestra-rosa-crema',     visor:'muestra-rosa-crema-vista', alt:'Asiento forrado en cuero rosado y crema con acanalado central'},
-      {img:'muestra-rosa-acanalado', alt:'Detalle del acanalado rosado sobre el cuero crema del respaldo y el cojin'}
-    ]
-  },
   verde: {
     nombre:'Verde oscuro',
     desc:'Cuero verde con acolchado hexagonal y ribete texturizado en los costados.',
@@ -2195,14 +2191,6 @@ const GALERIA = {
     fotos:[
       {img:'muestra-banca-foton', alt:'Banca de furgoneta en cuero gris y negro con vivo blanco y bordado Foton'},
       {img:'muestra-foton-vivo',  alt:'Detalle del vivo blanco y el perforado en la banca gris y negra'}
-    ]
-  },
-  crema: {
-    nombre:'Crema para banca', real:true,
-    desc:'Trabajo entregado: banca trasera completa en cuero crema, con la costura siguiendo la forma del respaldo.',
-    fotos:[
-      {img:'muestra-crema-banca',    visor:'muestra-crema-banca-vista', alt:'Banca trasera de una camioneta forrada en cuero crema'},
-      {img:'muestra-crema-respaldo', alt:'Detalle del respaldo en cuero crema con la costura curva y el cinturon de seguridad'}
     ]
   }
 };
@@ -2225,8 +2213,10 @@ function abrirForro(clave){
         </div>
         <button class="visor-x" id="vX" aria-label="Cerrar">&#10005;</button>
       </div>
-      <div class="visor-marco">
-        <img id="vImg" alt="" width="760" height="1013">
+      <div class="visor-caja">
+        <div class="visor-marco" id="vPista">${fotos.map(f=>`
+          <div class="visor-hoja"><img src="fotos/${f.visor || f.img}.webp" alt="" draggable="false" decoding="async"></div>`).join('')}
+        </div>
         ${varias ? '<button class="visor-nav prev" id="vPrev" aria-label="Foto anterior">&#8249;</button><button class="visor-nav sig" id="vSig" aria-label="Foto siguiente">&#8250;</button>' : ''}
       </div>
       <p class="visor-pie" id="vPie" role="status" aria-live="polite"></p>
@@ -2235,8 +2225,11 @@ function abrirForro(clave){
   document.body.appendChild(bg);
   track('galeria_forro_abierto', {forro: clave, fotos: fotos.length});
 
-  const img = bg.querySelector('#vImg'), pie = bg.querySelector('#vPie');
+  const pista = bg.querySelector('#vPista'), pie = bg.querySelector('#vPie');
   const tira = bg.querySelector('#vTira');
+  const flePrev = bg.querySelector('#vPrev'), fleSig = bg.querySelector('#vSig');
+  const hojas = [...pista.children];
+  const suave = !matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if(tira){
     /* Las miniaturas se arman aqui y no en el HTML porque son las mismas
@@ -2252,27 +2245,75 @@ function abrirForro(clave){
     });
   }
 
+  /* Quien manda aqui es el scroll del marco. 'ver' solo pide el sitio; el
+     estado (pie, miniaturas, foto realzada) lo pone 'marcar', que corre con
+     cada cuadro de scroll. Asi da igual como se llego -- con la flecha, con
+     el teclado, con la miniatura o empujando con el dedo -- el resultado es
+     el mismo y no hay dos verdades que sincronizar.
+     No da la vuelta a proposito: empujando con el dedo tampoco se vuelve de
+     la ultima a la primera, y que el boton hiciera algo que el gesto no hace
+     obligaria a explicar cual de los dos miente. */
   const ver = n=>{
-    i = (n + fotos.length) % fotos.length;
-    const f = fotos[i];
-    img.src = `fotos/${f.visor || f.img}.webp`;
-    /* La foto va como decorativa y quien la describe es el pie, que esta
-       justo debajo y ademas es region viva: asi el lector de pantalla anuncia
-       el cambio al pasar de foto, y no lee la misma frase dos veces. */
-    pie.textContent = fotos.length > 1
-      ? `${f.alt}. Foto ${i+1} de ${fotos.length}.`
-      : f.alt;
-    if(tira) [...tira.children].forEach((b, n2)=>{
-      b.setAttribute('aria-current', n2===i ? 'true' : 'false');
+    const k = Math.max(0, Math.min(fotos.length - 1, n));
+    /* Se le pide el sitio a la hoja en vez de calcularlo por el ancho: asi da
+       igual el relleno que lleve, o que un dia se le ponga separacion. */
+    hojas[k].scrollIntoView({
+      inline:'center', block:'nearest',
+      behavior: suave ? 'smooth' : 'auto'
     });
   };
-  ver(0);
+
+  let fundido = 0;
+  const marcar = k=>{
+    if(k === i) return;
+    i = k;
+    hojas.forEach((h, n)=>h.setAttribute('aria-current', n===i ? 'true' : 'false'));
+
+    const f = fotos[i];
+    const texto = fotos.length > 1
+      ? `${f.alt}. Foto ${i+1} de ${fotos.length}.`
+      : f.alt;
+    /* La foto va sin alt y quien la describe es el pie, que esta justo debajo
+       y ademas es region viva: asi el lector de pantalla anuncia el cambio al
+       pasar de foto, y no lee la misma frase dos veces. */
+    if(!suave || !pie.textContent) pie.textContent = texto;
+    else {
+      /* la frase se funde en vez de cambiar de golpe: sustituirla a mitad del
+         deslizamiento es lo que hacia que el cambio se viera brusco */
+      pie.classList.add('cambiando');
+      clearTimeout(fundido);
+      fundido = setTimeout(()=>{ pie.textContent = texto; pie.classList.remove('cambiando'); }, 200);
+    }
+
+    if(tira){
+      [...tira.children].forEach((b, n)=>b.setAttribute('aria-current', n===i ? 'true' : 'false'));
+      /* que la miniatura viva no se quede fuera de cuadro en un forro de seis */
+      tira.children[i].scrollIntoView({block:'nearest', inline:'center'});
+    }
+    /* en los topes la flecha se apaga: un boton que no lleva a ningun sitio
+       se pulsa una vez y deja al cliente pensando que la pagina fallo */
+    if(flePrev){ flePrev.disabled = i === 0; fleSig.disabled = i === fotos.length - 1; }
+  };
+
+  /* El scroll es la unica fuente de verdad. Se escucha en vivo y no al final
+     del gesto: mientras el dedo empuja, la foto que va entrando ya se realza
+     y el pie ya cambia, que es lo que hace que el gesto se sienta atendido.
+     'marcar' se sale sola si el numero no cambio, asi que llamarla en cada
+     cuadro de scroll no cuesta nada. */
+  pista.addEventListener('scroll', ()=>{
+    const k = Math.round(pista.scrollLeft / (pista.clientWidth || 1));
+    marcar(Math.max(0, Math.min(fotos.length - 1, k)));
+  }, {passive:true});
+
+  /* arranque: la primera foto ya esta en su sitio, solo falta el estado */
+  i = -1; marcar(0);
 
   aislarElFondo(bg);
   bg.querySelector('#vX').focus();
 
   const cerrar = ()=>{
     document.removeEventListener('keydown', onKey);
+    clearTimeout(fundido);
     soltarElFondo();
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){ bg.remove(); return; }
     bg.classList.add('cerrando');
