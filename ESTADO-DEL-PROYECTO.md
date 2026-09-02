@@ -399,18 +399,32 @@ subir nada a mano. Se conservan solo por si algún día se migra de host.
 
 Antes eran 17 fotos sueltas en fila: la vista general de un juego y sus
 detalles quedaban separadas por otras cuatro, y no había forma de saber que
-eran el mismo cuero. Ahora hay **11 tarjetas, una por forro**; al tocar una
-se abre un visor con las demás fotos **de ese mismo color y dibujo**.
+eran el mismo cuero. Ahora hay **7 tarjetas, una por forro**; al tocar una se
+abre un visor con las demás fotos **de ese mismo color y dibujo**.
+
+**El visor es un carrusel con `scroll-snap`, no un cambio de `src`.** Las fotos
+van en fila dentro de `.visor-marco`, que es el contenedor con scroll; el
+deslizamiento lo lleva el navegador y por eso el arrastre con el dedo trae
+inercia y rebote de verdad. **El scroll es la única fuente de verdad**: `ver()`
+solo pide el sitio con `scrollIntoView`, y `marcar()` — que corre en cada
+cuadro de scroll — pone el estado. Flecha, teclado, miniatura y dedo acaban en
+el mismo sitio. Las flechas no dan la vuelta y se apagan en los topes, porque
+con el dedo tampoco se vuelve de la última a la primera.
+
+> El deslizamiento usa `--curva-desliz` y no la `--curva` del sitio: esa es una
+> easeOutExpo que hace el 98% del camino en 80 ms. Va bien para algo pequeño
+> que aparece, pero en 900 px se lee como un salto.
 
 - La tabla `GALERIA` (junto a `abrirForro`) es el dato: sumar un forro son una
   entrada ahí y una `<figure>` en la galería. La **primera foto de cada lista
   es la portada**, la misma que se ve en la tarjeta.
 - El visor se monta sobre el `.modalbg` del formulario: mismo velo, misma
   animación, mismo `aislarElFondo`. Escape y flechas ← → funcionan.
-- Se sumaron **4 fotos reales del taller** (JAC, Kia Rio, rosa y crema) que
-  estaban sin usar en `IMAGENES CON IA FORROS CUENCA/`. Llevan el distintivo
-  **"Foto del taller"**: las otras siete son recreaciones de estudio y no
-  deben venderse revueltas con las reales.
+- **Las `Imagen de WhatsApp 2023-*` NO van en el sitio.** Se probaron el 1 sep
+  2026 y Jairo las mandó quitar el mismo día: son antiguas y dan un aspecto
+  poco profesional. Ya lo había dicho antes. Los 7 forros que quedan son todos
+  recreaciones de estudio, y por eso el encabezado dice "Así puede quedar tu
+  vehículo" y no "trabajos entregados".
 - Los detalles que faltaban (verde, y los de las cuatro reales) son **recortes**
   hechos con `sharp` desde el original, no fotos nuevas.
 - La foto grande usa `-vista.webp` **solo** cuando la del taller es vertical de
