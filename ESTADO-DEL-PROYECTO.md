@@ -1,3 +1,21 @@
+> # ⚠️ ESTE DOCUMENTO DESCRIBE EL SITIO ANTERIOR
+>
+> **El 15 de septiembre de 2026 el sitio se rehízo desde cero y el configurador
+> se eliminó** por pedido de Jairo. Lo que hay hoy en forroscuenca.com es un
+> sitio vitrina: quince diseños numerados del 01 al 15, cada uno con su precio y
+> un botón que abre el WhatsApp con el número ya escrito.
+>
+> - **Los archivos vivos son `index.html`, `estilos.css` y `sitio.js`.**
+> - **La guía de mantenimiento es `LEEME.md`.** Léela primero.
+> - Todo lo que este documento cuenta del configurador (`PRODUCTS`, `DISENOS`,
+>   `PRESETS`, el enlace `?d=`, `localStorage`, los SVG del asiento) **ya no
+>   corre en el sitio publicado**. Se conserva aquí porque explica las trampas
+>   del material fotográfico y las decisiones de negocio, que siguen valiendo.
+> - `APP FORROS CEUNCA.html`, `PLANO-DEL-CONFIGURADOR.html`, `catalogo-grafo.js`
+>   y `_respaldo/` son del sitio anterior. No se borraron, pero no se usan.
+
+---
+
 # Estado del proyecto — Forros Cuenca
 
 > **Léeme primero si abres una conversación nueva.**
