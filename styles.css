@@ -520,20 +520,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
   right: 24px;
   bottom: 22px;
   display: grid;
-  gap: 1px;
-  min-width: 142px;
-  padding: 13px 18px 13px 43px;
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 999px;
-  background: rgba(15,17,21,.94);
-  box-shadow: 0 12px 40px rgba(0,0,0,.36);
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 12px 40px rgba(0,0,0,.36), 0 0 0 5px rgba(37,211,102,.12);
   color: #fff;
   text-decoration: none;
-  backdrop-filter: blur(12px);
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
 }
-.floating-wa::before { content: ""; position: absolute; top: 50%; left: 19px; width: 11px; height: 11px; transform: translateY(-50%); border-radius: 50%; background: #2bc566; box-shadow: 0 0 0 4px rgba(43,197,102,.14); }
-.floating-wa span { color: #8f929a; font-size: 7px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-.floating-wa strong { font-size: 11px; }
+.floating-wa:hover,
+.floating-wa:focus-visible { transform: translateY(-3px); background: #20bd5a; box-shadow: 0 16px 46px rgba(0,0,0,.42), 0 0 0 6px rgba(37,211,102,.16); }
+.floating-wa-icon { width: 31px; height: 31px; fill: currentColor; }
 
 .lightbox {
   width: min(760px, calc(100% - 36px));
@@ -632,9 +632,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .final-cta { padding: 92px 20px; }
   .site-footer { padding-inline: 20px; }
   .footer-bottom { flex-direction: column; }
-  .floating-wa { right: 14px; bottom: 14px; min-width: 52px; width: 52px; height: 52px; padding: 0; }
-  .floating-wa::before { left: 50%; width: 14px; height: 14px; transform: translate(-50%, -50%); }
-  .floating-wa span, .floating-wa strong { display: none; }
+  .floating-wa { right: 14px; bottom: 14px; width: 52px; height: 52px; }
+  .floating-wa-icon { width: 28px; height: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
