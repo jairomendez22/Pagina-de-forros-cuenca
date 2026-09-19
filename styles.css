@@ -537,14 +537,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
   flex: none;
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #25d366;
   box-shadow: 0 5px 16px rgba(37,211,102,.24);
 }
-.floating-wa-icon { display: block; width: 18px; height: 18px; fill: #fff; }
-.floating-wa-label { font-size: 10px; font-weight: 800; letter-spacing: .12em; line-height: 1; }
+.floating-wa-icon { display: block; width: 20px; height: 20px; }
+.floating-wa-label { font-family: var(--display); font-size: 16px; font-weight: 800; letter-spacing: .06em; line-height: 1; }
 
 .lightbox {
   width: min(760px, calc(100% - 36px));
@@ -644,9 +644,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .site-footer { padding-inline: 20px; }
   .footer-bottom { flex-direction: column; }
   .floating-wa { right: 14px; bottom: 14px; gap: 8px; padding: 8px 0; }
-  .floating-wa-mark { width: 28px; height: 28px; }
-  .floating-wa-icon { width: 16px; height: 16px; }
-  .floating-wa-label { font-size: 9px; }
+  .floating-wa-mark { width: 30px; height: 30px; }
+  .floating-wa-icon { width: 18px; height: 18px; }
+  .floating-wa-label { font-size: 15px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
