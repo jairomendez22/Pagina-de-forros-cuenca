@@ -6,6 +6,39 @@ const lightbox = document.querySelector('[data-lightbox]');
 const lightboxImage = lightbox?.querySelector('img');
 const lightboxCaption = lightbox?.querySelector('p');
 
+const cleanAddressBar = () => {
+  if (!window.location.hash) return;
+  window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+};
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const id = link.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start',
+    });
+
+    if (link.classList.contains('skip-link')) {
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    }
+
+    cleanAddressBar();
+  });
+});
+
+window.addEventListener('load', () => {
+  if (!window.location.hash) return;
+  const target = document.getElementById(window.location.hash.slice(1));
+  target?.scrollIntoView({ block: 'start' });
+  cleanAddressBar();
+});
+
 if (year) year.textContent = new Date().getFullYear();
 
 const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 28);

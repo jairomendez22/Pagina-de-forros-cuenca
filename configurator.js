@@ -828,7 +828,7 @@ function decodificar(str){
 }
 
 function enlaceDiseno(){
-  return location.origin + location.pathname + '?d=' + codificar() + '#configurador';
+  return location.origin + location.pathname + '?d=' + codificar();
 }
 
 /* ---------- persistencia ---------- */
