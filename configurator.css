@@ -1,0 +1,966 @@
+.configurator-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5rem, 9vw, 8.5rem) clamp(24px, 5vw, 76px);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(206, 170, 119, 0.11), transparent 28rem),
+    linear-gradient(180deg, #101114 0%, #08090b 100%);
+  color: #fff;
+}
+
+.configurator-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: repeating-linear-gradient(90deg, transparent 0 84px, rgba(255, 255, 255, 0.025) 84px 85px);
+}
+
+.configurator-intro,
+.configurator-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1320px, 100%);
+  margin-inline: auto;
+}
+
+.configurator-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.65fr);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.configurator-intro h2 {
+  max-width: 780px;
+  margin: 0.7rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(3rem, 6.2vw, 6.4rem);
+  line-height: 0.91;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.configurator-intro h2 em {
+  color: var(--red);
+  font-family: var(--display);
+  font-weight: 800;
+  font-style: italic;
+}
+
+.configurator-intro > p {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.configurator-shell {
+  --cfg-panel: #0f1013;
+  --cfg-surface: #17181c;
+  --cfg-surface-high: #1b1c21;
+  --cfg-control: #222329;
+  --cfg-control-high: #2a2b31;
+  --cfg-line: #2a2c32;
+  --cfg-border: #41434b;
+  --cfg-muted: #a8aab2;
+  --cfg-red: #ef2b36;
+  --cfg-red-solid: #c1121f;
+  --cfg-red-soft: #1d1215;
+  --cfg-red-line: #4a2328;
+  --cfg-curve: cubic-bezier(.16, 1, .3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.45rem;
+  overflow: hidden;
+  background: rgba(11, 12, 15, 0.92);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.35);
+}
+
+.configurator-shell button,
+.modalbg button,
+.modalbg input {
+  font: inherit;
+}
+
+.configurator-shell .vehrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  background: var(--cfg-surface);
+  border-bottom: 1px solid var(--cfg-line);
+}
+
+.configurator-shell #vehiclebar {
+  display: flex;
+  gap: 0.55rem;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 2px 0;
+  scrollbar-width: none;
+}
+
+.configurator-shell #vehiclebar::-webkit-scrollbar,
+.configurator-shell .presets::-webkit-scrollbar,
+.configurator-shell .tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.configurator-shell #vehiclebar > button {
+  flex: none;
+}
+
+.configurator-shell .restore {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  color: #d2d3d8;
+  background: #1a1b20;
+  border-bottom: 1px solid var(--cfg-line);
+  font-size: 0.78rem;
+}
+
+.configurator-shell .restore button {
+  padding: 0;
+  color: #ff5962;
+  background: none;
+  border: 0;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.configurator-shell .layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 0.8rem;
+  padding: 0.8rem;
+}
+
+.configurator-shell .card {
+  overflow: hidden;
+  background: var(--cfg-surface-high);
+  border: 1px solid #34363d;
+  border-radius: 1rem;
+}
+
+.configurator-shell .center {
+  position: relative;
+  display: flex;
+  min-height: clamp(33rem, 68vh, 47rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: radial-gradient(ellipse at top, #2a2d35, #07080b 78%);
+}
+
+.configurator-shell .matbadge {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  padding: 0.38rem 0.72rem;
+  color: #d2d3d8;
+  background: rgba(0, 0, 0, 0.64);
+  border: 1px solid #393b42;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  backdrop-filter: blur(4px);
+}
+
+.configurator-shell .cleanbtn {
+  position: absolute;
+  z-index: 5;
+  top: 0.8rem;
+  right: 0.8rem;
+  min-height: 40px;
+  padding: 0.42rem 0.8rem;
+  color: #e4e5ea;
+  background: rgba(0, 0, 0, 0.62);
+  border: 1px solid var(--cfg-border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.configurator-shell .hint {
+  margin: 0.35rem 0 0.7rem;
+  padding: 0.6rem 0.9rem;
+  color: var(--cfg-muted);
+  background: rgba(15, 16, 19, 0.8);
+  border: 1px solid #34363d;
+  border-radius: 0.65rem;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.configurator-shell .stage {
+  width: min(600px, 94%);
+  height: auto;
+  filter: drop-shadow(0 22px 25px rgba(0, 0, 0, 0.65));
+}
+
+.configurator-shell .zone {
+  cursor: pointer;
+  stroke: #111318;
+  stroke-width: 3.5;
+  stroke-dasharray: 7 6;
+  stroke-linecap: round;
+  filter: drop-shadow(0 1.2px 0.8px rgba(0, 0, 0, 0.55));
+  transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.configurator-shell .zone.sel {
+  stroke: #fff !important;
+  stroke-width: 6;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 5px rgba(239, 43, 54, 0.95));
+}
+
+.configurator-shell .zone:focus-visible {
+  outline: none;
+  stroke: #fff;
+  stroke-width: 6;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+}
+
+.configurator-shell .seam {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-dasharray: 6 5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 1.2px 0.8px rgba(0, 0, 0, 0.5));
+}
+
+.configurator-shell .label {
+  fill: #fff;
+  stroke: #111318;
+  stroke-width: 4;
+  paint-order: stroke;
+  font-size: 15px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.configurator-shell .valle {
+  fill: none;
+  stroke: #000;
+  stroke-width: 4.4;
+  stroke-opacity: 0.3;
+  filter: url(#soft3);
+  transform: translateY(1.6px);
+}
+
+.configurator-shell .labio {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.6;
+  stroke-opacity: 0.16;
+  filter: url(#soft1);
+  transform: translateY(-2.2px);
+}
+
+body.limpio .configurator-shell .zone {
+  stroke: none !important;
+  filter: none !important;
+}
+
+body.limpio .configurator-shell .zone:focus-visible {
+  stroke: #fff !important;
+  stroke-width: 5;
+}
+
+body.limpio .configurator-shell .label {
+  opacity: 0;
+}
+
+.configurator-shell .presetlbl {
+  padding: 0.85rem 0.9rem 0;
+  color: var(--cfg-muted);
+  background: var(--cfg-panel);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.configurator-shell .presets {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.7rem 0.9rem;
+  background: var(--cfg-panel);
+  border-bottom: 1px solid var(--cfg-line);
+  scrollbar-width: none;
+}
+
+.configurator-shell .preset {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.42rem;
+  min-height: 36px;
+  padding: 0.4rem 0.68rem;
+  color: #e4e5ea;
+  background: var(--cfg-control);
+  border: 1px solid var(--cfg-border);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.configurator-shell .preset .dots {
+  display: flex;
+  gap: 3px;
+}
+
+.configurator-shell .preset .dots i {
+  width: 11px;
+  height: 11px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.configurator-shell .tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.configurator-shell .tab {
+  flex: 1 0 auto;
+  min-width: 76px;
+  padding: 0.78rem 0.55rem;
+  color: #c8cad1;
+  background: var(--cfg-panel);
+  border: 0;
+  border-right: 1px solid var(--cfg-line);
+  border-bottom: 1px solid var(--cfg-line);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.035em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.configurator-shell .tab.active {
+  color: #fff;
+  background: var(--cfg-red-solid);
+}
+
+.configurator-shell .tabscope {
+  padding: 0.58rem 0.9rem;
+  color: var(--cfg-muted);
+  background: var(--cfg-panel);
+  border-bottom: 1px solid var(--cfg-line);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.configurator-shell .content {
+  padding: 1rem;
+}
+
+.configurator-shell .content b {
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+
+/* Muestras más compactas: mantienen un área táctil clara sin dominar el panel. */
+.configurator-shell .colors {
+  display: grid;
+  grid-template-columns: repeat(5, 44px);
+  justify-content: start;
+  gap: 2rem 0.8rem;
+  margin: 0.75rem 0 1.7rem;
+}
+
+.configurator-shell .color {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--cfg-border);
+  border-radius: 0.48rem;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.configurator-shell .color.active {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px var(--cfg-red);
+}
+
+.configurator-shell .color span {
+  position: absolute;
+  top: calc(100% + 0.32rem);
+  left: 50%;
+  color: var(--cfg-muted);
+  font-size: 0.63rem;
+  line-height: 1.12;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.configurator-shell .options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.configurator-shell .opt,
+.configurator-shell .pat {
+  color: #fff;
+  background: var(--cfg-control);
+  border: 1px solid var(--cfg-border);
+  border-radius: 0.58rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.18s var(--cfg-curve), border-color 0.18s ease, background 0.18s ease;
+}
+
+.configurator-shell .opt {
+  padding: 0.72rem;
+}
+
+.configurator-shell .opt.active,
+.configurator-shell .pat.active {
+  background: var(--cfg-red-soft);
+  border-color: var(--cfg-red);
+}
+
+.configurator-shell .patterns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.configurator-shell .pat {
+  height: 76px;
+  padding: 0.35rem 0.2rem;
+  color: #d1d2d7;
+}
+
+.configurator-shell .sample {
+  display: block;
+  width: 42px;
+  height: 26px;
+  margin: 0 auto 0.38rem;
+  background-color: var(--cfg-control-high);
+  border-radius: 3px;
+}
+
+.configurator-shell .diamond {
+  background-image: linear-gradient(45deg, transparent 45%, #b0b1b6 46%, #b0b1b6 54%, transparent 55%), linear-gradient(-45deg, transparent 45%, #b0b1b6 46%, #b0b1b6 54%, transparent 55%);
+  background-size: 16px 16px;
+}
+
+.configurator-shell .sample.dots { background-image: radial-gradient(#b0b1b6 1.4px, transparent 1.4px); background-size: 7px 7px; }
+.configurator-shell .sample.micro { background-image: radial-gradient(#b0b1b6 0.9px, transparent 0.9px); background-size: 4px 4px; }
+.configurator-shell .sample.hex { background-image: linear-gradient(30deg, transparent 45%, #b0b1b6 46%, #b0b1b6 52%, transparent 53%), linear-gradient(150deg, transparent 45%, #b0b1b6 46%, #b0b1b6 52%, transparent 53%); background-size: 16px 16px; }
+.configurator-shell .sample.chevronp { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12'%3E%3Cpath d='M0 9L7 3L14 9' fill='none' stroke='%23aaa' stroke-width='1.3'/%3E%3C/svg%3E"); }
+.configurator-shell .sample.canal { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M3 0V6' stroke='%23aaa' stroke-width='1.1'/%3E%3C/svg%3E"); }
+
+.configurator-shell .matopt {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem;
+  text-align: left;
+}
+
+.configurator-shell .matopt small {
+  color: var(--cfg-muted);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.configurator-shell .swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.7rem 0.5rem;
+  margin: 0.75rem 0 0.65rem;
+}
+
+.configurator-shell .stitch {
+  position: relative;
+  width: 54px;
+  height: 40px;
+  padding: 0;
+  background: var(--cfg-control);
+  border: 1px solid var(--cfg-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.configurator-shell .stitch i {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  left: 8px;
+  border-top: 3px dashed red;
+}
+
+.configurator-shell .stitch span {
+  position: absolute;
+  top: calc(100% + 0.28rem);
+  right: 0;
+  left: 0;
+  color: var(--cfg-muted);
+  font-size: 0.64rem;
+  text-align: center;
+}
+
+.configurator-shell .stitch.active {
+  border-color: var(--cfg-red);
+  box-shadow: inset 0 0 0 2px var(--cfg-red);
+}
+
+.configurator-shell .txtbox {
+  margin-top: 0.65rem;
+}
+
+.configurator-shell .txtbox input {
+  width: 100%;
+  padding: 0.68rem;
+  color: #fff;
+  background: var(--cfg-panel);
+  border: 1px solid var(--cfg-border);
+  border-radius: 0.5rem;
+}
+
+.configurator-shell .modelos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.configurator-shell .modelo {
+  overflow: hidden;
+  padding: 0;
+  background: var(--cfg-control);
+  border: 1px solid var(--cfg-border);
+  border-radius: 0.68rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.configurator-shell .modelo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 280 / 380;
+  object-fit: cover;
+}
+
+.configurator-shell .modelo .mnom {
+  display: block;
+  padding: 0.5rem 0.56rem;
+  color: #e4e5ea;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.configurator-shell .modelo.active {
+  border-color: var(--cfg-red);
+  box-shadow: inset 0 0 0 1px var(--cfg-red);
+}
+
+.configurator-shell .vetonote,
+.configurator-shell .pedidonota {
+  grid-column: 1 / -1;
+  margin-top: 0.6rem;
+  color: #d8a0a4;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.configurator-shell .vetonote {
+  padding: 0.55rem 0.65rem;
+  background: var(--cfg-red-soft);
+  border: 1px solid var(--cfg-red-line);
+  border-radius: 0.5rem;
+}
+
+.configurator-shell .opt[disabled],
+.configurator-shell .pat[disabled],
+.configurator-shell .color[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+  filter: grayscale(0.75);
+}
+
+.configurator-shell .pricebar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding: 0.82rem 1rem;
+  background: var(--cfg-panel);
+  border-top: 1px solid var(--cfg-line);
+}
+
+.configurator-shell .pricebar .lbl {
+  color: var(--cfg-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.configurator-shell .pricebar .val {
+  color: #fff;
+  font-family: var(--display);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.configurator-shell .pricebar .val small {
+  color: var(--cfg-muted);
+  font-family: var(--body);
+  font-size: 0.72rem;
+}
+
+.configurator-shell .pricenote {
+  padding: 0 1rem 0.75rem;
+  color: #8f9199;
+  background: var(--cfg-panel);
+  border-bottom: 1px solid var(--cfg-line);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.configurator-shell .summary {
+  padding: 0.75rem 1rem;
+  color: #9a9ca4;
+  background: var(--cfg-panel);
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+.configurator-shell .summary .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed #24262b;
+}
+
+.configurator-shell .summary .row:last-child {
+  border-bottom: 0;
+}
+
+.configurator-shell .summary b {
+  color: #fff;
+  text-align: right;
+}
+
+.configurator-shell .summary .bp {
+  color: #8f9199;
+  font-size: 0.62rem;
+  font-style: normal;
+}
+
+.configurator-quote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(90deg, #17181c, #111216);
+  border-top: 1px solid #34363d;
+}
+
+.configurator-quote .sp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.configurator-quote .sl {
+  color: var(--cfg-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.configurator-quote .sv {
+  color: #fff;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.configurator-quote .sv small {
+  color: var(--cfg-muted);
+  font-family: var(--body);
+  font-size: 0.72rem;
+}
+
+.configurator-quote .cta,
+.modalbg .cta {
+  min-height: 46px;
+  padding: 0.72rem 1rem;
+  color: #fff;
+  background: linear-gradient(180deg, #d51b2d, #a80f1c);
+  border: 0;
+  border-radius: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.modalbg {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.modalbg .modal {
+  width: 100%;
+  max-width: 430px;
+  max-height: 90vh;
+  overflow: auto;
+  padding: 1.35rem;
+  background: #1a1b20;
+  border: 1px solid #454750;
+  border-radius: 1rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
+}
+
+.modalbg .modal h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.modalbg .modal p.sub {
+  margin: 0 0 1rem;
+  color: #a8aab2;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.modalbg .field {
+  margin-bottom: 0.8rem;
+}
+
+.modalbg .field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #d6d7dc;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.modalbg .field label span {
+  color: #9799a1;
+  font-weight: 500;
+}
+
+.modalbg .field input {
+  width: 100%;
+  padding: 0.72rem;
+  color: #fff;
+  background: #0f1013;
+  border: 1px solid #454750;
+  border-radius: 0.55rem;
+}
+
+.modalbg .field input:focus {
+  outline: 2px solid #ef2b36;
+  outline-offset: 1px;
+}
+
+.modalbg .field .err {
+  display: none;
+  margin-top: 0.28rem;
+  color: #ff8a90;
+  font-size: 0.68rem;
+}
+
+.modalbg .field input[aria-invalid="true"] ~ .err {
+  display: block;
+}
+
+.modalbg .modalact {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.modalbg .modalact button {
+  flex: 1;
+}
+
+.modalbg .btnghost {
+  min-height: 46px;
+  padding: 0.72rem;
+  color: #d2d3d8;
+  background: #26272d;
+  border: 1px solid #454750;
+  border-radius: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#fx {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.configurator-shell .galeria[hidden],
+#ctaWa[hidden] {
+  display: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .configurator-shell .zone:not(.sel):hover { stroke: #fff; stroke-width: 5; }
+  .configurator-shell .preset:hover,
+  .configurator-shell .opt:not([disabled]):hover,
+  .configurator-shell .pat:not([disabled]):hover,
+  .configurator-shell .modelo:hover { transform: translateY(-2px); border-color: #666973; }
+  .configurator-shell .color:not([disabled]):not(.active):hover,
+  .configurator-shell .stitch:not(.active):hover { border-color: #d2d3d8; }
+}
+
+@media (max-width: 1150px) {
+  .configurator-shell .layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+  .configurator-shell .card {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  .configurator-shell .center {
+    min-height: 0;
+    padding: 0.75rem;
+  }
+
+  .configurator-shell .stage {
+    width: auto;
+    max-width: 92%;
+    max-height: 56vh;
+  }
+
+  .configurator-shell .matbadge {
+    top: 0.65rem;
+    right: auto;
+    bottom: auto;
+    left: 0.65rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .configurator-section {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .configurator-intro {
+    grid-template-columns: 1fr;
+    padding-inline: clamp(24px, 5vw, 76px);
+  }
+
+  .configurator-intro h2 {
+    font-size: clamp(2.75rem, 15vw, 4.4rem);
+  }
+
+  .configurator-shell {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  .configurator-shell .vehrow {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .configurator-shell .cleanbtn {
+    position: static;
+    align-self: flex-end;
+    margin-bottom: 0.35rem;
+  }
+
+  .configurator-shell .hint {
+    order: 2;
+    margin: 0.35rem 0 0;
+    font-size: 0.7rem;
+  }
+
+  .configurator-shell .stage {
+    max-height: 48vh;
+  }
+
+  .configurator-shell .content {
+    padding: 0.85rem 0.75rem;
+  }
+
+  .configurator-shell .colors {
+    grid-template-columns: repeat(5, 42px);
+    gap: 1.9rem 0.62rem;
+  }
+
+  .configurator-shell .color {
+    width: 42px;
+    height: 42px;
+  }
+
+  .configurator-shell .patterns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .configurator-quote {
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+    padding: 0.75rem;
+  }
+
+  .configurator-quote .cta {
+    padding-inline: 0.8rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .configurator-shell .colors {
+    grid-template-columns: repeat(4, 42px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .configurator-shell *,
+  .modalbg * {
+    scroll-behavior: auto !important;
+  }
+}
