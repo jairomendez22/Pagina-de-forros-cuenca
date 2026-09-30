@@ -1,0 +1,16 @@
+{
+  "name": "Forros Cuenca · Tapizado automotriz",
+  "short_name": "Forros Cuenca",
+  "description": "Diseña tu forro y solicita una cotización a Forros Cuenca, Machala, El Oro, Ecuador.",
+  "lang": "es-EC",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090a0c",
+  "theme_color": "#e50914",
+  "icons": [
+    { "src": "./assets/favicon-32.png", "sizes": "32x32", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/favicon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
